@@ -7,4 +7,4 @@
 | git add . --all | Agrega todos los cambios al repositorio |
 | git commit -m "Mensaje de actualizacion" | Realiza un commit, junto con el mensaje de dicho cambio |
 | git push | Sube los cambios al repositorio |
-| git status | Mira el estado de los cambios realizados|
+| git status | Mira el estado de los cambios realizados |
