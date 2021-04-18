@@ -38,8 +38,14 @@
 }
 
 body, html {
-	height: 100%;
 	font-family: Poppins-Regular, sans-serif;
+  background: url(../images/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-size: cover;
+  height: 100%;
 }
 
 /*---------------------------------------------*/
@@ -155,7 +161,7 @@ iframe {
 
 .limiter {
   width: 100%;
-  margin: 0 auto;
+  margin: 0px;
 }
 
 .container-login100 {
@@ -170,12 +176,13 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #ffffff;
+  background: rgba(255, 255, 255,0.3);
 }
 
 .wrap-login100 {
-  width: 390px;
-  background: #ffffff;
+  width: 420px;
+  background: rgba(255, 255, 255,0.8);
+  border-radius: 20px;
 }
 
 
@@ -189,7 +196,7 @@ iframe {
 .login100-form-title {
   display: block;
   font-family: Poppins-Bold;
-  font-size: 39px;
+  font-size: 35px;
   color: #010532;
   line-height: 1.2;
   text-align: center;
@@ -199,9 +206,9 @@ iframe {
 [ Input ]*/
 
 .wrap-input100 {
-  width: 100%;
+  width: 80%;
   position: relative;
-  border-bottom: 2px solid #d9d9d9;
+  border-bottom: 2px solid #bbb;
 }
 
 .input100 {
@@ -248,7 +255,7 @@ iframe {
 .focus-input100::after {
   font-family: Poppins-Medium;
   font-size: 18px;
-  color: #999999;
+  color: #868686;
   line-height: 1.2;
 
   content: attr(data-placeholder);
@@ -287,7 +294,7 @@ iframe {
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
-  width: 100%;
+  width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -312,7 +319,7 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  width: 100%;
+  width: 80%;
   height: 50px;
   background-color: rgb(2, 45, 150);
   border-radius: 25px;
@@ -377,6 +384,7 @@ iframe {
   -o-transition: opacity 0.4s;
   -moz-transition: opacity 0.4s;
   transition: opacity 0.4s;
+  border-radius: 5px;
 }
 
 .alert-validate::after {
@@ -387,7 +395,7 @@ iframe {
 
   display: block;
   position: absolute;
-  background-color: #ffffff;
+  background-color: transparent;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
@@ -432,4 +440,8 @@ iframe {
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   left: 0;
+}
+
+.combo{
+  padding:10px;
 }

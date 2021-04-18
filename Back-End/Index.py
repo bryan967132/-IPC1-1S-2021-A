@@ -47,10 +47,27 @@ def actualizarlibro(titulo):
     return '{"data":"Error"}'
 
 @app.route('/buscarlibros/<titulo>',methods=['GET'])
-def buscarlibro(titulo):
+def buscarlibro1(titulo):
     if(gestor.buscar_libro(titulo)):
         return gestor.buscar_libro(titulo)
     return '{"data":"Error"}'
+
+@app.route('/buscarlibros',methods=['GET'])
+def buscarlibros2():
+    dato = request.json
+    if gestor.buscar_libro(dato['titulo']):
+        return gestor.buscar_libro(dato['titulo'])
+    return '{"data":"Inexistente"}'
+
+@app.route('/login/<usuario>/<password>')
+def login(usuario,password):
+    return gestor.iniciar_sesion(usuario,password)
+
+@app.route('/registro',methods=['POST'])
+def registrar():
+    dato = request.json
+    gestor.registrar_usuario(dato['nombre'],dato['apellido'],dato['password'],dato['usuario'])
+    return '{"data":"Creado"}'
 
 #Iniciar el Servidor
 

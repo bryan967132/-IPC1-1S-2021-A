@@ -24,43 +24,72 @@
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/secondary.css">
 <!--===============================================================================================-->
 </head>
 <body>
-
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-85 p-b-20">
 				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-70">
-						UHospital
+					<span class="login100-form-title p-b-70" style="margin-top: -40px;">
+						Registro - Pacientes
 					</span>
 
-					<div class="wrap-input100 validate-input m-t-85 m-b-35 m-l-43" data-validate = "Ingrese el Usuario">
+					<div class="wrap-input100 validate-input m-t-35 m-b-30 m-l-120" data-validate = "Dato Obligatorio">
+						<input id="nombre" class="input100" type="text">
+						<span class="focus-input100" data-placeholder="Nombre"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate = "Dato Obligatorio">
+						<input id="apellido" class="input100" type="text">
+						<span class="focus-input100" data-placeholder="Apellido"></span>
+					</div>
+
+					<div class="wrap-input100 m-b-30 m-l-120">
+						<!-- Campo de entrada de fecha -->
+						<input id="fecha" class="input100" type="date" />
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate = "Dato Obligatorio">
+						<input id="generous" value="" list=genero class="input100" type="text">
+						<span class="focus-input100" data-placeholder="Género"></span>
+						<datalist id="genero">
+							<option> Hombre
+							<option> Mujer
+						</datalist>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-30 m-l-120" data-validate = "Dato Obligatorio">
 						<input id="usuario" class="input100" type="text">
 						<span class="focus-input100" data-placeholder="Usuario"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-50 m-l-43" data-validate="Ingrese la Contraseña">
+					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate="Dato Obligatorio">
 						<input id="pass" class="input100" type="password">
 						<span class="focus-input100" data-placeholder="Contraseña"></span>
 					</div>
 
+					<div class="wrap-input100 validate-input m-b-30 m-l-120">
+						<input id="telefono" class="input100" type="text">
+						<span class="focus-input100" data-placeholder="Teléfono"></span>
+					</div>
+
 					<div>
-						<button onclick="IniciarSesion()" class="login100-form-btn m-l-43">
-							Inciar Sesión
+						<button onclick="CrearUsuario()" class="login100-form-btn m-l-204">
+							Registrar Paciente
 						</button>
 					</div>
 
-					<ul class="login-more p-t-190 m-l-43">
+					<ul class="login-more p-t-40 m-l-204">
 						<li>
 							<span class="txt1">
-								¿No tiénes una cuenta?
+								¿Tienes Cuenta?
 							</span>
 
-							<a href="registro.html" class="txt2">
-								Registrarse
+							<a href="login.html" class="txt2">
+								Iniciar Sesión
 							</a>
 						</li>
 					</ul>

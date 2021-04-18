@@ -46,3 +46,14 @@ class Gestor:
         for i in self.libros:
             if i.titulo == titulo:
                 return json.dumps([i.__dict__])
+
+    #Iniciar Sesion
+    def iniciar_sesion(self,usuario,password):
+        for x in self.usuarios:
+            if x.password == password and x.usuario == usuario:
+                return json.dumps(x.__dict__)
+        return '{"nombre":"false"}'
+
+    #Registrar Usuario
+    def registrar_usuario(self,nombre,apellido,password,usuario):
+        self.usuarios.append(Usuario(nombre,apellido,password,usuario))
