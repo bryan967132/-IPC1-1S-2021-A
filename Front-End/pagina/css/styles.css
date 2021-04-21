@@ -47,11 +47,16 @@ Colors:
 body,
 html {
     width: 100%;
-	height: 100%;
+	background: url(../images/background.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	background-size: cover;
 }
 
 body, p {
-	color: #626262; 
+	color: #626262;
 	font: 400 0.875rem/1.375rem "Raleway", sans-serif;
 }
 
@@ -116,7 +121,7 @@ a:hover {
 }
 
 a.turquoise {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 }
 
 a.white {
@@ -132,97 +137,157 @@ a.white {
 }
 
 .turquoise {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 }
 
 .btn-solid-reg {
+	text-transform: uppercase;
 	display: inline-block;
-	padding: 1.1875rem 2.125rem 1.1875rem 2.125rem;
-	border: 0.125rem solid #00bfd8;
+	padding: 1.375rem 2.625rem 1.375rem 2.625rem;
+	border: 0.125rem solid rgb(2, 45, 150);
 	border-radius: 2rem;
-	background-color: #00bfd8;
+	background-color: rgb(2, 45, 150);
 	color: #fff;
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
+	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-solid-reg:hover {
-	background-color: transparent;
-	color: #00bfd8;
+	color: #fff;
 	text-decoration: none;
+	border-color: rgb(0, 66, 179);
+	background: rgb(0, 66, 179);
+	box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
 }
 
 .btn-solid-lg {
+	text-transform: uppercase;
 	display: inline-block;
 	padding: 1.375rem 2.625rem 1.375rem 2.625rem;
-	border: 0.125rem solid #00bfd8;
+	border: 0.125rem solid rgb(2, 45, 150);
 	border-radius: 2rem;
-	background-color: #00bfd8;
+	background-color: rgb(2, 45, 150);
 	color: #fff;
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
+	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-solid-lg:hover {
-	background-color: transparent;
-	color: #00bfd8;
+	color: #fff;
 	text-decoration: none;
+	border-color: rgb(0, 66, 179);
+	background: rgb(0, 66, 179);
+	box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
 }
 
 .btn-outline-reg {
+	text-transform: uppercase;
 	display: inline-block;
-	padding: 1.1875rem 2.125rem 1.1875rem 2.125rem;
-	border: 0.125rem solid #00bfd8;
+	padding: 1.375rem 2.625rem 1.375rem 2.625rem;
+	border: 0.125rem solid rgb(2, 45, 150);
 	border-radius: 2rem;
-	background-color: transparent;
-	color: #00bfd8;
+	background-color: rgb(2, 45, 150);
+	color: #fff;
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
+	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-outline-reg:hover {
-	background-color: #00bfd8;
 	color: #fff;
 	text-decoration: none;
+	border-color: rgb(0, 66, 179);
+	background: rgb(0, 66, 179);
+	box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
 }
 
 .btn-outline-lg {
+	text-transform: uppercase;
 	display: inline-block;
 	padding: 1.375rem 2.625rem 1.375rem 2.625rem;
-	border: 0.125rem solid #00bfd8;
+	border: 0.125rem solid rgb(2, 45, 150);
 	border-radius: 2rem;
-	background-color: transparent;
-	color: #00bfd8;
+	background-color: rgb(2, 45, 150);
+	color: #fff;
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
+	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-outline-lg:hover {
-	background-color: #00bfd8;
 	color: #fff;
 	text-decoration: none;
+	border-color: rgb(0, 66, 179);
+	background: rgb(0, 66, 179);
+	box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
 }
 
 .btn-outline-sm {
+	text-transform: uppercase;
 	display: inline-block;
-	padding: 1rem 1.625rem 0.875rem 1.625rem;
-	border: 0.125rem solid #00bfd8;
+	padding: 1.375rem 2.625rem 1.375rem 2.625rem;
+	border: 0.125rem solid rgb(2, 45, 150);
 	border-radius: 2rem;
-	background-color: transparent;
-	color: #00bfd8;
-	font: 700 0.625rem/0 "Raleway", sans-serif;
+	background-color: rgb(2, 45, 150);
+	color: #fff;
+	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
+	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-outline-sm:hover {
-	background-color: #00bfd8;
 	color: #fff;
 	text-decoration: none;
+	border-color: rgb(0, 66, 179);
+	background: rgb(0, 66, 179);
+	box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
 }
 
 .form-group {
@@ -365,21 +430,46 @@ input[type='checkbox'] {
 }
 
 .form-control-submit-button {
-	display: inline-block;
-	width: 100%;
-	height: 3.125rem;
-	border: 1px solid #00bfd8;
-	border-radius: 1.5rem;
-	background-color: #00bfd8;
 	color: #fff;
 	font: 700 0.75rem/1.75rem "Raleway", sans-serif;
-	cursor: pointer;
-	transition: all 0.2s;
+	font-size: 16px;
+	color: #fff;
+	line-height: 1.2;
+	text-transform: uppercase;
+  
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 20px;
+	width: 80%;
+	height: 50px;
+	background-color: rgb(2, 45, 150);
+	border-radius: 25px;
+	border: transparent;
+  
+	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
+  
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
 }
 
 .form-control-submit-button:hover {
-	background-color: transparent;
-	color: #00bfd8;
+	background: rgb(0, 66, 179);
+	box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
 }
 
 /* Form Success And Error Message Formatting */
@@ -596,7 +686,7 @@ input[type='checkbox'] {
 	width: 1rem;
 	height: 1rem;
 	border-radius: 100%;
-	background-color: #00bfd8;
+	background-color: rgb(65, 129, 237);
 	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
@@ -664,7 +754,7 @@ input[type='checkbox'] {
 
 .navbar-custom .nav-item .nav-link:hover,
 .navbar-custom .nav-item .nav-link.active {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 }
 
 /* Dropdown Menu */
@@ -709,7 +799,7 @@ input[type='checkbox'] {
 }
 
 .navbar-custom .dropdown-item:hover .item-text {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 }
 
 .navbar-custom .dropdown-items-divide-hr {
@@ -878,7 +968,7 @@ input[type='checkbox'] {
 }
 
 .basic-2 .list-unstyled .fas {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	line-height: 1.375rem;
 }
 
@@ -925,7 +1015,7 @@ input[type='checkbox'] {
 	margin-bottom: 1.25rem;
 	margin-left: 0;
 	border: 0;
-	background-color: #00bfd8;
+	background-color: rgb(65, 129, 237);
 	text-align: left;
 }
 
@@ -934,7 +1024,7 @@ input[type='checkbox'] {
 }
 
 .lightbox-basic .list-unstyled .fas {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	line-height: 1.375rem;
 }
 
@@ -957,7 +1047,7 @@ input[type='checkbox'] {
 }
 
 .lightbox-basic .btn-solid-reg.mfp-close:hover {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 }
 /* end of signup Button */
 
@@ -967,7 +1057,7 @@ input[type='checkbox'] {
 	width: auto;
 	height: auto;
 	margin-left: 0.375rem;
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	opacity: 1;
 }
 
@@ -1007,7 +1097,6 @@ input[type='checkbox'] {
 	margin-left: auto;
 	border: 1px solid #c4d8dc;
 	border-radius: 0.5rem;
-	vertical-align: top;
 }
 
 .cards-2 .card .card-body {
@@ -1041,7 +1130,7 @@ input[type='checkbox'] {
 }
 
 .cards-2 .card .value {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	font-weight: 700;
 	font-size: 3.5rem;
 	line-height: 4rem;
@@ -1050,7 +1139,7 @@ input[type='checkbox'] {
 
 .cards-2 .card .currency {
 	margin-right: 0.375rem;
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	font-size: 1.5rem;
 	vertical-align: 56%;
 }
@@ -1072,7 +1161,7 @@ input[type='checkbox'] {
 }
 
 .cards-2 .card .list-unstyled .fas {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	line-height: 1.375rem;
 }
 
@@ -1112,7 +1201,7 @@ input[type='checkbox'] {
     position: relative;
 	width: 13.75rem;
 	padding: 0.3125rem 0 0.3125rem 4.125rem;
-    background-color: #00bfd8;
+    background-color: rgb(65, 129, 237);
 	color: #fff;
     -webkit-transform: rotate(45deg) translate3d(0, 0, 0);
     -ms-transform: rotate(45deg) translate3d(0, 0, 0);
@@ -1139,7 +1228,7 @@ input[type='checkbox'] {
 }
 
 .form-1 .list-unstyled .fas {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	line-height: 1.375rem;
 }
 
@@ -1204,7 +1293,7 @@ input[type='checkbox'] {
 	width: 4.75rem;
 	height: 4.75rem;
 	border-radius: 50%;
-	background: #00bfd8;
+	background: rgb(65, 129, 237);
 	animation: pulse-border 1500ms ease-out infinite;
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	-ms-transform: translateX(-50%) translateY(-50%);
@@ -1221,7 +1310,7 @@ input[type='checkbox'] {
 	width: 4.375rem;
 	height: 4.375rem;
 	border-radius: 50%;
-	background: #00bfd8;
+	background: rgb(65, 129, 237);
 	transition: all 200ms;
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	-ms-transform: translateX(-50%) translateY(-50%);
@@ -1386,7 +1475,7 @@ input[type='checkbox'] {
 }
 
 .basic-4 .fa-stack-2x {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	transition: all 0.2s ease;
 }
 
@@ -1396,7 +1485,7 @@ input[type='checkbox'] {
 }
 
 .basic-4 .fa-stack:hover .fa-stack-2x {
-	color: #00a7bd;
+	color: rgb(0, 66, 179);
 }
 
 .basic-4 .fa-stack:hover .fa-stack-1x {
@@ -1430,7 +1519,7 @@ input[type='checkbox'] {
 .form-2 .list-unstyled .fab {
 	margin-right: 0.5rem;
 	font-size: 0.875rem;
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 }
 
 .form-2 .list-unstyled .fa-phone {
@@ -1473,7 +1562,7 @@ input[type='checkbox'] {
 }
 
 .footer .list-unstyled .fas {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	font-size: 0.5rem;
 	line-height: 1.375rem;
 }
@@ -1494,7 +1583,7 @@ input[type='checkbox'] {
 }
 
 .footer .fa-stack .fa-stack-2x {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	transition: all 0.2s ease;
 }
 
@@ -1503,7 +1592,7 @@ input[type='checkbox'] {
 }
 
 .footer .fa-stack:hover .fa-stack-2x {
-    color: #00a7bd;
+    color: rgba(0, 66, 179);
 }
 
 
@@ -1535,13 +1624,13 @@ a.back-to-top {
 	width: 2.625rem;
 	height: 2.625rem;
 	border-radius: 1.875rem;
-	background: #00bfd8 url("../images/up-arrow.png") no-repeat center 47%;
+	background: rgb(65, 129, 237) url("../images/up-arrow.png") no-repeat center 47%;
 	background-size: 1.125rem 1.125rem;
 	text-indent: -9999px;
 }
 
 a:hover.back-to-top {
-	background-color: #00a7bd; 
+	background-color: rgba(0, 66, 179);; 
 }
 
 
@@ -1587,7 +1676,7 @@ a:hover.back-to-top {
 }
 
 .ex-basic-2 .list-unstyled .fas {
-	color: #00bfd8;
+	color: rgb(65, 129, 237);
 	font-size: 0.5rem;
 	line-height: 1.375rem;
 }
@@ -1743,7 +1832,7 @@ a:hover.back-to-top {
 	.navbar-custom {
 		padding: 2.125rem 1.5rem 2.125rem 2rem;
 		box-shadow: none;
-        background: transparent;
+        background: rgb(65, 129, 237);
 	}
 	
 	.navbar-custom .navbar-nav {
@@ -1776,7 +1865,7 @@ a:hover.back-to-top {
 	
 	.navbar-custom.top-nav-collapse .nav-item .nav-link:hover,
 	.navbar-custom.top-nav-collapse .nav-item .nav-link.active {
-		color: #00bfd8;
+		color: rgb(65, 129, 237);
 	}
 
 	.navbar-custom .dropdown-menu {
@@ -1812,7 +1901,7 @@ a:hover.back-to-top {
 	}
 	
 	.navbar-custom .fa-stack-2x {
-		color: #00bfd8;
+		color: rgb(65, 129, 237);
 		transition: all 0.2s ease;
 	}
 	
@@ -1826,11 +1915,11 @@ a:hover.back-to-top {
 	}
 
 	.navbar-custom .fa-stack:hover .fa-stack-1x {
-		color: #00bfd8;
+		color: rgb(65, 129, 237);
 	}
 
 	.navbar-custom.top-nav-collapse .fa-stack-2x {
-		color: #00bfd8;
+		color: rgb(65, 129, 237);
 	}
 	
 	.navbar-custom.top-nav-collapse .fa-stack-1x {
@@ -1838,7 +1927,7 @@ a:hover.back-to-top {
 	}
 
 	.navbar-custom.top-nav-collapse .fa-stack:hover .fa-stack-2x {
-		color: #00a7bd;
+		color: rgba(0, 66, 179);;
 	}
 	
 	.navbar-custom.top-nav-collapse .fa-stack:hover .fa-stack-1x {
@@ -1916,6 +2005,7 @@ a:hover.back-to-top {
 		margin-right: 2rem;
 		margin-bottom: 0;
 		margin-left: 0.5rem;
+		background-color: aqua;
 	}
 	
 	.lightbox-basic h3 {

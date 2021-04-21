@@ -23,33 +23,25 @@ function CrearUsuario(){
     if(genero.value == ''){showValidate(genero)}
     if(usuario.value == ''){showValidate(usuario)}
     if(pass.value == ''){showValidate(pass)}
-
-    fetch('http://localhost:5000/registro',{
-        method:'POST',
-        headers,
-        //Valores que se van a mandar
-        body: `{
-            "nombre":"${nombre.value}",
-            "apellido":"${apellido.value}",
-            "password":"${pass.value}",
-            "usuario":"${usuario.value}"
-        }`
-    })
-    .then(response => response.json())
-    .then(result => {
-        console.log('Success: ',result);
-        nombre.value = '';
-        apellido.value = '';
-        fecha.value = '';
-        genero.value = '';
-        usuario.value = '';
-        pass.value = '';
-        telefono.value = '';
-        alert('Usuario creado')
-    })
-    .catch(
-        error => {
-            console.error('Error:',error);
+    if(nombre.value != '' && apellido.value != '' && fecha.value != '' && genero.value != '' && usuario.value != '' && pass.value != '' && telefono.value != ''){
+        fetch('http://localhost:5000/registro',{
+            method:'POST',
+            headers,
+            //Valores que se van a mandar
+            body: `{
+                "tipo":"paciente",
+                "nombre":"${nombre.value}",
+                "apellido":"${apellido.value}",
+                "fecha":"${fecha.value}",
+                "genero":"${genero.value}",
+                "usuario":"${usuario.value}",
+                "password":"${pass.value}",
+                "telefono":"${telefono.value}"
+            }`
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Success: ',result);
             nombre.value = '';
             apellido.value = '';
             fecha.value = '';
@@ -57,9 +49,22 @@ function CrearUsuario(){
             usuario.value = '';
             pass.value = '';
             telefono.value = '';
-            alert('Hubo un error creando usuario')
-        }
-    )
+            alert('Usuario creado')
+        })
+        .catch(
+            error => {
+                console.error('Error:',error);
+                nombre.value = '';
+                apellido.value = '';
+                fecha.value = '';
+                genero.value = '';
+                usuario.value = '';
+                pass.value = '';
+                telefono.value = '';
+                alert('Hubo un error creando usuario')
+            }
+        )
+    }
 }
 //funcion iniciar sesion
 function IniciarSesion(){

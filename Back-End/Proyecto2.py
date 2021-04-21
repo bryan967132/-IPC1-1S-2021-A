@@ -66,7 +66,7 @@ def login(usuario,password):
 @app.route('/registro',methods=['POST'])
 def registrar():
     dato = request.json
-    gestor.registrar_usuario(dato['nombre'],dato['apellido'],dato['password'],dato['usuario'])
+    gestor.registrar_usuario(dato['tipo'],dato['nombre'],dato['apellido'],dato['fecha'],dato['genero'],dato['usuario'],dato['password'],dato['telefono'])
     return '{"data":"Creado"}'
 
 #Iniciar el Servidor

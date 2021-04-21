@@ -10,9 +10,9 @@ class Gestor:
         self.libros.append(Libro("La Calumnia","Vicenta Laparra","https:","fghj"))
         self.libros.append(Libro("El Animalero","Humberto Ak'abal","https:","ujmh"))
         self.libros.append(Libro("Viento Fuerte","Miguel Angel Asturias","https:","yhnt"))
-        self.usuarios.append(Usuario('admin','admin','admin','admin'))
-        self.usuarios.append(Usuario('Jemima','Hernandez','1234','jh123'))
-        self.usuarios.append(Usuario('Luisa','Ortiz','1234','lo123'))
+        self.usuarios.append(Usuario('admin','Herbert','Reyes','04/12/2000','M','admin','admin','12345678'))
+        self.usuarios.append(Usuario('doctor','Jemima','Hernandez','15/02/2000','F','jh123','1234','Sin vincular'))
+        self.usuarios.append(Usuario('paciente','Luisa','Ortiz','13/04/2000','F','lo123','1234','87654321'))
 
     #Create
     def crearLibro(self,titulo,autor,imagen,descripcion):
@@ -55,5 +55,5 @@ class Gestor:
         return '{"nombre":"false"}'
 
     #Registrar Usuario
-    def registrar_usuario(self,nombre,apellido,password,usuario):
-        self.usuarios.append(Usuario(nombre,apellido,password,usuario))
+    def registrar_usuario(self,tipo,nombre,apellido,fecha,genero,usuario,password,telefono):
+        self.usuarios.append(Usuario(tipo,nombre,apellido,fecha,genero,usuario,password,telefono))
