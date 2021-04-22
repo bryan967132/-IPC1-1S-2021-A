@@ -140,6 +140,84 @@ a.white {
 	color: rgb(65, 129, 237);
 }
 
+.btn-solid-save {
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 0.6rem;
+	border: 0.125rem solid rgb(42, 108, 221);
+	border-radius: 2px;
+	height: 5px;
+	background-color: rgb(42, 108, 221);
+	color: #fff;
+	font: 700 0.75rem/0 "Raleway", sans-serif;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+.btn-solid-save:hover {
+	color: #fff;
+	text-decoration: none;
+	border-color: rgb(0, 66, 179);
+	background: rgb(0, 66, 179);
+	box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+}
+
+.btn-solid-edit {
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 0.6rem;
+	border: 0.125rem solid rgb(0, 190, 32);
+	border-radius: 2px;
+	height: 5px;
+	background-color: rgb(0, 190, 32);
+	color: #fff;
+	font: 700 0.75rem/0 "Raleway", sans-serif;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+.btn-solid-edit:hover {
+	color: #fff;
+	text-decoration: none;
+	border-color: rgb(0, 119, 20);
+	background: rgb(0, 119, 20);
+	box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+}
+
+.btn-solid-delete {
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 0.6rem;
+	border: 0.125rem solid rgb(190, 0, 41);
+	border-radius: 2px;
+	height: 5px;
+	background-color: rgb(190, 0, 41);
+	color: #fff;
+	font: 700 0.75rem/0 "Raleway", sans-serif;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+.btn-solid-delete:hover {
+	color: #fff;
+	text-decoration: none;
+	border-color: rgb(143, 0, 31);
+	background: rgb(143, 0, 31);
+	box-shadow: 0 10px 30px 0px rgba(143, 0, 31, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(143, 0, 31, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(143, 0, 31, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(143, 0, 31, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(143, 0, 31, 0.5);
+}
+
 .btn-solid-reg {
 	text-transform: uppercase;
 	display: inline-block;

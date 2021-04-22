@@ -127,7 +127,17 @@
                                                     <td class="cell100 column2">${data[i].nombre}</td>
                                                     <td class="cell100 column3">${data[i].apellido}</td>
                                                     <td class="cell100 column4">${data[i].especialidad}</td>
-                                                    <td class="cell100 column5">10</td>
+                                                    <td class="cell100 column5">
+                                                        <div class="form-group">
+                                                            <a class="btn-solid-save page-scroll" type="button" href="#inicio">Ver</a>
+                                                        </div>
+                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
+                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
+                                                        </div>
+                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
+                                                            <a class="btn-solid-delete page-scroll" type="button"  onclick="eliminar(${data[i].usuario})" href="#inicio">Borrar</a>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                                 `
                                             }
@@ -188,7 +198,17 @@
                                                     <td class="cell100 column2">${data1[i].nombre}</td>
                                                     <td class="cell100 column3">${data1[i].apellido}</td>
                                                     <td class="cell100 column4">${data1[i].telefono}</td>
-                                                    <td class="cell100 column5">10</td>
+                                                    <td class="cell100 column5">
+                                                        <div class="form-group">
+                                                            <a class="btn-solid-save page-scroll" type="button" href="#inicio">Ver</a>
+                                                        </div>
+                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
+                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
+                                                        </div>
+                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
+                                                            <a class="btn-solid-delete page-scroll" type="button" href="#inicio">Borrar</a>
+                                                        </div>
+                                                    </td>
                                                 </tr>`
                                             }
                                             document.getElementById("tableenfsc").innerHTML = inicio1+text1+final1;
@@ -248,10 +268,90 @@
                                                     <td class="cell100 column2">${data2[i].nombre}</td>
                                                     <td class="cell100 column3">${data2[i].apellido}</td>
                                                     <td class="cell100 column4">${data2[i].telefono}</td>
-                                                    <td class="cell100 column5">10</td>
+                                                    <td class="cell100 column5">
+                                                        <div class="form-group">
+                                                            <a class="btn-solid-save page-scroll" type="button" href="#inicio">Ver</a>
+                                                        </div>
+                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
+                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
+                                                        </div>
+                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
+                                                            <a class="btn-solid-delete page-scroll" type="button" href="#inicio">Borrar</a>
+                                                        </div>
+                                                    </td>
                                                 </tr>`
                                             }
                                             document.getElementById("tablepassc").innerHTML = inicio2+text2+final2;
+                                        })
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+
+    <header id="medicamento" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6" style="margin-top: -160px;">
+                        <div class="text-container">
+                            <h1><span class="turquoise">M</span>edicamentos</h1>
+                        </div> <!-- end of text-container -->
+                    </div> <!-- end of col -->
+
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1 m-b-110">
+                                <div class="table100-head">
+                                    <table>
+                                        <thead>
+                                            <tr class="row100 head">
+                                                <th style="padding-left: 3%;" class="cell100 column2">Nombre</th>
+                                                <th class="cell100 column2">Precio</th>
+                                                <th class="cell100 column3">Descripcion</th>
+                                                <th class="cell100 column4">Cantidad</th>
+                                                <th class="cell100 column5">Opciones</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+            
+                                <div id="tablemedsc">
+                                    <script>
+                                        document.getElementById("tablemedsc").innerHTML = '';
+                                        let inicio3 = "<div class=\"table100-body js-pscroll\"><table><tbody>";
+                                        let text3 = "";
+                                        let final3 = "</tbody></table>";
+                                        fetch('http://localhost:5000/obtenermedicamento')
+                                        .then(response3 => response3.json())
+                                        .then(data3 => {
+                                            var i;
+                                            for(i = 0; i < data3.length; i++){
+                                                text3 += `
+                                                <tr class="row100 body">
+                                                    <td style="padding-left: 3%;" class="cell100 column2">${data3[i].nombre}</td>
+                                                    <td class="cell100 column2">${data3[i].precio}</td>
+                                                    <td class="cell100 column3">${data3[i].Descripcion}</td>
+                                                    <td class="cell100 column4">${data3[i].telefono}</td>
+                                                    <td class="cell100 column5">
+                                                        <div class="form-group">
+                                                            <a class="btn-solid-save page-scroll" type="button" href="#inicio">Ver</a>
+                                                        </div>
+                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
+                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
+                                                        </div>
+                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
+                                                            <a class="btn-solid-delete page-scroll" type="button" href="#inicio">Borrar</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>`
+                                            }
+                                            document.getElementById("tablemedsc").innerHTML = inicio2+text2+final2;
                                         })
                                     </script>
                                 </div>
@@ -273,5 +373,6 @@
     <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="js/funciones.js"></script><!-- Funciones -->
 </body>
 </html>
