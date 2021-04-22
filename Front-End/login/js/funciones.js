@@ -41,14 +41,20 @@ function CrearUsuario(){
         })
         .then(response => response.json())
         .then(result => {
-            nombre.value = '';
-            apellido.value = '';
-            fecha.value = '';
-            genero.value = '';
-            usuario.value = '';
-            pass.value = '';
-            telefono.value = '';
-            alert('Usuario creado')
+            if(result.data != "enUso"){
+                nombre.value = '';
+                apellido.value = '';
+                fecha.value = '';
+                genero.value = '';
+                usuario.value = '';
+                pass.value = '';
+                telefono.value = '';
+                alert('Paciente Registrado')
+            }else{
+                alert('El nombre de usuario se encuentra en uso')
+                usuario.value = '';
+                showValidate(usuario)
+            }
         })
         .catch(
             error => {
@@ -79,7 +85,7 @@ function IniciarSesion(){
                 usuario.value = '';
                 pass.value = '';
             }else{
-                fetch(`http://localhost:5000/buscarusuario/${usuario.value}`)
+                fetch(`http://localhost:5000/buscartipousuario/${usuario.value}`)
                 .then(response1 => response1.json())
                 .then(data1 => {
                     if(data1.tipo == "admin"){

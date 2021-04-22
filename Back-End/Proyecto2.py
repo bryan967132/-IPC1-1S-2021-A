@@ -47,15 +47,19 @@ def actualizarlibro(titulo):
 def buscartipousuario(usuario):
     return gestor.buscar_tipo_usuario(usuario)
 
+@app.route('/clasificartipousuario/<tipo>',methods=['GET'])
+def clasificartipousuario(tipo):
+    return gestor.clasificar_usuario(tipo)
+
 @app.route('/login/<usuario>/<password>')
 def login(usuario,password):
     return gestor.iniciar_sesion(usuario,password)
+    
 
 @app.route('/registro',methods=['POST'])
 def registrar():
     dato = request.json
-    gestor.registrar_usuario(dato['tipo'],dato['nombre'],dato['apellido'],dato['fecha'],dato['genero'],dato['usuario'],dato['password'],dato['telefono'])
-    return '{"data":"Creado"}'
+    return gestor.registrar_usuario(dato['tipo'],dato['nombre'],dato['apellido'],dato['fecha'],dato['genero'],dato['usuario'],dato['password'],dato['telefono'])
 
 #Iniciar el Servidor
 if __name__ == "__main__":

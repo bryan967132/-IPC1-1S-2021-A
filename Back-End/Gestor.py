@@ -1,4 +1,4 @@
-from Usuarios import Usuario
+from Usuarios import Usuario,Doctor
 from Libros import Libro
 import json
 
@@ -6,13 +6,24 @@ class Gestor:
     def __init__(self):
         self.usuarios = []
         self.libros = []
+        self.especialidades = []
         self.libros.append(Libro("La Divina Comedia","Dante Alighiery","https:","asdf"))
         self.libros.append(Libro("La Calumnia","Vicenta Laparra","https:","fghj"))
         self.libros.append(Libro("El Animalero","Humberto Ak'abal","https:","ujmh"))
         self.libros.append(Libro("Viento Fuerte","Miguel Angel Asturias","https:","yhnt"))
         self.usuarios.append(Usuario('admin','Herbert','Reyes','04/12/2000','M','admin','admin','12345678'))
-        self.usuarios.append(Usuario('doctor','Jemima','Hernandez','15/02/2000','F','jh123','1234','Sin vincular'))
-        self.usuarios.append(Usuario('paciente','Luisa','Ortiz','13/04/2000','F','lo123','1234','87654321'))
+        self.usuarios.append(Usuario('doctor','Gregory','House','15/02/2000','M','gh123','1234','6543245'))
+        self.usuarios.append(Usuario('doctor','Steven','Strange','15/02/2000','M','st123','1234','1326458'))
+        self.usuarios.append(Usuario('doctor','Jessica','Adams','15/02/2000','M','ja123','1234','90031612'))
+        self.usuarios.append(Usuario('paciente','Giuditta','Tolcharde','28/01/2020','F','gtolcharde0','fTaJo5He','8994505922'))
+        self.usuarios.append(Usuario('paciente','Joachim','Presnail','10/04/2019','M','jpresnail1','whKNw8MWSw','4977157391'))
+        self.usuarios.append(Usuario('paciente','Nancee','Whymark','17/10/2019','F','nwhymark2','Vv1fsNxA5R','3818952816'))
+        self.usuarios.append(Usuario('enfermero','Almire','Shalcros','29/11/2019','F','ashalcros0','UCqVbdszlaiH','3969321381'))
+        self.usuarios.append(Usuario('enfermero','Martie','Drummond','01/08/2021','F','mdrummond1','DasE5ymBvgV','8058648706'))
+        self.usuarios.append(Usuario('enfermero','Niki','Serrels','01/09/2021','M','nserrels2','7Hhz9rNQ6ktU','4249109525'))
+        self.especialidades.append(Especialidad('gh123','Infectología'))
+        self.especialidades.append(Especialidad('st123','Infectología'))
+        self.especialidades.append(Especialidad('ja123','Infectología'))
 
     #Create
     def crearLibro(self,titulo,autor,imagen,descripcion):
@@ -43,18 +54,35 @@ class Gestor:
 
     #Search
     def buscar_tipo_usuario(self,usuario):
-        for i in self.usuarios:
-            if i.usuario == usuario:
-                return '{"tipo":"'+i.tipo+'"}'
-        return '{"usuario":"false"}'
+        for x in self.usuarios:
+            if x.usuario == usuario:
+                return '{"tipo":"'+x.tipo+'"}'
+
+    def clasificar_usuario(self,tipo):
+        for x in self.usuarios:
+            if x.tipo == tipo:
+                if x.tipo == 'doctor':
+                    for y in self.especialidades:
+                        if y.usuario == x.usuario:
+                            '{"tipo":"'+x.tipo+'","nombre":"'+x.nombre+'","apellido":"'+x.apellido+'","fecha":"'+x.fecha+'","genero":"'+x.genero+'","usuario":"'+x.usuario+'","password":"'+x.password+'","especialidad":"'+y.especialidad+'","telefono":"'+x.telefono+'"}'
+                return json.dumps(x.__dict__)
 
     #Iniciar Sesion
     def iniciar_sesion(self,usuario,password):
         for x in self.usuarios:
             if x.password == password and x.usuario == usuario:
-                return json.dumps(x.__dict__)
+                return 
         return '{"nombre":"false"}'
 
     #Registrar Usuario
     def registrar_usuario(self,tipo,nombre,apellido,fecha,genero,usuario,password,telefono):
-        self.usuarios.append(Usuario(tipo,nombre,apellido,fecha,genero,usuario,password,telefono))
+        if(self.verificar_usuario(usuario)):
+            self.usuarios.append(Usuario(tipo,nombre,apellido,fecha,genero,usuario,password,telefono))
+            return '{"data":"creado"}'
+        return '{"data":"enUso"}'
+
+    def verificar_usuario(self,usuario):
+        for x in self.usuarios:
+            if x.usuario == usuario:
+                return False
+        return True
