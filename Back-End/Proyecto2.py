@@ -1,11 +1,9 @@
 #Importaciones de Flask
-
 from flask import Flask,request,jsonify
 from flask_cors import CORS
 from Gestor import Gestor
 
 #Crear la app
-
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -14,7 +12,6 @@ CORS(app)
 gestor = Gestor()
 
 #EndPoints
-
 @app.route('/',methods=['GET'])
 def home():
     return 'SERVER IS WORKING!!!'
@@ -46,18 +43,9 @@ def actualizarlibro(titulo):
         return '{"data":"Actualizado"}'
     return '{"data":"Error"}'
 
-@app.route('/buscarusuario/<usuario>',methods=['GET'])
-def buscarusuario1(usuario):
-    if(gestor.buscar_usuario(usuario)):
-        return gestor.buscar_libro(usuario)
-    return '{"data":"Error"}'
-
-@app.route('/buscarusuario',methods=['GET'])
-def buscarusuario():
-    dato = request.json
-    if gestor.buscar_usuario(dato['usuario']):
-        return gestor.buscar_libro(dato['usuario'])
-    return '{"data":"Inexistente"}'
+@app.route('/buscartipousuario/<usuario>',methods=['GET'])
+def buscartipousuario(usuario):
+    return gestor.buscar_tipo_usuario(usuario)
 
 @app.route('/login/<usuario>/<password>')
 def login(usuario,password):
@@ -70,6 +58,5 @@ def registrar():
     return '{"data":"Creado"}'
 
 #Iniciar el Servidor
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)

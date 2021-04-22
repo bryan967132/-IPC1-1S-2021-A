@@ -14,16 +14,16 @@ class Gestor:
         self.usuarios.append(Usuario('doctor','Jemima','Hernandez','15/02/2000','F','jh123','1234','Sin vincular'))
         self.usuarios.append(Usuario('paciente','Luisa','Ortiz','13/04/2000','F','lo123','1234','87654321'))
 
+    #Create
+    def crearLibro(self,titulo,autor,imagen,descripcion):
+        self.libros.append(Libro(titulo,autor,imagen,descripcion))
 
+    #Read
     def obtener_libros(self):
         return json.dumps([ob.__dict__ for ob in self.libros])
 
     def obtener_usuarios(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios])
-
-    #Registrar Usuario
-    def registrar_usuario(self,tipo,nombre,apellido,fecha,genero,usuario,password,telefono):
-        self.usuarios.append(Usuario(tipo,nombre,apellido,fecha,genero,usuario,password,telefono))
 
     #Update
     def actualizar_libro(self,titulo,titulonuevo,autor,imagen,descripcion):
@@ -42,10 +42,11 @@ class Gestor:
         return False
 
     #Search
-    def buscar_usuario(self,usuario):
-        for i in self.usuario:
+    def buscar_tipo_usuario(self,usuario):
+        for i in self.usuarios:
             if i.usuario == usuario:
-                return json.dumps([i.__dict__])
+                return '{"tipo":"'+i.tipo+'"}'
+        return '{"usuario":"false"}'
 
     #Iniciar Sesion
     def iniciar_sesion(self,usuario,password):
@@ -53,3 +54,7 @@ class Gestor:
             if x.password == password and x.usuario == usuario:
                 return json.dumps(x.__dict__)
         return '{"nombre":"false"}'
+
+    #Registrar Usuario
+    def registrar_usuario(self,tipo,nombre,apellido,fecha,genero,usuario,password,telefono):
+        self.usuarios.append(Usuario(tipo,nombre,apellido,fecha,genero,usuario,password,telefono))

@@ -69,35 +69,57 @@ function CrearUsuario(){
 function IniciarSesion(){
     if(usuario.value == ''){showValidate(usuario)}
     if(pass.value == ''){showValidate(pass)}
-    
-    fetch(`http://localhost:5000/login/${usuario.value}/${pass.value}`)
-    //Convirtiendo de string a texto
-    .then(response => response.json())
-    .then(data => {
-        if(data.nombre == "false"){
-            alert('Verifique sus Credenciales')
-            usuario.value = '';
-            pass.value = '';
-        }else{
-            alert(`Bienvenido ${data.nombre}`)
-            window.location.href="../pagina/index.html"
-            usuario.value = '';
-            pass.value = '';
-        }
-    })
-    .catch(
-        error => {
-            console.error('Error:',error);
-            nombre.value = '';
-            apellido.value = '';
-            fecha.value = '';
-            genero.value = '';
-            usuario.value = '';
-            pass.value = '';
-            telefono.value = '';
-            alert('Hubo un error registrando al paciente')
-        }
-    )
+    if(usuario.value != '' && pass.value != ''){
+        fetch(`http://localhost:5000/login/${usuario.value}/${pass.value}`)
+        //Convirtiendo de string a texto
+        .then(response => response.json())
+        .then(data => {
+            if(data.nombre == "false"){
+                alert('Verifique sus Credenciales')
+                usuario.value = '';
+                pass.value = '';
+            }else{
+                fetch(`http://localhost:5000/buscarusuario/${usuario.value}`)
+                .then(response1 => response1.json())
+                .then(data1 => {
+                    if(data1.tipo == "admin"){
+                        alert(`Bienvenido ${data.nombre}`)
+                        window.location.href="../pagina/admin.html"
+                        usuario.value = '';
+                        pass.value = '';
+                    }
+                    if(data1.tipo == "doctor"){
+                        alert('Bienvenido Doctor')
+                        usuario.value = '';
+                        pass.value = '';
+                    }
+                    if(data1.tipo == "enfermero"){
+                        alert('Bienvenido Enfermero')
+                        usuario.value = '';
+                        pass.value = '';
+                    }
+                    if(data1.tipo == "paciente"){
+                        alert('Bienvenido Paciente')
+                        usuario.value = '';
+                        pass.value = '';
+                    }
+                })
+            }
+        })
+        .catch(
+            error => {
+                console.error('Error:',error);
+                nombre.value = '';
+                apellido.value = '';
+                fecha.value = '';
+                genero.value = '';
+                usuario.value = '';
+                pass.value = '';
+                telefono.value = '';
+                alert('Hubo un error registrando al paciente')
+            }
+        )
+    }
 }
 
 function login(){
