@@ -1,4 +1,4 @@
-from Usuarios import Usuario,Doctor,Paciente,Enfermero,Especialidad
+from Usuarios import Usuario,Doctor,Paciente,Enfermera
 from Libros import Libro
 import json
 
@@ -6,29 +6,40 @@ class Gestor:
     def __init__(self):
         self.usuarios = []
         self.libros = []
-        self.especialidades = []
+        self.doctores = []
+        self.pacientes = []
+        self.enfermeras = []
+        self.medicamentos = []
+
+        #datos quemados------------------------------------
         self.libros.append(Libro("La Divina Comedia","Dante Alighiery","https://m.media-amazon.com/images/I/51FBFYOaEZL.jpg","asdf"))
         self.libros.append(Libro("La Calumnia","Vicenta Laparra","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3aLyDfweuNLTqRPV0iC1brqaQcQawjuHU39p2ylsmC5-w5_kplpYty4iOGN52Z1IRL4Y&usqp=CAU","fghj"))
         self.libros.append(Libro("El Animalero","Humberto Ak'abal","https://www.curriculumnacional.cl/614/articles-79653_thumbnail.jpg","ujmh"))
         self.libros.append(Libro("Viento Fuerte","Miguel Angel Asturias","https://2.bp.blogspot.com/-SL58QFsWjfc/W42RRaqeY9I/AAAAAAAAa4E/D0-xF8H39ak2aVmrkRg7ZC4IyB5_L1-kQCLcBGAs/s400/VientoFuerte.jpg","yhnt"))
-
+        #-----------------------admin-----------------------------------
         self.usuarios.append(Usuario('admin','admin','admin','04/12/2000','M','admin','admin','12345678'))
-        
+        #-----------------------doctor-----------------------------------
         self.usuarios.append(Usuario('doctor','Gregory','House','15/02/2000','M','gh123','1234','6543245'))
         self.usuarios.append(Usuario('doctor','Steven','Strange','15/02/2000','M','st123','1234','1326458'))
         self.usuarios.append(Usuario('doctor','Jessica','Adams','15/02/2000','M','ja123','1234','90031612'))
-
-        self.especialidades.append(Especialidad('gh123','Infectologia'))
-        self.especialidades.append(Especialidad('st123','Neurocirugia'))
-        self.especialidades.append(Especialidad('ja123','Endocrinologia'))
-
+        self.doctores.append(Doctor('Gregory','House','15/02/2000','M','gh123','1234','Infectologia','6543245'))
+        self.doctores.append(Doctor('Steven','Strange','15/02/2000','M','st123','1234','Neurocirugia','1326458'))
+        self.doctores.append(Doctor('Jessica','Adams','15/02/2000','M','ja123','1234','Endocrinologia','90031612'))
+        #-----------------------paciente-----------------------------------
         self.usuarios.append(Usuario('paciente','Giuditta','Tolcharde','28/01/2020','F','gtolcharde0','fTaJo5He','8994505922'))
         self.usuarios.append(Usuario('paciente','Joachim','Presnail','10/04/2019','M','jpresnail1','whKNw8MWSw','4977157391'))
         self.usuarios.append(Usuario('paciente','Nancee','Whymark','17/10/2019','F','nwhymark2','Vv1fsNxA5R','3818952816'))
-
-        self.usuarios.append(Usuario('enfermero','Almire','Shalcros','29/11/2019','F','ashalcros0','UCqVbdszlaiH','3969321381'))
-        self.usuarios.append(Usuario('enfermero','Martie','Drummond','01/08/2021','F','mdrummond1','DasE5ymBvgV','8058648706'))
-        self.usuarios.append(Usuario('enfermero','Niki','Serrels','01/09/2021','M','nserrels2','7Hhz9rNQ6ktU','4249109525'))
+        self.pacientes.append(Paciente('Giuditta','Tolcharde','28/01/2020','F','gtolcharde0','fTaJo5He','8994505922'))
+        self.pacientes.append(Paciente('Joachim','Presnail','10/04/2019','M','jpresnail1','whKNw8MWSw','4977157391'))
+        self.pacientes.append(Paciente('Nancee','Whymark','17/10/2019','F','nwhymark2','Vv1fsNxA5R','3818952816'))
+        #-----------------------enfermera-----------------------------------
+        self.usuarios.append(Usuario('enfermera','Almire','Shalcros','29/11/2019','F','ashalcros0','UCqVbdszlaiH','3969321381'))
+        self.usuarios.append(Usuario('enfermera','Martie','Drummond','01/08/2021','F','mdrummond1','DasE5ymBvgV','8058648706'))
+        self.usuarios.append(Usuario('enfermera','Niki','Serrels','01/09/2021','M','nserrels2','7Hhz9rNQ6ktU','4249109525'))
+        self.enfermeras.append(Enfermera('Almire','Shalcros','29/11/2019','F','ashalcros0','UCqVbdszlaiH','3969321381'))
+        self.enfermeras.append(Enfermera('Martie','Drummond','01/08/2021','F','mdrummond1','DasE5ymBvgV','8058648706'))
+        self.enfermeras.append(Enfermera('Niki','Serrels','01/09/2021','M','nserrels2','7Hhz9rNQ6ktU','4249109525'))
+        #----------------------------------------------------------
 
     #Create
     def crearLibro(self,titulo,autor,imagen,descripcion):
@@ -64,13 +75,12 @@ class Gestor:
                 return '{"tipo":"'+x.tipo+'"}'
 
     def clasificar_usuario(self,tipo):
-        for x in self.usuarios:
-            if x.tipo == tipo:
-                if x.tipo == 'doctor':
-                    for y in self.especialidades:
-                        if y.usuario == x.usuario:
-                            return '{"tipo":"'+x.tipo+'","nombre":"'+x.nombre+'","apellido":"'+x.apellido+'","fecha":"'+x.fecha+'","genero":"'+x.genero+'","usuario":"'+x.usuario+'","password":"'+x.password+'","especialidad":"'+y.especialidad+'","telefono":"'+x.telefono+'"}'
-                return json.dumps(x.__dict__)
+        if tipo == 'doctor':
+            return json.dumps([ob.__dict__ for ob in self.doctores])
+        if tipo == 'paciente':
+            return json.dumps([ob.__dict__ for ob in self.pacientes])
+        if tipo == 'enfermera':
+            return json.dumps([ob.__dict__ for ob in self.enfermeras])
 
     #Iniciar Sesion
     def iniciar_sesion(self,usuario,password):

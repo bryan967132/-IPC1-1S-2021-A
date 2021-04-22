@@ -9,21 +9,15 @@ class Usuario:
         self.password = password
         self.telefono = telefono
 
-class Especialidad:
-    def __init__(self,usuario,especialidad):
-        self.usuario = usuario
-        self.especialidad = especialidad
-
 class Doctor(Usuario):
     def __init__(self,nombre,apellido,fecha,genero,usuario,password,especialidad,telefono):
-        super().__init__(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono)
-        self.usuario = usuario
+        super().__init__('doctor',nombre,apellido,fecha,genero,usuario,password,telefono)
         self.especialidad = especialidad
 
 class Paciente(Usuario):
-    def __init__(self,nombre,apellido,fecha,genero,usuario,password,especialidad,telefono):
-        super().__init__(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono)
+    def __init__(self,nombre,apellido,fecha,genero,usuario,password,telefono):
+        super().__init__('paciente',nombre,apellido,fecha,genero,usuario,password,telefono)
 
-class Enfermero(Usuario):
-    def __init__(self,nombre,apellido,fecha,genero,usuario,password,especialidad,telefono):
-        super().__init__(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono)
+class Enfermera(Usuario):
+    def __init__(self,nombre,apellido,fecha,genero,usuario,password,telefono):
+        super().__init__('enfermera',nombre,apellido,fecha,genero,usuario,password,telefono)

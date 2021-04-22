@@ -47,7 +47,7 @@ def actualizarlibro(titulo):
 def buscartipousuario(usuario):
     return gestor.buscar_tipo_usuario(usuario)
 
-@app.route('/clasificartipousuario/<tipo>',methods=['GET'])
+@app.route('/clasificartipousuario/<tipo>')
 def clasificartipousuario(tipo):
     return gestor.clasificar_usuario(tipo)
 
