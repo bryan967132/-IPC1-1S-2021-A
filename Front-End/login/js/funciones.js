@@ -85,7 +85,6 @@ function IniciarSesion(){
                 usuario.value = '';
                 pass.value = '';
             }else{
-                alert("entra")
                 fetch(`http://localhost:5000/buscartipousuario/${usuario.value}`)
                 .then(response1 => response1.json())
                 .then(data1 => {

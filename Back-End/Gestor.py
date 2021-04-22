@@ -12,7 +12,8 @@ class Gestor:
         self.libros.append(Libro("El Animalero","Humberto Ak'abal","https://www.curriculumnacional.cl/614/articles-79653_thumbnail.jpg","ujmh"))
         self.libros.append(Libro("Viento Fuerte","Miguel Angel Asturias","https://2.bp.blogspot.com/-SL58QFsWjfc/W42RRaqeY9I/AAAAAAAAa4E/D0-xF8H39ak2aVmrkRg7ZC4IyB5_L1-kQCLcBGAs/s400/VientoFuerte.jpg","yhnt"))
 
-        self.usuarios.append(Usuario('admin','Herbert','Reyes','04/12/2000','M','admin','admin','12345678'))
+        self.usuarios.append(Usuario('admin','admin','admin','04/12/2000','M','admin','admin','12345678'))
+        
         self.usuarios.append(Usuario('doctor','Gregory','House','15/02/2000','M','gh123','1234','6543245'))
         self.usuarios.append(Usuario('doctor','Steven','Strange','15/02/2000','M','st123','1234','1326458'))
         self.usuarios.append(Usuario('doctor','Jessica','Adams','15/02/2000','M','ja123','1234','90031612'))
@@ -20,10 +21,6 @@ class Gestor:
         self.especialidades.append(Especialidad('gh123','Infectologia'))
         self.especialidades.append(Especialidad('st123','Neurocirugia'))
         self.especialidades.append(Especialidad('ja123','Endocrinologia'))
-
-        """self.usuarios.append(Doctor('Gregory','House','15/02/2000','M','gh123','1234','Infectologia','6543245'))
-        self.usuarios.append(Doctor('Steven','Strange','15/02/2000','M','st123','1234','Neurocirugia','1326458'))
-        self.usuarios.append(Doctor('Lissa','Cuddy','15/02/2000','M','ja123','1234','Endocrinologia','90031612'))"""
 
         self.usuarios.append(Usuario('paciente','Giuditta','Tolcharde','28/01/2020','F','gtolcharde0','fTaJo5He','8994505922'))
         self.usuarios.append(Usuario('paciente','Joachim','Presnail','10/04/2019','M','jpresnail1','whKNw8MWSw','4977157391'))

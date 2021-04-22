@@ -57,9 +57,12 @@
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#paciente">Pacientes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#medicamento">Medicamentos</a>
+                </li>
+                <li class="nav-item">
                     <a class="btn-login page-scroll" href="../login/login.html">Cerrar Sesión</a>
                 </li>
-                <li>
             </ul>
         </div>
     </nav> <!-- end of navbar -->
@@ -67,15 +70,21 @@
 
     
 
-    <header id="inicio" class="header">
+    <header id="doctor" class="header">
         <div class="header-content">
             <div class="container">
                 <div class="row">
-                    
-                    <div id="cardsc" class="col-lg-20 row" style="margin-top: -80px;">
+                    <div class="col-lg-6" style="margin-top: -120px;">
+                        <div class="text-container">
+                            <h1><span class="turquoise">D</span>octores</h1>
+                        </div> <!-- end of text-container -->
+                    </div> <!-- end of col -->
+
+                    <div id="cardsc" class="col-lg-20 row" style="margin-top: px;">
                         <script>
 
                             document.getElementById("cardsc").innerHTML = '';
+
                             let text = "";
                             fetch('http://localhost:5000/obtenerlibros')
                             .then(response => response.json())
@@ -83,22 +92,22 @@
                                 var i;
                                 for(i = 0; i < data.length; i++){
                                     text += `<br>
-                                            <div class="col-sm-3" style="margin-top: 25px;">
-                                                <div class="card bg-light" style="width: 18rem;">
-                                                    <img class="card-img-top" src="${data[i].imagen}" alt="alternative">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">${data[i].titulo}</h4>
-                                                        <h5 class="card-title">${data[i].autor}</h5>
-                                                        <p class="card-text">${data[i].descripcion}</p>
-                                                        <a class="btn-solid-lg page-scroll" href="#mision">Eliminar</a>
-                                                    </div>
+                                        <div class="col-sm-3" style="margin-top: 25px;">
+                                            <div class="card bg-light" style="width: 18rem;">
+                                                <img class="card-img-top" src="${data[i].imagen}" style="scale: 50%;" alt="alternative">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">${data[i].titulo}</h4>
+                                                    <h5 class="card-title">${data[i].autor}</h5>
+                                                    <p class="card-text">${data[i].descripcion}</p>
+                                                    <a class="btn-solid-lg page-scroll" href="#eliminar">Eliminar</a>
                                                 </div>
                                             </div>
-                                            <br>`
-                                        console.log(data[i].nombre,'prueba')
-                                    }
-                                    document.getElementById("cardsc").innerHTML = text;
-                                })
+                                        </div>
+                                        <br>`
+                                    console.log(data[i].nombre,'prueba')
+                                }
+                                document.getElementById("cardsc").innerHTML = text;
+                            })
 
                         </script>
                     </div> <!-- end of col -->
