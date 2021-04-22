@@ -46,17 +46,17 @@ def actualizarlibro(titulo):
         return '{"data":"Actualizado"}'
     return '{"data":"Error"}'
 
-@app.route('/buscarlibros/<titulo>',methods=['GET'])
-def buscarlibro1(titulo):
-    if(gestor.buscar_libro(titulo)):
-        return gestor.buscar_libro(titulo)
+@app.route('/buscarusuario/<usuario>',methods=['GET'])
+def buscarusuario1(usuario):
+    if(gestor.buscar_usuario(usuario)):
+        return gestor.buscar_libro(usuario)
     return '{"data":"Error"}'
 
-@app.route('/buscarlibros',methods=['GET'])
-def buscarlibros2():
+@app.route('/buscarusuario',methods=['GET'])
+def buscarusuario():
     dato = request.json
-    if gestor.buscar_libro(dato['titulo']):
-        return gestor.buscar_libro(dato['titulo'])
+    if gestor.buscar_usuario(dato['usuario']):
+        return gestor.buscar_libro(dato['usuario'])
     return '{"data":"Inexistente"}'
 
 @app.route('/login/<usuario>/<password>')

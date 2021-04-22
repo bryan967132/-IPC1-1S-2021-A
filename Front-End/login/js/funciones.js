@@ -41,7 +41,6 @@ function CrearUsuario(){
         })
         .then(response => response.json())
         .then(result => {
-            console.log('Success: ',result);
             nombre.value = '';
             apellido.value = '';
             fecha.value = '';
@@ -75,7 +74,6 @@ function IniciarSesion(){
     //Convirtiendo de string a texto
     .then(response => response.json())
     .then(data => {
-        console.log(data.nombre)
         if(data.nombre == "false"){
             alert('Verifique sus Credenciales')
             usuario.value = '';

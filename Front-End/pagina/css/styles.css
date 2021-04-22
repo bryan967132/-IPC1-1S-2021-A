@@ -453,17 +453,11 @@ input[type='checkbox'] {
 }
 
 .form-control-submit-button {
-	color: #fff;
 	font: 700 0.75rem/1.75rem "Raleway", sans-serif;
 	font-size: 16px;
 	color: #fff;
-	line-height: 1.2;
 	text-transform: uppercase;
-  
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -moz-box;
-	display: -ms-flexbox;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -472,18 +466,7 @@ input[type='checkbox'] {
 	height: 50px;
 	background-color: rgb(2, 45, 150);
 	border-radius: 25px;
-	border: transparent;
-  
-	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-  
-	-webkit-transition: all 0.4s;
-	-o-transition: all 0.4s;
-	-moz-transition: all 0.4s;
-	transition: all 0.4s;
+	border-color: transparent;
 }
 
 .form-control-submit-button:hover {
