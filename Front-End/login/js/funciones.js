@@ -119,6 +119,23 @@ function registro(){
     window.location.href="registro.html"
 }
 
+function back1(){
+    usuario.value = '';
+    pass.value = '';
+    window.location.href="../pagina/index.html"
+}
+
+function back2(){
+    nombre.value = '';
+    apellido.value = '';
+    fecha.value = '';
+    genero.value = '';
+    usuario.value = '';
+    pass.value = '';
+    telefono.value = '';
+    window.location.href="../pagina/index.html"
+}
+
 function showValidate(input) {
     var thisAlert = $(input).parent();
     $(thisAlert).addClass('alert-validate');

@@ -151,14 +151,57 @@ a.white {
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
-	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-solid-reg:hover {
+	color: #fff;
+	text-decoration: none;
+	border-color: rgb(0, 66, 179);
+	background: rgb(0, 66, 179);
+	box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 66, 179, 0.5);
+}
+
+.navbar-custom.top-nav-collapse .btn-login {
+	display: inline-block;
+	padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+	border: 0.125rem solid rgb(0, 190, 32);
+	border-radius: 2rem;
+	background-color: rgb(0, 190, 32);
+	color: #fff;
+	font: 700 0.75rem/0 "Raleway", sans-serif;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+.navbar-custom.top-nav-collapse .btn-login:hover {
+	color: #fff;
+	text-decoration: none;
+	border-color: rgb(0, 119, 20);
+	background: rgb(0, 119, 20);
+	box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+	-moz-box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+	-webkit-box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+	-o-box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+	-ms-box-shadow: 0 10px 30px 0px rgba(0, 119, 20, 0.5);
+}
+
+.navbar-custom .btn-login {
+	display: inline-block;
+	padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+	border: 0.125rem solid rgb(255, 255, 255);
+	border-radius: 2rem;
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	font: 700 0.75rem/0 "Raleway", sans-serif;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+.navbar-custom .btn-login:hover {
 	color: #fff;
 	text-decoration: none;
 	border-color: rgb(0, 66, 179);
@@ -181,11 +224,6 @@ a.white {
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
-	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-solid-lg:hover {
@@ -211,11 +249,6 @@ a.white {
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
-	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-outline-reg:hover {
@@ -241,11 +274,6 @@ a.white {
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
-	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-outline-lg:hover {
@@ -271,11 +299,6 @@ a.white {
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
-	box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-	-ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
 }
 
 .btn-outline-sm:hover {
@@ -686,7 +709,7 @@ input[type='checkbox'] {
 	width: 1rem;
 	height: 1rem;
 	border-radius: 100%;
-	background-color: rgb(65, 129, 237);
+	background-color: rgba(2, 45, 150);
 	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
@@ -1832,7 +1855,7 @@ a:hover.back-to-top {
 	.navbar-custom {
 		padding: 2.125rem 1.5rem 2.125rem 2rem;
 		box-shadow: none;
-        background: rgb(65, 129, 237);
+        background: #000;
 	}
 	
 	.navbar-custom .navbar-nav {
@@ -1842,7 +1865,7 @@ a:hover.back-to-top {
 
 	.navbar-custom .nav-item .nav-link {
 		padding: 0.25rem 0.75rem 0.25rem 0.75rem;
-		color: #fff;
+		color: rgb(175, 174, 174);
 		opacity: 0.8;
 	}
 	

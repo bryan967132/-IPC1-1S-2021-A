@@ -328,12 +328,6 @@ iframe {
   background-color: rgb(2, 45, 150);
   border-radius: 25px;
 
-  box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-  -moz-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-  -webkit-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-  -o-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-  -ms-box-shadow: 0 10px 30px 0px rgba(2, 45, 150, 0.5);
-
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
