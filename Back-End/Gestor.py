@@ -7,23 +7,28 @@ class Gestor:
         self.usuarios = []
         self.libros = []
         self.especialidades = []
-        self.libros.append(Libro("La Divina Comedia","Dante Alighiery","https:","asdf"))
-        self.libros.append(Libro("La Calumnia","Vicenta Laparra","https:","fghj"))
-        self.libros.append(Libro("El Animalero","Humberto Ak'abal","https:","ujmh"))
-        self.libros.append(Libro("Viento Fuerte","Miguel Angel Asturias","https:","yhnt"))
+        self.libros.append(Libro("La Divina Comedia","Dante Alighiery","https://m.media-amazon.com/images/I/51FBFYOaEZL.jpg","asdf"))
+        self.libros.append(Libro("La Calumnia","Vicenta Laparra","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3aLyDfweuNLTqRPV0iC1brqaQcQawjuHU39p2ylsmC5-w5_kplpYty4iOGN52Z1IRL4Y&usqp=CAU","fghj"))
+        self.libros.append(Libro("El Animalero","Humberto Ak'abal","https://www.curriculumnacional.cl/614/articles-79653_thumbnail.jpg","ujmh"))
+        self.libros.append(Libro("Viento Fuerte","Miguel Angel Asturias","https://2.bp.blogspot.com/-SL58QFsWjfc/W42RRaqeY9I/AAAAAAAAa4E/D0-xF8H39ak2aVmrkRg7ZC4IyB5_L1-kQCLcBGAs/s400/VientoFuerte.jpg","yhnt"))
 
         self.usuarios.append(Usuario('admin','Herbert','Reyes','04/12/2000','M','admin','admin','12345678'))
         self.usuarios.append(Usuario('doctor','Gregory','House','15/02/2000','M','gh123','1234','6543245'))
         self.usuarios.append(Usuario('doctor','Steven','Strange','15/02/2000','M','st123','1234','1326458'))
         self.usuarios.append(Usuario('doctor','Jessica','Adams','15/02/2000','M','ja123','1234','90031612'))
 
-        self.usuarios.append(Doctor('Gregory','House','15/02/2000','M','gh123','1234','Infectologia','6543245'))
+        self.especialidades.append(Especialidad('gh123','Infectologia'))
+        self.especialidades.append(Especialidad('st123','Neurocirugia'))
+        self.especialidades.append(Especialidad('ja123','Endocrinologia'))
+
+        """self.usuarios.append(Doctor('Gregory','House','15/02/2000','M','gh123','1234','Infectologia','6543245'))
         self.usuarios.append(Doctor('Steven','Strange','15/02/2000','M','st123','1234','Neurocirugia','1326458'))
-        self.usuarios.append(Doctor('Lissa','Cuddy','15/02/2000','M','ja123','1234','Endocrinologia','90031612'))
+        self.usuarios.append(Doctor('Lissa','Cuddy','15/02/2000','M','ja123','1234','Endocrinologia','90031612'))"""
 
         self.usuarios.append(Usuario('paciente','Giuditta','Tolcharde','28/01/2020','F','gtolcharde0','fTaJo5He','8994505922'))
         self.usuarios.append(Usuario('paciente','Joachim','Presnail','10/04/2019','M','jpresnail1','whKNw8MWSw','4977157391'))
         self.usuarios.append(Usuario('paciente','Nancee','Whymark','17/10/2019','F','nwhymark2','Vv1fsNxA5R','3818952816'))
+
         self.usuarios.append(Usuario('enfermero','Almire','Shalcros','29/11/2019','F','ashalcros0','UCqVbdszlaiH','3969321381'))
         self.usuarios.append(Usuario('enfermero','Martie','Drummond','01/08/2021','F','mdrummond1','DasE5ymBvgV','8058648706'))
         self.usuarios.append(Usuario('enfermero','Niki','Serrels','01/09/2021','M','nserrels2','7Hhz9rNQ6ktU','4249109525'))
@@ -74,7 +79,7 @@ class Gestor:
     def iniciar_sesion(self,usuario,password):
         for x in self.usuarios:
             if x.password == password and x.usuario == usuario:
-                return 
+                return json.dumps(x.__dict__)
         return '{"nombre":"false"}'
 
     #Registrar Usuario
