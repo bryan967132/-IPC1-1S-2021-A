@@ -167,7 +167,7 @@ a.white {
 
 .navbar-custom.top-nav-collapse .btn-login {
 	display: inline-block;
-	padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+	padding: 0.6rem 0.7rem 0.5rem 0.7rem;
 	border: 0.125rem solid rgb(0, 190, 32);
 	border-radius: 2rem;
 	background-color: rgb(0, 190, 32);
@@ -191,11 +191,11 @@ a.white {
 
 .navbar-custom .btn-login {
 	display: inline-block;
-	padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+	padding: 0.9rem 0.7rem 0.8rem 0.7rem;
 	border: 0.125rem solid rgb(255, 255, 255);
 	border-radius: 2rem;
 	background-color: rgb(255, 255, 255);
-	color: rgb(0, 0, 0);
+	color: rgb(0, 66, 179);
 	font: 700 0.75rem/0 "Raleway", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
@@ -753,7 +753,7 @@ input[type='checkbox'] {
 }
 
 .navbar-custom .navbar-brand.logo-image img {
-    width: 7.4375rem;
+    width: 4rem;
 	height: 2rem;
 }
 
@@ -785,6 +785,15 @@ input[type='checkbox'] {
 	display: block; /* this makes the dropdown menu stay open while hovering it */
 	min-width: auto;
 	animation: fadeDropdown 0.2s; /* required for the fade animation */
+}
+
+.navbar-custom.top-nav-collapse .titulo{
+	color: black;
+	font-size: 30px;
+}
+
+.navbar-custom.top-nav-collapse .Utitulo{
+	font-size: 30px;
 }
 
 @keyframes fadeDropdown {
@@ -1855,7 +1864,7 @@ a:hover.back-to-top {
 	.navbar-custom {
 		padding: 2.125rem 1.5rem 2.125rem 2rem;
 		box-shadow: none;
-        background: #000;
+        background: #000000e0;
 	}
 	
 	.navbar-custom .navbar-nav {
