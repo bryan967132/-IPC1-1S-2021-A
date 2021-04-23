@@ -84,7 +84,7 @@
     
 
     <header id="doctor" class="header">
-        <div class="header-content">
+        <div class="header-content basic-1">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6" style="margin-top: -160px;">
@@ -92,7 +92,7 @@
                             <h1><span class="turquoise">D</span>octores</h1>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
-
+                    
                     <div class="container-table100">
                         <div class="wrap-table100">
                             <div class="table100 ver1 m-b-110">
@@ -121,25 +121,23 @@
                                         .then(data => {
                                             var i;
                                             for(i = 0; i < data.length; i++){
-                                                text += `
-                                                <tr class="row100 body">
+                                                text += `<tr class="row100 body">
                                                     <td class="cell100 column1">${i+1}</td>
                                                     <td class="cell100 column2">${data[i].nombre}</td>
                                                     <td class="cell100 column3">${data[i].apellido}</td>
                                                     <td class="cell100 column4">${data[i].especialidad}</td>
                                                     <td class="cell100 column5">
                                                         <div class="form-group">
-                                                            <a class="btn-solid-save page-scroll" type="button" href="#inicio">Ver</a>
+                                                            <a class="btn-solid-look page-scroll" type="button" href="#inicio">Ver</a>
                                                         </div>
                                                         <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
-                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
+                                                            <a class="btn-solid-edit page-scroll " type="button" onclick="edit_doc('${data[i].usuario}')" href="#inicio">Editar</a>
                                                         </div>
                                                         <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
-                                                            <a class="btn-solid-delete page-scroll" type="button"  onclick="eliminar(${data[i].usuario})" href="#inicio">Borrar</a>
+                                                            <a class="btn-solid-delete page-scroll" type="button" onclick="delete_doc('${data[i].usuario}')" href="#borrar">Borrar</a>
                                                         </div>
                                                     </td>
-                                                </tr>
-                                                `
+                                                </tr>`
                                             }
                                             document.getElementById("tabledocsc").innerHTML = inicio+text+final;
                                         })
@@ -152,6 +150,7 @@
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of header-content -->
+        
     </header> <!-- end of header -->
 
     <header id="enfermera" class="header">
@@ -192,25 +191,23 @@
                                         .then(data1 => {
                                             var i;
                                             for(i = 0; i < data1.length; i++){
-                                                text1 += `
-                                                <tr class="row100 body">
+                                                text1 += `<tr class="row100 body">
                                                     <td class="cell100 column1">${i+1}</td>
                                                     <td class="cell100 column2">${data1[i].nombre}</td>
                                                     <td class="cell100 column3">${data1[i].apellido}</td>
                                                     <td class="cell100 column4">${data1[i].telefono}</td>
                                                     <td class="cell100 column5">
                                                         <div class="form-group">
-                                                            <a class="btn-solid-save page-scroll" type="button" href="#inicio">Ver</a>
+                                                            <a class="btn-solid-look page-scroll" type="button" href="#inicio">Ver</a>
                                                         </div>
                                                         <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
                                                             <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
                                                         </div>
                                                         <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
-                                                            <a class="btn-solid-delete page-scroll" type="button" href="#inicio">Borrar</a>
+                                                            <a class="btn-solid-delete page-scroll" type="button" onclick="delete_enf('${data1[i].usuario}')" href="#inicio">Borrar</a>
                                                         </div>
                                                     </td>
-                                                </tr>`
-                                            }
+                                                </tr>`}
                                             document.getElementById("tableenfsc").innerHTML = inicio1+text1+final1;
                                         })
                                     </script>
@@ -270,13 +267,13 @@
                                                     <td class="cell100 column4">${data2[i].telefono}</td>
                                                     <td class="cell100 column5">
                                                         <div class="form-group">
-                                                            <a class="btn-solid-save page-scroll" type="button" href="#inicio">Ver</a>
+                                                            <a class="btn-solid-look page-scroll" type="button" href="#inicio">Ver</a>
                                                         </div>
                                                         <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
                                                             <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
                                                         </div>
                                                         <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
-                                                            <a class="btn-solid-delete page-scroll" type="button" href="#inicio">Borrar</a>
+                                                            <a class="btn-solid-delete page-scroll" type="button" onclick="delete_pac('${data2[i].usuario}')" href="#inicio">Borrar</a>
                                                         </div>
                                                     </td>
                                                 </tr>`
@@ -340,7 +337,7 @@
                                                     <td class="cell100 column4">${data3[i].telefono}</td>
                                                     <td class="cell100 column5">
                                                         <div class="form-group">
-                                                            <a class="btn-solid-save page-scroll" type="button" href="#inicio">Ver</a>
+                                                            <a class="btn-solid-look page-scroll" type="button" href="#inicio">Ver</a>
                                                         </div>
                                                         <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
                                                             <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>

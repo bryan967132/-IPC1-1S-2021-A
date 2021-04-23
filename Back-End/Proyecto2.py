@@ -43,6 +43,11 @@ def actualizarlibro(titulo):
         return '{"data":"Actualizado"}'
     return '{"data":"Error"}'
 
+@app.route('/eliminarusuario',methods=['DELETE'])
+def eliminarusuario():
+    dato = request.json
+    return gestor.eliminar_usuario(dato['tipo'],dato['usuario'])
+
 @app.route('/buscartipousuario/<usuario>',methods=['GET'])
 def buscartipousuario(usuario):
     return gestor.buscar_tipo_usuario(usuario)
