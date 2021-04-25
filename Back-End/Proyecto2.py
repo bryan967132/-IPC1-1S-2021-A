@@ -16,9 +16,9 @@ gestor = Gestor()
 def home():
     return 'SERVER IS WORKING!!!'
 
-@app.route('/obtenerlibros')
-def obtenerlibros():
-    return gestor.obtener_libros()
+@app.route('/obtenermedicamentos')
+def obtenermedicamentos():
+    return gestor.obtener_medicamentos()
 
 @app.route('/obtenerusuarios')
 def obtenerusuarios():
@@ -48,6 +48,11 @@ def eliminarusuario():
     dato = request.json
     return gestor.eliminar_usuario(dato['tipo'],dato['usuario'])
 
+@app.route('/eliminarmedicamento',methods=['DELETE'])
+def eliminarmedicamento():
+    dato = request.json
+    return gestor.eliminar_medicamento(dato['nombre'],dato['descripcion'])
+
 @app.route('/buscartipousuario/<usuario>',methods=['GET'])
 def buscartipousuario(usuario):
     return gestor.buscar_tipo_usuario(usuario)
@@ -59,7 +64,30 @@ def clasificartipousuario(tipo):
 @app.route('/login/<usuario>/<password>')
 def login(usuario,password):
     return gestor.iniciar_sesion(usuario,password)
-    
+
+@app.route('/cargaDoc',methods=['POST'])
+def cargaDoc():
+    dato = request.json
+    gestor.cargamasivaDoc(dato['data'])
+    return '{"data":"Cargados"}'
+
+@app.route('/cargaEnf',methods=['POST'])
+def cargaEnf():
+    dato = request.json
+    gestor.cargamasivaEnf(dato['data'])
+    return '{"data":"Cargados"}'
+
+@app.route('/cargaPac',methods=['POST'])
+def cargaPac():
+    dato = request.json
+    gestor.cargamasivaPac(dato['data'])
+    return '{"data":"Cargados"}'
+
+@app.route('/cargaMed',methods=['POST'])
+def cargaMed():
+    dato = request.json
+    gestor.cargamasivaMed(dato['data'])
+    return '{"data":"Cargados"}'
 
 @app.route('/registro',methods=['POST'])
 def registrar():

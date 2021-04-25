@@ -14,25 +14,12 @@
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../login/css/main.css">
 	
 	<!-- Favicon  -->
     <link rel="icon" href="images/usac.png">
-
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../Tablas/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../Tablas/vendor/animate/animate.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../Tablas/vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../Tablas/vendor/perfect-scrollbar/perfect-scrollbar.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../Tablas/css/util.css">
-        <link rel="stylesheet" type="text/css" href="../Tablas/css/main.css">
-    <!--===============================================================================================-->
     </head>
     <body data-spy="scroll" data-target=".fixed-top">
-    
     <!-- Preloader -->
 	<div class="spinner-wrapper">
         <div class="spinner">
@@ -62,83 +49,78 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="btn-login page-scroll" href="../login/login.html">Administración</a>
+                    <a class="btn-login page-scroll" href="admin.html">Administración</a>
                 </li>
             </ul>
         </div>
     </nav> <!-- end of navbar -->
     <!-- end of navigation -->
 
-    
 
-    <header id="doctor" class="header">
-        <div class="header-content basic-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6" style="margin-top: -160px;">
-                        <div class="text-container">
-                            <h1><span class="turquoise">D</span>octores</h1>
-                        </div> <!-- end of text-container -->
-                    </div> <!-- end of col -->
+
+    <!-- Contact -->
+    <div id="contacto" class="container-form" style="margin-top: 0px;">
+        <div class="container">
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-lg-12">
+                    <h2>Doctores</h2>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                
+                <div class="col-lg-6" style="margin-left: 0px;">
                     
-                    <div class="container-table100">
-                        <div class="wrap-table100">
-                            <div class="table100 ver1 m-b-110">
-                                <div class="table100-head">
-                                    <table>
-                                        <thead>
-                                            <tr class="row100 head">
-                                                <th class="cell100 column1">No</th>
-                                                <th class="cell100 column2">Nombre</th>
-                                                <th class="cell100 column3">Apellido</th>
-                                                <th class="cell100 column4">Especialidad</th>
-                                                <th class="cell100 column5">Opciones</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-            
-                                <div id="tabledocsc">
-                                    <script>
-                                        document.getElementById("tabledocsc").innerHTML = '';
-                                        let inicio = "<div class=\"table100-body js-pscroll\"><table><tbody>";
-                                        let text = "";
-                                        let final = "</tbody></table>";
-                                        fetch('http://localhost:5000/clasificartipousuario/doctor')
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            var i;
-                                            for(i = 0; i < data.length; i++){
-                                                text += `<tr class="row100 body">
-                                                    <td class="cell100 column1">${i+1}</td>
-                                                    <td class="cell100 column2">${data[i].nombre}</td>
-                                                    <td class="cell100 column3">${data[i].apellido}</td>
-                                                    <td class="cell100 column4">${data[i].especialidad}</td>
-                                                    <td class="cell100 column5">
-                                                        <div class="form-group">
-                                                            <a class="btn-solid-look page-scroll" type="button" href="#inicio">Ver</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
-                                                            <a class="btn-solid-edit page-scroll " type="button" onclick="edit_doc('${data[i].usuario}')" href="#inicio">Editar</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
-                                                            <a class="btn-solid-delete page-scroll" type="button" onclick="delete_doc('${data[i].usuario}')" href="#borrar">Borrar</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>`
-                                            }
-                                            document.getElementById("tabledocsc").innerHTML = inicio+text+final;
-                                        })
-                                    </script>
-                                </div>
-                            </div>
+                    <!-- Contact Form -->
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="nameU" disabled>
+                            <label class="label-placeholder" for="nameU">Nombre</label>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="dateborn" disabled>
+                            <label class="label-placeholder" for="dateborn">Fecha de Nacimiento</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="user" disabled>
+                            <label class="label-placeholder" for="user">Usuario</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control-input" id="special" disabled>
+                            <label class="label-placeholder" for="special">Especialidad</label>
+                        </div>
+                        <script>get_look()</script>
+                    </form>
+                    <!-- end of contact form -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6" style="margin-left: 0px;">
                     
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
-        </div> <!-- end of header-content -->
+                    <!-- Contact Form -->
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="lastname" disabled>
+                            <label class="label-placeholder" for="lastname">Apellido</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="generous" disabled>
+                            <label class="label-placeholder" for="generous">Género</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control-input" id="pass" disabled>
+                            <label class="label-placeholder" for="pass">Contraseña</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="phone" disabled>
+                            <label class="label-placeholder" for="phone">Teléfono</label>
+                        </div>
+                    </form>
+                    <!-- end of contact form -->
 
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of form-2 -->
+    <!-- end of contact -->
+    	
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
@@ -148,6 +130,6 @@
     <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
-    <script src="js/funciones.js"></script><!-- Funciones -->
+    <script src="js/funciones.js"></script>
 </body>
 </html>

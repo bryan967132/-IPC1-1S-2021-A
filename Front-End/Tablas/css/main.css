@@ -142,7 +142,7 @@ iframe {
 
 .container-table100 {
   width: 100%;
-  background: #fff;
+  background: transparent;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -152,11 +152,11 @@ iframe {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 33px 0px;
+  padding: 0px 0px;
 }
 
 .wrap-table100 {
-  width: 1170px;
+  width: 100%;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -193,6 +193,10 @@ th, td {
 
 .column5 {
   width: 22%;
+}
+
+.columnN {
+  width: 10%;
 }
 
 .table100-head th {
