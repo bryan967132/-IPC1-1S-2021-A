@@ -66,7 +66,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link page-scroll dropdown-toggle" href="#doctor">Doctores<span class="sr-only">(current)</span></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#tabDoc"><span class="item-text">Datos Registrados</span></a>
+                        <a class="dropdown-item" href="#doctor"><span class="item-text">Datos Registrados</span></a>
                         <div class="dropdown-items-divide-hr"></div>
                         <a class="dropdown-item" href="#cargaMDoc"><span class="item-text">Carga Masiva</span></a>
                     </div>
@@ -74,7 +74,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link page-scroll dropdown-toggle" href="#enfermera">Enfermeras</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#tabEnf"><span class="item-text">Datos Registrados</span></a>
+                        <a class="dropdown-item" href="#enfermera"><span class="item-text">Datos Registrados</span></a>
                         <div class="dropdown-items-divide-hr"></div>
                         <a class="dropdown-item" href="#cargaMEnf"><span class="item-text">Carga Masiva</span></a>
                     </div>
@@ -82,7 +82,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link page-scroll dropdown-toggle" href="#paciente">Pacientes</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#tabPac"><span class="item-text">Datos Registrados</span></a>
+                        <a class="dropdown-item" href="#paciente"><span class="item-text">Datos Registrados</span></a>
                         <div class="dropdown-items-divide-hr"></div>
                         <a class="dropdown-item" href="#cargaMPac"><span class="item-text">Carga Masiva</span></a>
                     </div>
@@ -90,7 +90,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link page-scroll dropdown-toggle" href="#medicamento">Medicamentos</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#tabMed"><span class="item-text">Datos Registrados</span></a>
+                        <a class="dropdown-item" href="#medicamento"><span class="item-text">Datos Registrados</span></a>
                         <div class="dropdown-items-divide-hr"></div>
                         <a class="dropdown-item" href="#cargaMMed"><span class="item-text">Carga Masiva</span></a>
                     </div>
@@ -144,13 +144,13 @@
                                                             <td class="cell100 column1">${i+1}</td>
                                                             <td class="cell100 column2">${data[i].nombre}</td>
                                                             <td class="cell100 column3">${data[i].apellido}</td>
-                                                            <td class="cell100 column4">${data[i].especialidad}</td>
+                                                            <td class="cell100 column4">${data[i].telefono}</td>
                                                             <td class="cell100 column5">
                                                                 <div class="form-group">
                                                                     <a class="btn-solid-look page-scroll" type="button" onclick="look_doc('${data[i].nombre}','${data[i].apellido}','${data[i].fecha}','${data[i].genero}','${data[i].usuario}','${data[i].password}','${data[i].especialidad}','${data[i].telefono}')" href="#inicio">Ver</a>
                                                                 </div>
                                                                 <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
-                                                                    <a class="btn-solid-edit page-scroll " type="button" onclick="edit_doc('${data[i].usuario}')" href="#inicio">Editar</a>
+                                                                    <a class="btn-solid-edit page-scroll" type="button" onclick="edit_doc('${data[i].usuario}')" href="#inicio">Editar</a>
                                                                 </div>
                                                                 <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
                                                                     <a class="btn-solid-delete page-scroll" type="button" onclick="delete_doc('${data[i].usuario}')" href="#borrar">Borrar</a>
@@ -190,14 +190,13 @@
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of header-content -->
-        
     </header> <!-- end of header -->
 
     <header id="enfermera" class="header container-back">
         <div class="header-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6" style="margin-top: -150px;">
+                    <div id="tabEnf" class="col-lg-6" style="margin-top: -150px;">
                         <div class="text-container">
                             <h1><span class="turquoise">E</span>nfermeras</h1>
                         </div> <!-- end of text-container -->
@@ -253,7 +252,7 @@
                                     </script>
                                 </div>
                             </div>
-                            <div class="header-content basic-1" style="margin-top: -150px;">
+                            <div id="cargaMEnf" class="header-content basic-1" style="margin-top: -150px;">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-6" style="margin-top: -160px;">
@@ -283,7 +282,7 @@
         <div class="header-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6" style="margin-top: -150px;">
+                    <div id="tabPac" class="col-lg-6" style="margin-top: -150px;">
                         <div class="text-container">
                             <h1><span class="turquoise">P</span>acientes</h1>
                         </div> <!-- end of text-container -->
@@ -341,7 +340,7 @@
                                     </script>
                                 </div>
                             </div>
-                            <div class="header-content basic-1" style="margin-top: -150px;">
+                            <div id="cargaMPac" class="header-content basic-1" style="margin-top: -150px;">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-6" style="margin-top: -160px;">
@@ -371,7 +370,7 @@
         <div class="header-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6" style="margin-top: -150px;">
+                    <div id="tabMed" class="col-lg-6" style="margin-top: -150px;">
                         <div class="text-container">
                             <h1><span class="turquoise">M</span>edicamentos</h1>
                         </div> <!-- end of text-container -->
@@ -429,7 +428,7 @@
                                     </script>
                                 </div>
                             </div>
-                            <div class="header-content basic-1" style="margin-top: -150px;">
+                            <div id="cargaMMed" class="header-content basic-1" style="margin-top: -150px;">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-6" style="margin-top: -160px;">

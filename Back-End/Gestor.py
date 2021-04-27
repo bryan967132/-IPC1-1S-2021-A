@@ -44,9 +44,9 @@ class Gestor:
         self.enfermeras.append(Enfermera('Martie','Drummond','01/08/2021','F','mdrummond1','DasE5ymBvgV','80586487'))
         self.enfermeras.append(Enfermera('Niki','Serrels','01/09/2021','M','nserrels2','7Hhz9rNQ6ktU','42491095'))
         #-----------------------medicamento-----------------------------------
-        self.medicamentos.append(Medicamento('Ibuprofeno','10.5','Quita dolor','50'))
-        self.medicamentos.append(Medicamento('Aspirina','13','Quita dolor en la espalda baja en menos de doce horas','12'))
-        self.medicamentos.append(Medicamento('Neomelubrina','5','Quita dolor','20'))
+        self.medicamentos.append(Medicamento('Ibuprofeno','10.5','Calma el dolor','50'))
+        self.medicamentos.append(Medicamento('Aspirina','13','Calma el dolor','12'))
+        self.medicamentos.append(Medicamento('Neomelubrina','5','Calma el dolor','20'))
         #----------------------------------------------------------
 
     #Create
@@ -133,7 +133,7 @@ class Gestor:
 
     #Carga Masiva Doctores
     def cargamasivaDoc(self,data):
-        fila = re.split('\n',data)
+        fila = re.split('\r\n',data)
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
@@ -143,7 +143,7 @@ class Gestor:
     
     #Carga Masiva Enfermeras
     def cargamasivaEnf(self,data):
-        fila = re.split('\n',data)
+        fila = re.split('\r\n',data)
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
@@ -153,7 +153,7 @@ class Gestor:
 
     #Carga Masiva Pacientes
     def cargamasivaPac(self,data):
-        fila = re.split('\n',data)
+        fila = re.split('\r\n',data)
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
@@ -163,7 +163,7 @@ class Gestor:
 
     #Carga Masiva Medicamentos
     def cargamasivaMed(self,data):
-        fila = re.split('\n',data)
+        fila = re.split('\r\n',data)
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])

@@ -16,8 +16,24 @@ let special = document.getElementById("special");
 let phone = document.getElementById("phone");
 
 function look_doc(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono) {
-    window.location.href="usuario1.html"
-    get_Look(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono)
+    //window.location.href="usuario1.html"
+    alert(nombre+" "+apellido+" "+fecha+" "+genero+" "+usuario+" "+password+" "+especialidad+" "+telefono)
+}
+function get_Look(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono){
+    nameU.value = nombre;
+    lastname.value = apellido;
+    date.value = fecha;
+    generous.value = genero;
+    user.value = usuario;
+    pass.value = password;
+    special.value = especialidad;
+    phone.value = telefono;
+}
+function edit_doc(usuario) {
+    alert("Editando a "+usuario)
+    /*fetch()
+    .then()
+    .then()*/
 }
 function cargarDoc(){
     let file = document.getElementById("cargaDoc").files[0];
@@ -127,22 +143,6 @@ function cargarMed(){
         }
     }
 }
-function get_Look(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono){
-    nameU.value = nombre;
-    lastname.value = apellido;
-    date.value = fecha;
-    generous.value = genero;
-    user.value = usuario;
-    pass.value = password;
-    special.value = especialidad;
-    phone.value = telefono;
-}
-function edit_doc(usuario) {
-    alert("Editando a "+usuario)
-    /*fetch()
-    .then()
-    .then()*/
-}
 function delete_doc(usuario) {
     fetch('http://localhost:5000/eliminarusuario',{
         method:'DELETE',
@@ -235,7 +235,7 @@ function actualizarTabDoc(){
                 <td class="cell100 column4">${data[i].especialidad}</td>
                 <td class="cell100 column5">
                     <div class="form-group">
-                        <a class="btn-solid-look page-scroll" type="button" onclick="look_doc('${data[i].usuario}')" href="#inicio">Ver</a>
+                    <a class="btn-solid-look page-scroll" type="button" onclick="look_doc('${data[i].nombre}','${data[i].apellido}','${data[i].fecha}','${data[i].genero}','${data[i].usuario}','${data[i].password}','${data[i].especialidad}','${data[i].telefono}')" href="#inicio">Ver</a>
                     </div>
                     <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
                         <a class="btn-solid-edit page-scroll " type="button" onclick="edit_doc('${data[i].usuario}')" href="#inicio">Editar</a>

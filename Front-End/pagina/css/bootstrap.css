@@ -3239,22 +3239,16 @@ input[type="button"].btn-block {
   border: 0;
 }
 
-.dropdown-item:hover, .dropdown-item:focus {
-  color: #16181b;
-  text-decoration: none;
-  background-color: #f8f9fa;
-}
-
-.dropdown-item.active, .dropdown-item:active {
+.navbar-custom .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #007bff;
+  background-color: rgb(28, 28, 29);
 }
 
-.dropdown-item.disabled, .dropdown-item:disabled {
-  color: #6c757d;
-  pointer-events: none;
-  background-color: transparent;
+.navbar-custom.top-nav-collapse .dropdown-item.active, .dropdown-item:active {
+  color: rgb(65, 129, 237);
+  text-decoration: none;
+  background-color: rgb(255, 255, 255);
 }
 
 .dropdown-menu.show {

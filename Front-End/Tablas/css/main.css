@@ -199,6 +199,11 @@ th, td {
   width: 10%;
 }
 
+.columnF {
+  width: 15%;
+  padding-left: 30px;
+}
+
 .table100-head th {
   padding-top: 18px;
   padding-bottom: 18px;

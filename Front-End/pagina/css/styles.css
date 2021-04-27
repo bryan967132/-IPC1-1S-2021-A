@@ -536,6 +536,86 @@ select::-ms-expand {
 	border: 1px solid #a1a1a1;
 }
 
+
+/*----------------------------------------------------------------------*/
+
+
+.form-fac-input:focus + .label-control,
+.form-fac-input.notEmpty + .label-control,
+.form-fac-textarea:focus + .label-control,
+.form-fac-textarea.notEmpty + .label-control {
+	top: 0.125rem;
+	opacity: 1;
+	font-size: 0.75rem;
+	font-weight: 700;
+}
+
+.form-fac-input,
+.form-fac-select {
+	display: block; /* needed for proper display of the label in Firefox, IE, Edge */
+	width: 255px;
+	padding-top: 1.0625rem;
+	padding-bottom: 0.0625rem;
+	padding-left: 1.3125rem;
+	border: 1px solid #c4d8dc;
+	border-radius: 0.25rem;
+	background-color: #fff;
+	color: #626262;
+	font: 400 0.875rem/1.875rem "Raleway", sans-serif;
+	transition: all 0.2s;
+	-webkit-appearance: none; /* removes inner shadow on form inputs on ios safari */
+}
+
+.form-fac-select {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	height: 3rem;
+}
+
+/* IE10+ hack to solve lower label text position compared to the rest of the browsers */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+	.form-fac-input {
+		padding-top: 1.25rem;
+		padding-bottom: 0.75rem;
+		line-height: 1.75rem;
+	}
+
+	.form-fac-select {
+		padding-top: 0.875rem;
+		padding-bottom: 0.75rem;
+		height: 3.125rem;
+		line-height: 2.125rem;
+	}
+}
+
+.form-fac-textarea {
+	display: block; /* used to eliminate a bottom gap difference between Chrome and IE/FF */
+	width: 100%;
+	height: 8rem; /* used instead of html rows to normalize height between Chrome and IE/FF */
+	padding-top: 1.25rem;
+	padding-left: 1.3125rem;
+	border: 1px solid #c4d8dc;
+	border-radius: 0.25rem;
+	background-color: #fff;
+	color: #626262;
+	font: 400 0.875rem/1.75rem "Raleway", sans-serif;
+	transition: all 0.2s;
+}
+
+.form-fac-input:focus,
+.form-fac-select:focus,
+.form-fac-textarea:focus {
+	border: 1px solid #a1a1a1;
+	outline: none; /* Removes blue border on focus */
+}
+
+.form-fac-input:hover,
+.form-fac-select:hover,
+.form-fac-textarea:hover {
+	border: 1px solid #a1a1a1;
+}
+
+/*---------------------------------------------------------------------*/
 .checkbox {
 	font: 400 0.75rem/1.25rem "Raleway", sans-serif;
 }
@@ -894,7 +974,6 @@ input[type='checkbox'] {
 }
 
 .navbar-custom .dropdown-menu {
-	margin-top: 0;
 	border: none;
 	border-radius: 0.25rem;
 	background-color: rgb(28, 28, 29);
@@ -936,8 +1015,6 @@ input[type='checkbox'] {
 	background-color: rgb(255, 255, 255);
 }
 
-
-
 .navbar-custom .dropdown-items-divide-hr {
 	width: 100%;
 	height: 1px;
@@ -946,6 +1023,16 @@ input[type='checkbox'] {
 	background-color: #c4d8dc;
 	opacity: 0.2;
 }
+
+.navbar-custom.top-nav-collapse .dropdown-items-divide-hr {
+	width: 100%;
+	height: 1px;
+	margin: 0.75rem auto 0.725rem auto;
+	border: none;
+	background-color: #a5a5a5;
+	opacity: 0.2;
+}
+
 /* end of dropdown menu */
 
 .navbar-custom .social-icons {
@@ -1065,6 +1152,44 @@ input[type='checkbox'] {
 	padding: 0;
 }
 
+/*-------------informacion personal--------------*/
+.cards-Info {
+	padding-top: 3rem;
+	padding-bottom: 1.625rem;
+	text-align: left;
+}
+
+.cards-Info h2 {
+	margin-bottom: 1rem;
+}
+
+.cards-Info .card {
+	max-width: auto;
+	width: 600px;
+	margin-right: 0px;
+	margin-bottom: 4.5rem;
+	margin-left: 0px;
+	padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+	border: 1px solid #c4d8dc;
+	border-radius: 0.5rem;
+	background: transparent;
+}
+
+.cards-Info .card-image {
+	width: 6rem;
+	height: 6rem;
+	margin-right: auto;
+	margin-bottom: 2rem;
+	margin-left: auto;
+}
+
+.cards-Info .card-title {
+	margin-bottom: 0.875rem;
+}
+
+.cards-Info .card-body {
+	padding: 0rem;
+}
 
 /*************************/
 /*     07. Details 1     */
@@ -1122,22 +1247,15 @@ input[type='checkbox'] {
 /**********************************/
 .lightbox-basic {
 	margin: 2.5rem auto;
-	padding: 2rem 1.5rem 2rem 1.5rem;
+	padding-left: 50px;
 	border-radius: 0.25rem;
-	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
 	text-align: left;
 }
 
 .lightbox-basic .container {
 	padding-right: 0;
 	padding-left: 0;
-}
-
-.lightbox-basic .image-container {
-	max-width: 33.75rem;
-	margin-right: auto;
-	margin-bottom: 3rem;
-	margin-left: auto;
 }
 
 .lightbox-basic h3 {
@@ -1183,7 +1301,7 @@ input[type='checkbox'] {
 }
 
 .lightbox-basic .btn-solid-reg.mfp-close:hover {
-	color: rgb(65, 129, 237);
+	color: rgb(255, 255, 255);
 }
 /* end of signup Button */
 
