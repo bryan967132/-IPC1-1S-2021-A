@@ -185,7 +185,7 @@ iframe {
 
 
 .container-form {
-  width: 100%;
+  width: 100px;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -200,6 +200,12 @@ iframe {
 
 .wrap-login100 {
   width: 420px;
+  background: rgba(255, 255, 255,0.8);
+  border-radius: 20px;
+}
+
+.wrap-register {
+  width: 800px;
   background: rgba(255, 255, 255,0.8);
   border-radius: 20px;
 }

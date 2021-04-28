@@ -195,12 +195,29 @@ th, td {
   width: 22%;
 }
 
-.columnN {
+.columnF {
+  width: 15%;
+  padding-left: 30px;
+}
+
+/*precio*/
+.columnP {
   width: 10%;
 }
 
-.columnF {
+/*cantidad*/
+.columnC {
   width: 15%;
+  padding-left: 15px;
+}
+
+/*descripcion*/
+.columnD {
+  width: 25%;
+}
+/*nombre*/
+.columnN {
+  width: 20%;
   padding-left: 30px;
 }
 

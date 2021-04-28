@@ -1,57 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>UHospital</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Website Title -->
+    <title>UHospital</title>
+
+    <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/usac.png"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/secondary.css">
-<!--===============================================================================================-->
-</head>
-<body>
-	<div class="limiter">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link href="../pagina/css/bootstrap.css" rel="stylesheet">
+    <link href="../pagina/css/fontawesome-all.css" rel="stylesheet">
+    <link href="../pagina/css/swiper.css" rel="stylesheet">
+	<link href="../pagina/css/magnific-popup.css" rel="stylesheet">
+	<link href="../pagina/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="images/usac.png">
+    </head>
+    <body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+
+    <div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
+			<div class="wrap-register p-t-85 p-b-20">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-70" style="margin-top: -50px;">
 						UHospital - Registro de Pacientes
 					</span>
 
-					<div class="wrap-input100 validate-input m-t-35 m-b-30 m-l-120" data-validate = "Obligatorio">
+					<div class="wrap-input100 validate-input m-t-35 m-b-30 m-l-120" data-validate = "Obligatorio" style="width: 33%;">
 						<input id="nombre" class="input100" type="text">
 						<span class="focus-input100" data-placeholder="Nombre"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate = "Obligatorio">
+					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate = "Obligatorio" style="width: 33%;">
 						<input id="apellido" class="input100" type="text">
 						<span class="focus-input100" data-placeholder="Apellido"></span>
 					</div>
 
-					<div class="wrap-input100 m-b-30 m-l-120"  data-validate="Obligatorio">
+					<div class="wrap-input100 m-b-30 m-l-120"  data-validate="Obligatorio" style="width: 33%;">
 						<input id="fecha" class="input100" type="date" />
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate = "Obligatorio">
+					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate = "Obligatorio" style="width: 33%;">
 						<input id="generous" value="" list="genero" class="input100" type="text">
 						<span class="focus-input100" data-placeholder="Género"></span>
 						<datalist id="genero">
@@ -60,23 +86,23 @@
 						</datalist>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-30 m-l-120" data-validate = "Obligatorio">
+					<div class="wrap-input100 validate-input m-b-30 m-l-120" data-validate = "Obligatorio" style="width: 33%;">
 						<input id="usuario" class="input100" type="text">
 						<span class="focus-input100" data-placeholder="Usuario"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate="Obligatorio">
+					<div class="wrap-input100 validate-input m-t-b84 m-b-30 m-l-417" data-validate="Obligatorio" style="width: 33%;">
 						<input id="pass" class="input100" type="password">
 						<span class="focus-input100" data-placeholder="Contraseña"></span>
 					</div>
 
-					<div class="wrap-input100 m-b-30 m-l-120">
+					<div class="wrap-input100 m-b-30 m-l-120" style="width: 33%;">
 						<input id="telefono" class="input100" type="text">
 						<span class="focus-input100" data-placeholder="Teléfono"></span>
 					</div>
 
 					<div>
-						<button onclick="CrearUsuario()" class="login100-form-btn m-l-204" type="button">
+						<button onclick="CrearUsuario()" class="login100-form-btn m-l-204" type="button" style="width: 50%;">
 							Registrar Paciente
 						</button>
 					</div>
@@ -106,23 +132,32 @@
 			</div>
 		</div>
 	</div>
-<!--===============================================================================================-->
+    <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-	<script src="js/funciones.js"></script>
-
+    <!--===============================================================================================-->
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+        <script src="js/main.js"></script>
+        <script src="js/funciones.js"></script>
+    	
+    <!-- Scripts -->
+    <script src="../pagina/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="../pagina/js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="../pagina/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="../pagina/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="../pagina/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="../pagina/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="../pagina/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="../pagina/js/scripts.js"></script> <!-- Custom scripts -->
 </body>
 </html>

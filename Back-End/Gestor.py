@@ -28,7 +28,7 @@ class Gestor:
         self.usuarios.append(Usuario('doctor','ja123','1234'))
         self.doctores.append(Doctor('Gregory','House','15/02/2000','M','gh123','1234','Infectologia','65432452'))
         self.doctores.append(Doctor('Steven','Strange','15/02/2000','M','st123','1234','Neurocirugia','13262458'))
-        self.doctores.append(Doctor('Jessica','Adams','15/02/2000','M','ja123','1234','Endocrinologia','90031612'))
+        self.doctores.append(Doctor('Jessica','Adams','15/02/2000','F','ja123','1234','Endocrinologia','90031612'))
         #-----------------------paciente-----------------------------------
         self.usuarios.append(Usuario('paciente','gtolcharde0','fTaJo5He'))
         self.usuarios.append(Usuario('paciente','jpresnail1','whKNw8MWSw'))
@@ -100,7 +100,22 @@ class Gestor:
     def buscar_tipo_usuario(self,usuario):
         for i in self.usuarios:
             if i.usuario == usuario:
-                return '{"tipo":"'+i.tipo+'"}'
+                if i.tipo == 'admin':
+                    for j in self.admin:
+                        if j.usuario == i.usuario:
+                            return json.dumps(j.__dict__)
+                if i.tipo == 'doctor':
+                    for j in self.doctores:
+                        if j.usuario == i.usuario:
+                            return json.dumps(j.__dict__)
+                if i.tipo == 'enfermera':
+                    for j in self.enfermeras:
+                        if j.usuario == i.usuario:
+                            return json.dumps(j.__dict__)
+                if i.tipo == 'paciente':
+                    for j in self.pacientes:
+                        if j.usuario == i.usuario:
+                            return json.dumps(j.__dict__)
 
     def clasificar_usuario(self,tipo):
         if tipo == 'doctor':
@@ -133,7 +148,7 @@ class Gestor:
 
     #Carga Masiva Doctores
     def cargamasivaDoc(self,data):
-        fila = re.split('\r\n',data)
+        fila = re.split('\n',data)
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
@@ -143,7 +158,7 @@ class Gestor:
     
     #Carga Masiva Enfermeras
     def cargamasivaEnf(self,data):
-        fila = re.split('\r\n',data)
+        fila = re.split('\n',data)
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
@@ -153,7 +168,7 @@ class Gestor:
 
     #Carga Masiva Pacientes
     def cargamasivaPac(self,data):
-        fila = re.split('\r\n',data)
+        fila = re.split('\n',data)
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
@@ -163,7 +178,7 @@ class Gestor:
 
     #Carga Masiva Medicamentos
     def cargamasivaMed(self,data):
-        fila = re.split('\r\n',data)
+        fila = re.split('\n',data)
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])

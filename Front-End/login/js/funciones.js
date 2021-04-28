@@ -88,24 +88,30 @@ function IniciarSesion(){
                 fetch(`http://localhost:5000/buscartipousuario/${usuario.value}`)
                 .then(response1 => response1.json())
                 .then(data1 => {
+                    saludo = '';
+                    if(data1.genero == 'F'){
+                        saludo = 'Bienvenida'
+                    }else{
+                        saludo = 'Bienvenido'
+                    }
                     if(data1.tipo == "admin"){
-                        alert(`Bienvenido ${data.nombre}`)
+                        alert(`${saludo} ${data1.nombre}`)
                         window.location.href="../pagina/admin.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "doctor"){
-                        alert('Bienvenido Doctor')
+                        alert(`${saludo} Dr. ${data1.nombre}`)
                         usuario.value = '';
                         pass.value = '';
                     }
-                    if(data1.tipo == "enfermero"){
-                        alert('Bienvenido Enfermero')
+                    if(data1.tipo == "enfermera"){
+                        alert(`${saludo} enfermera ${data1.nombre}`)
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "paciente"){
-                        alert('Bienvenido Paciente')
+                        alert(`${saludo} paciente ${data1.nombre}`)
                         usuario.value = '';
                         pass.value = '';
                     }
