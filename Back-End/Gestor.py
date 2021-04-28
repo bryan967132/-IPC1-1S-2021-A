@@ -20,8 +20,8 @@ class Gestor:
         self.libros.append(Libro("El Animalero","Humberto Ak'abal","https://www.curriculumnacional.cl/614/articles-79653_thumbnail.jpg","ujmh"))
         self.libros.append(Libro("Viento Fuerte","Miguel Angel Asturias","https://2.bp.blogspot.com/-SL58QFsWjfc/W42RRaqeY9I/AAAAAAAAa4E/D0-xF8H39ak2aVmrkRg7ZC4IyB5_L1-kQCLcBGAs/s400/VientoFuerte.jpg","yhnt"))
         #-----------------------admin-----------------------------------
-        self.usuarios.append(Usuario('admin','admin','admin'))
-        self.admin.append(Admin('admin','admin','04/12/2000','M','admin','admin','12345678'))
+        self.usuarios.append(Usuario('admin','admin','1234'))
+        self.admin.append(Admin('Herbert','Reyes','04/12/2000','M','admin','1234','12345678'))
         #-----------------------doctor-----------------------------------
         self.usuarios.append(Usuario('doctor','gh123','1234'))
         self.usuarios.append(Usuario('doctor','st123','1234'))

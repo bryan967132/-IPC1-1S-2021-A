@@ -50,6 +50,7 @@ function CrearUsuario(){
                 pass.value = '';
                 telefono.value = '';
                 alert('Paciente Registrado')
+                window.location.href="login.html"
             }else{
                 alert('El nombre de usuario se encuentra en uso')
                 usuario.value = '';
@@ -101,17 +102,20 @@ function IniciarSesion(){
                         pass.value = '';
                     }
                     if(data1.tipo == "doctor"){
-                        alert(`${saludo} Dr. ${data1.nombre}`)
+                        alert(`${saludo} ${data1.nombre}`)
+                        window.location.href="../pagina/doctor.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "enfermera"){
-                        alert(`${saludo} enfermera ${data1.nombre}`)
+                        alert(`${saludo} ${data1.nombre}`)
+                        window.location.href="../pagina/enfermera.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "paciente"){
-                        alert(`${saludo} paciente ${data1.nombre}`)
+                        alert(`${saludo} ${data1.nombre}`)
+                        window.location.href="../pagina/paciente.html"
                         usuario.value = '';
                         pass.value = '';
                     }
