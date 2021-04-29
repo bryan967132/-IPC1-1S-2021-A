@@ -21,28 +21,28 @@ class Gestor:
         self.libros.append(Libro("Viento Fuerte","Miguel Angel Asturias","https://2.bp.blogspot.com/-SL58QFsWjfc/W42RRaqeY9I/AAAAAAAAa4E/D0-xF8H39ak2aVmrkRg7ZC4IyB5_L1-kQCLcBGAs/s400/VientoFuerte.jpg","yhnt"))
         #-----------------------admin-----------------------------------
         self.usuarios.append(Usuario('admin','admin','1234'))
-        self.admin.append(Admin('Herbert','Reyes','04/12/2000','M','admin','1234','12345678'))
+        self.admin.append(Admin('Herbert','Reyes','2000-12-04','M','admin','1234','12345678'))
         #-----------------------doctor-----------------------------------
         self.usuarios.append(Usuario('doctor','gh123','1234'))
         self.usuarios.append(Usuario('doctor','st123','1234'))
         self.usuarios.append(Usuario('doctor','ja123','1234'))
-        self.doctores.append(Doctor('Gregory','House','15/02/2000','M','gh123','1234','Infectologia','65432452'))
-        self.doctores.append(Doctor('Steven','Strange','15/02/2000','M','st123','1234','Neurocirugia','13262458'))
-        self.doctores.append(Doctor('Jessica','Adams','15/02/2000','F','ja123','1234','Endocrinologia','90031612'))
+        self.doctores.append(Doctor('Gregory','House','2000-02-15','M','gh123','1234','Infectologia','65432452'))
+        self.doctores.append(Doctor('Steven','Strange','2000-02-15','M','st123','1234','Neurocirugia','13262458'))
+        self.doctores.append(Doctor('Jessica','Adams','2000-02-15','F','ja123','1234','Endocrinologia','90031612'))
         #-----------------------paciente-----------------------------------
         self.usuarios.append(Usuario('paciente','gtolcharde0','fTaJo5He'))
         self.usuarios.append(Usuario('paciente','jpresnail1','whKNw8MWSw'))
         self.usuarios.append(Usuario('paciente','nwhymark2','Vv1fsNxA5R'))
-        self.pacientes.append(Paciente('Giuditta','Tolcharde','28/01/2020','F','gtolcharde0','fTaJo5He','89945059'))
-        self.pacientes.append(Paciente('Joachim','Presnail','10/04/2019','M','jpresnail1','whKNw8MWSw','49771573'))
-        self.pacientes.append(Paciente('Nancee','Whymark','17/10/2019','F','nwhymark2','Vv1fsNxA5R','38189528'))
+        self.pacientes.append(Paciente('Giuditta','Tolcharde','2020-01-28','F','gtolcharde0','fTaJo5He','89945059'))
+        self.pacientes.append(Paciente('Joachim','Presnail','2019-04-03','M','jpresnail1','whKNw8MWSw','49771573'))
+        self.pacientes.append(Paciente('Nancee','Whymark','2019-10-27','F','nwhymark2','Vv1fsNxA5R','38189528'))
         #-----------------------enfermera-----------------------------------
         self.usuarios.append(Usuario('enfermera','ashalcros0','UCqVbdszlaiH'))
         self.usuarios.append(Usuario('enfermera','mdrummond1','DasE5ymBvgV'))
         self.usuarios.append(Usuario('enfermera','nserrels2','7Hhz9rNQ6ktU'))
-        self.enfermeras.append(Enfermera('Almire','Shalcros','29/11/2019','F','ashalcros0','UCqVbdszlaiH','39693213'))
-        self.enfermeras.append(Enfermera('Martie','Drummond','01/08/2021','F','mdrummond1','DasE5ymBvgV','80586487'))
-        self.enfermeras.append(Enfermera('Niki','Serrels','01/09/2021','M','nserrels2','7Hhz9rNQ6ktU','42491095'))
+        self.enfermeras.append(Enfermera('Almire','Shalcros','2019-11-29','F','ashalcros0','UCqVbdszlaiH','39693213'))
+        self.enfermeras.append(Enfermera('Martie','Drummond','2021-08-01','F','mdrummond1','DasE5ymBvgV','80586487'))
+        self.enfermeras.append(Enfermera('Niki','Serrels','2021-09-01','M','nserrels2','7Hhz9rNQ6ktU','42491095'))
         #-----------------------medicamento-----------------------------------
         self.medicamentos.append(Medicamento('Ibuprofeno','10.5','Calma el dolor','50'))
         self.medicamentos.append(Medicamento('Aspirina','13','Calma el dolor','12'))
@@ -152,8 +152,10 @@ class Gestor:
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
+            compFecha = re.split('/',campo[2])
+            fecha = compFecha[2]+"-"+compFecha[1]+"-"+compFecha[0]
             self.usuarios.append(Usuario('doctor',campo[4],campo[5]))
-            self.doctores.append(Doctor(campo[0],campo[1],campo[2],campo[3],campo[4],campo[5],campo[6],campo[7]))
+            self.doctores.append(Doctor(campo[0],campo[1],fecha,campo[3],campo[4],campo[5],campo[6],campo[7]))
             i += 1
     
     #Carga Masiva Enfermeras
@@ -162,8 +164,10 @@ class Gestor:
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
+            compFecha = re.split('/',campo[2])
+            fecha = compFecha[2]+"-"+compFecha[1]+"-"+compFecha[0]
             self.usuarios.append(Usuario('enfermera',campo[4],campo[5]))
-            self.enfermeras.append(Enfermera(campo[0],campo[1],campo[2],campo[3],campo[4],campo[5],campo[6]))
+            self.enfermeras.append(Enfermera(campo[0],campo[1],fecha,campo[3],campo[4],campo[5],campo[6]))
             i += 1
 
     #Carga Masiva Pacientes
@@ -172,8 +176,10 @@ class Gestor:
         i=1
         while i < len(fila):
             campo = re.split(',',fila[i])
+            compFecha = re.split('/',campo[2])
+            fecha = compFecha[2]+"-"+compFecha[1]+"-"+compFecha[0]
             self.usuarios.append(Usuario('paciente',campo[4],campo[5]))
-            self.pacientes.append(Paciente(campo[0],campo[1],campo[2],campo[3],campo[4],campo[5],campo[6]))
+            self.pacientes.append(Paciente(campo[0],campo[1],fecha,campo[3],campo[4],campo[5],campo[6]))
             i += 1
 
     #Carga Masiva Medicamentos

@@ -461,9 +461,8 @@ a.white {
 	padding-top: 1.0625rem;
 	padding-bottom: 0.0625rem;
 	padding-left: 1.3125rem;
-	border: 1px solid #c4d8dc;
 	border-radius: 0.25rem;
-	background-color: #fff;
+	background-color: rgba(154, 213, 221, 0.233);
 	color: #626262;
 	font: 400 0.875rem/1.875rem "Raleway", sans-serif;
 	transition: all 0.2s;
@@ -515,27 +514,12 @@ select::-ms-expand {
 	height: 8rem; /* used instead of html rows to normalize height between Chrome and IE/FF */
 	padding-top: 1.25rem;
 	padding-left: 1.3125rem;
-	border: 1px solid #c4d8dc;
 	border-radius: 0.25rem;
-	background-color: #fff;
+	background-color: rgba(154, 213, 221, 0.233);
 	color: #626262;
 	font: 400 0.875rem/1.75rem "Raleway", sans-serif;
 	transition: all 0.2s;
 }
-
-.form-control-input:focus,
-.form-control-select:focus,
-.form-control-textarea:focus {
-	border: 1px solid #a1a1a1;
-	outline: none; /* Removes blue border on focus */
-}
-
-.form-control-input:hover,
-.form-control-select:hover,
-.form-control-textarea:hover {
-	border: 1px solid #a1a1a1;
-}
-
 
 /*----------------------------------------------------------------------*/
 
@@ -1249,7 +1233,7 @@ input[type='checkbox'] {
 	margin: 2.5rem auto;
 	padding-left: 50px;
 	border-radius: 0.25rem;
-	background: rgba(255, 255, 255, 0.8);
+	background: rgba(255, 255, 255, 1);
 	text-align: left;
 }
 

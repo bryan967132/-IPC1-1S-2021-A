@@ -31,7 +31,11 @@
         <link rel="stylesheet" type="text/css" href="../Tablas/css/main.css">
         <link rel="stylesheet" type="text/css" href="../login/css/main.css">
     <!--===============================================================================================-->
-    
+        <script>
+            if(localStorage.getItem('especialidad') != 'admin'){
+                window.location.href="../login/login.html"
+            }
+        </script>
     </head>
     <body data-spy="scroll" data-target=".fixed-top">
     
@@ -96,7 +100,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="btn-login page-scroll" href="../login/login.html">Cerrar Sesión</a>
+                    <a onclick="cerrarSesion()" class="btn-login page-scroll" href="#cerrar">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -130,37 +134,9 @@
                                 </div>
                                 <div>
                                     <div class="table100-body js-pscroll">
-                                        <table id="tabledocsc">
-                                            <tbody>
-                                            <script>
-                                                document.getElementById("tabledocsc").innerHTML = '';
-                                                let text = "";
-                                                fetch('http://localhost:5000/clasificartipousuario/doctor')
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    var i;
-                                                    for(i = 0; i < data.length; i++){
-                                                        text += `<tr class="row100 body">
-                                                            <td class="cell100 column1">${i+1}</td>
-                                                            <td class="cell100 column2">${data[i].nombre}</td>
-                                                            <td class="cell100 column3">${data[i].apellido}</td>
-                                                            <td class="cell100 column4">${data[i].telefono}</td>
-                                                            <td class="cell100 column5">
-                                                                <div class="form-group">
-                                                                    <a class="btn-solid-look page-scroll" type="button" onclick="look_doc('${data[i].nombre}','${data[i].apellido}','${data[i].fecha}','${data[i].genero}','${data[i].usuario}','${data[i].password}','${data[i].especialidad}','${data[i].telefono}')" href="#inicio">Ver</a>
-                                                                </div>
-                                                                <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
-                                                                    <a class="btn-solid-edit page-scroll" type="button" onclick="edit_doc('${data[i].usuario}')" href="#inicio">Editar</a>
-                                                                </div>
-                                                                <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
-                                                                    <a class="btn-solid-delete page-scroll" type="button" onclick="delete_doc('${data[i].usuario}')" href="#borrar">Borrar</a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>`
-                                                    }
-                                                    document.getElementById("tabledocsc").innerHTML = text;
-                                                })
-                                            </script>
+                                        <table>
+                                            <tbody id="tabledocsc">
+                                                <!--script infoT.js-->
                                             </tbody>
                                         </table>
                                     </div>
@@ -219,37 +195,14 @@
                                     </table>
                                 </div>
             
-                                <div id="tableenfsc">
-                                    <script>
-                                        document.getElementById("tableenfsc").innerHTML = '';
-                                        let inicio1 = "<div class=\"table100-body js-pscroll\"><table><tbody>";
-                                        let text1 = "";
-                                        let final1 = "</tbody></table>";
-                                        fetch('http://localhost:5000/clasificartipousuario/enfermera')
-                                        .then(response1 => response1.json())
-                                        .then(data1 => {
-                                            var i;
-                                            for(i = 0; i < data1.length; i++){
-                                                text1 += `<tr class="row100 body">
-                                                    <td class="cell100 column1">${i+1}</td>
-                                                    <td class="cell100 column2">${data1[i].nombre}</td>
-                                                    <td class="cell100 column3">${data1[i].apellido}</td>
-                                                    <td class="cell100 column4">${data1[i].telefono}</td>
-                                                    <td class="cell100 column5">
-                                                        <div class="form-group">
-                                                            <a class="btn-solid-look page-scroll" type="button" href="#inicio">Ver</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
-                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
-                                                            <a class="btn-solid-delete page-scroll" type="button" onclick="delete_enf('${data1[i].usuario}')" href="#inicio">Borrar</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>`}
-                                            document.getElementById("tableenfsc").innerHTML = inicio1+text1+final1;
-                                        })
-                                    </script>
+                                <div>
+                                    <div class="table100-body js-pscroll">
+                                        <table>
+                                            <tbody id="tableenfsc">
+                                                <!--script infoT.js-->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <div id="cargaMEnf" class="header-content basic-1" style="margin-top: -150px;">
@@ -258,7 +211,7 @@
                                         <div class="col-lg-6" style="margin-top: -160px;">
                                             <div class="text-container">
                                                 <h2>Carga Masiva</h2>
-                                            </div> <!-- end of text-container -->
+                                            </div>
                                             <br>
                                             <div>
                                                 <input type="file" id="cargaEnf" name="carga" accept=".csv">
@@ -305,39 +258,14 @@
                                     </table>
                                 </div>
             
-                                <div id="tablepassc">
-                                    <script>
-                                        document.getElementById("tablepassc").innerHTML = '';
-                                        let inicio2 = "<div class=\"table100-body js-pscroll\"><table><tbody>";
-                                        let text2 = "";
-                                        let final2 = "</tbody></table>";
-                                        fetch('http://localhost:5000/clasificartipousuario/paciente')
-                                        .then(response2 => response2.json())
-                                        .then(data2 => {
-                                            var i;
-                                            for(i = 0; i < data2.length; i++){
-                                                text2 += `
-                                                <tr class="row100 body">
-                                                    <td class="cell100 column1">${i+1}</td>
-                                                    <td class="cell100 column2">${data2[i].nombre}</td>
-                                                    <td class="cell100 column3">${data2[i].apellido}</td>
-                                                    <td class="cell100 column4">${data2[i].telefono}</td>
-                                                    <td class="cell100 column5">
-                                                        <div class="form-group">
-                                                            <a class="btn-solid-look page-scroll" type="button" href="#inicio">Ver</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
-                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
-                                                            <a class="btn-solid-delete page-scroll" type="button" onclick="delete_pac('${data2[i].usuario}')" href="#inicio">Borrar</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>`
-                                            }
-                                            document.getElementById("tablepassc").innerHTML = inicio2+text2+final2;
-                                        })
-                                    </script>
+                                <div>
+                                    <div class="table100-body js-pscroll">
+                                        <table>
+                                            <tbody id="tablepassc">
+                                                <!--script infoT.js-->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <div id="cargaMPac" class="header-content basic-1" style="margin-top: -150px;">
@@ -393,39 +321,14 @@
                                     </table>
                                 </div>
             
-                                <div id="tablemedsc">
-                                    <script>
-                                        document.getElementById("tablemedsc").innerHTML = '';
-                                        let inicio3 = "<div class=\"table100-body js-pscroll\"><table><tbody>";
-                                        let text3 = "";
-                                        let final3 = "</tbody></table>";
-                                        fetch('http://localhost:5000/obtenermedicamentos')
-                                        .then(response3 => response3.json())
-                                        .then(data3 => {
-                                            var i;
-                                            for(i = 0; i < data3.length; i++){
-                                                text3 += `
-                                                <tr class="row100 body">
-                                                    <td class="cell100 columnN">${data3[i].nombre}</td>
-                                                    <td class="cell100 columnP">${data3[i].precio}</td>
-                                                    <td class="cell100 columnD">${data3[i].descripcion}</td>
-                                                    <td class="cell100 columnC">${data3[i].cantidad}</td>
-                                                    <td class="cell100 column5">
-                                                        <div class="form-group">
-                                                            <a class="btn-solid-look page-scroll" type="button" href="#inicio">Ver</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
-                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Editar</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 160px;">
-                                                            <a class="btn-solid-delete page-scroll" type="button" onclick="delete_med('${data3[i].nombre}','${data3[i].descripcion}')" href="#inicio">Borrar</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>`
-                                            }
-                                            document.getElementById("tablemedsc").innerHTML = inicio3+text3+final3;
-                                        })
-                                    </script>
+                                <div>
+                                    <div class="table100-body js-pscroll">
+                                        <table>
+                                            <tbody id="tablemedsc">
+                                                <!--script infoT.js-->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <div id="cargaMMed" class="header-content basic-1" style="margin-top: -150px;">
@@ -449,13 +352,13 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of header-content -->
     </header> <!-- end of header -->
 
     <!-- Scripts -->
+    <script src="js/infoT.js"></script> <!-- Importando datos -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
     <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
@@ -465,5 +368,6 @@
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="js/funciones.js"></script><!-- Funciones -->
+    <script src="js/informacion.js"></script><!-- Informacion -->
 </body>
 </html>

@@ -97,24 +97,32 @@ function IniciarSesion(){
                     }
                     if(data1.tipo == "admin"){
                         alert(`${saludo} ${data1.nombre}`)
+                        localStorage.setItem('especialidad','admin')
+                        localStorage.setItem('userPc',`${data1.usuario}`)
                         window.location.href="../pagina/admin.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "doctor"){
                         alert(`${saludo} ${data1.nombre}`)
+                        localStorage.setItem('especialidad','doctor')
+                        localStorage.setItem('userPc',`${data1.usuario}`)
                         window.location.href="../pagina/doctor.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "enfermera"){
                         alert(`${saludo} ${data1.nombre}`)
+                        localStorage.setItem('especialidad','enfermera')
+                        localStorage.setItem('userPc',`${data1.usuario}`)
                         window.location.href="../pagina/enfermera.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "paciente"){
                         alert(`${saludo} ${data1.nombre}`)
+                        localStorage.setItem('especialidad','paciente')
+                        localStorage.setItem('userPc',`${data1.usuario}`)
                         window.location.href="../pagina/paciente.html"
                         usuario.value = '';
                         pass.value = '';

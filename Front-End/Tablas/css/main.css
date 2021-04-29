@@ -203,6 +203,7 @@ th, td {
 /*precio*/
 .columnP {
   width: 10%;
+  padding-left: 15px;
 }
 
 /*cantidad*/
@@ -260,7 +261,7 @@ th, td {
   color: #fff;
   line-height: 1.4;
 
-  background-color: rgb(65, 129, 237);
+  background-color: rgb(139, 147, 160);
 }
 
 .table100.ver1 td {
@@ -271,7 +272,7 @@ th, td {
 }
 
 .table100.ver1 .table100-body tr:nth-child(even) {
-  background-color: rgba(65, 129, 237,0.19);
+  background-color: rgb(237, 237, 237);
 }
 
 /*---------------------------------------------*/
