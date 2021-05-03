@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Website Title -->
+    <title>UHospital</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/fontawesome-all.css" rel="stylesheet">
+    <link href="../../css/swiper.css" rel="stylesheet">
+	<link href="../../css/magnific-popup.css" rel="stylesheet">
+	<link href="../../css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../login/css/main.css">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="../../images/usac.png">
+
+    <script>
+        if(localStorage.getItem('tipo1') != 'admin'){
+            window.location.href="../../../login/login.html"
+        }
+        if(localStorage.getItem('accion') != 'ver'){
+            window.location.href="../../admin.html"
+        }
+    </script>
+    
+    </head>
+    <body data-spy="scroll" data-target=".fixed-top">
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Evolo</a> -->
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="formusuario.html" style="font-size: 40px; text-decoration: none; font-style:initial;"><span class="turquoise Utitulo">U</span><span class="titulo">Hospital</span></a>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a onclick="administrar('doctor')" class="btn-login page-scroll" href="#">Administración</a>
+                </li>
+            </ul>
+        </div>
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+
+    <div id="contacto" class="container-form" style="margin-top: 0px;">
+        <div class="container">
+            <div class="row" style="margin-top: 10px;">
+                <div id ="titulo" class="col-lg-12">
+                    <h2><span class="turquoise">Doctor</span></h2><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" style="margin-left: 0px;">
+                    <form id="contactForm">
+                        <div id="nombre" class="form-group">
+                            <input type="text" class="form-mod-input" id="nameU" disabled><label class="label-placeholder" for="nameU">Nombre</label>
+                        </div>
+                        <div id="fechaN" class="form-group">
+                            <input type="date" class="form-mod-input" id="dateU" disabled><label class="label-placeholder" for="dateU">Fecha de Nacimiento</label>
+                        </div>
+                        <div id="usuario" class="form-group">
+                            <input type="text" class="form-mod-input" id="userU" disabled><label class="label-placeholder" for="userU">Usuario</label>
+                        </div>
+                        <div id="tel" class="form-group">
+                            <input type="text" class="form-mod-input" id="celuU" disabled><label class="label-placeholder" for="celuU">Teléfono</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6" style="margin-left: 0px;">
+                    <form id="contactForm">
+                        <div id="apellido" class="form-group">
+                            <input type="text" class="form-mod-input" id="lastU" disabled><label class="label-placeholder" for="lastU">Apellido</label>
+                        </div>
+                        <div id="genero" class="form-group">
+                            <input type="text" class="form-mod-input" id="gensU" disabled><label class="label-placeholder" for="gensU">Género</label>
+                        </div>
+                        <div id="contra" class="form-group">
+                            <input type="password" class="form-mod-input" id="passU" disabled><label class="label-placeholder" for="passU">Contraseña</label>
+                        </div>
+                        <div id="esp" class="form-group">
+                            <input type="text" class="form-mod-input" id="specU" disabled><label class="label-placeholder" for="specU">Especialidad</label>
+                        </div>
+                    </form>
+                </div>
+                <script>
+                    fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("userC")}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("nameU").value = `${data.nombre}`;
+                        document.getElementById("lastU").value = `${data.apellido}`;
+                        document.getElementById("dateU").value = `${data.fecha}`;
+                        document.getElementById("gensU").value = `${data.genero}`;
+                        document.getElementById("userU").value = `${data.usuario}`;
+                        document.getElementById("passU").value = `${data.password}`;
+                        let phone = '';
+                        if(data.telefono != 'Sin registrar'){
+                            phone = data.telefono
+                        }
+                        document.getElementById("celuU").value = `${phone}`;
+                        try{
+                            document.getElementById('specU').value = `${data.especialidad}`;
+                        }catch(err){}
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+    	
+    <!-- Scripts -->
+    <script src="../../js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="../../js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="../../js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="../../js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="../../js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="../../js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="../../js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="../../js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="../../js/funciones.js"></script>
+    <script src="../../js/actualizaciones.js"></script>
+</body>
+</html>

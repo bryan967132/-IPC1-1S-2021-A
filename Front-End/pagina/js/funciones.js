@@ -15,26 +15,34 @@ let pass = document.getElementById("pass");
 let special = document.getElementById("special");
 let phone = document.getElementById("phone");
 
-function look_doc(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono) {
-    //window.location.href="usuario1.html"
-    alert(nombre+" "+apellido+" "+fecha+" "+genero+" "+usuario+" "+password+" "+especialidad+" "+telefono)
+function look_data(tipo,usuario,accion,medicamento,descripcion) {
+    if(tipo == 'doctor'){
+        localStorage.setItem('userC',`${usuario}`)
+        localStorage.setItem('accion',`${accion}`)
+        if(accion == 'ver'){window.location.replace("forms/ver/formdoctor.html")}
+        else{window.location.replace("forms/editar/formdoctor.html")}
+    }
+    if(tipo == 'enfermera'){
+        localStorage.setItem('userC',`${usuario}`)
+        localStorage.setItem('accion',`${accion}`)
+        if(accion == 'ver'){window.location.replace("forms/ver/formenfermera.html")}
+        else{window.location.replace("forms/editar/formenfermera.html")}
+    }
+    if(tipo == 'paciente'){
+        localStorage.setItem('userC',`${usuario}`)
+        localStorage.setItem('accion',`${accion}`)
+        if(accion == 'ver'){window.location.replace("forms/ver/formpaciente.html")}
+        else{window.location.replace("forms/editar/formpaciente.html")}
+    }
+    if(tipo == 'medicamento'){
+        localStorage.setItem('medicC',`${medicamento}`)
+        localStorage.setItem('descC',`${descripcion}`)
+        localStorage.setItem('accion',`${accion}`)
+        if(accion == 'ver'){window.location.replace("forms/ver/formmedicamento.html")}
+        else{window.location.replace("forms/editar/formmedicamento.html")}
+    }
 }
-function get_Look(nombre,apellido,fecha,genero,usuario,password,especialidad,telefono){
-    nameU.value = nombre;
-    lastname.value = apellido;
-    date.value = fecha;
-    generous.value = genero;
-    user.value = usuario;
-    pass.value = password;
-    special.value = especialidad;
-    phone.value = telefono;
-}
-function edit_doc(usuario) {
-    alert("Editando a "+usuario)
-    /*fetch()
-    .then()
-    .then()*/
-}
+
 function cargarDoc(){
     let file = document.getElementById("cargaDoc").files[0];
     if (file){
@@ -220,28 +228,169 @@ function delete_med(nombre,descripcion) {
     })
 }
 
-function crearpdf(tipo){
-    fetch(`http://localhost:5000/clasificartipousuario/${tipo}`)
-    .then(response => response.json())
-    .then(data=>{
-      //Declarando los headers
-      let headers = createHeaders([
-        "Titulo",
-        "Autor",
-        "Descripcion"
-      ]);
-      // Insertamos la data
-      let datos=[]
-      for(let i =0;i<data.length;i++){
-        datos.push(Object.assign({},convertirdata(data[i])))
-      }
-      console.log(datos)
-      var contentJsPdf = {
+function actualizarusuario(usuario,tipo,nName,nLast,nDate,nGens,nUser,nPass,nSpec,nCelu) {
+    fetch(`http://localhost:5000/actualizarusuario/${usuario}`,{
+        method:'PUT',
         headers,
-        datos
-    };
-      var doc = new jsPDF({ putOnlyUsedFonts: true, orientation: "landscape" });
-      doc.table(75, 1, datos, headers, { autoSize: false });
-      doc.save("ejemplo.pdf")
+        body:`{
+            "tipo":"${tipo}",
+            "usuario":"${nUser}",
+            "password":"${nPass}",
+            "nombre":"${nName}",
+            "apellido":"${nLast}",
+            "fecha":"${nDate}",
+            "genero":"${nGens}",
+            "especialidad":"${nSpec}",
+            "telefono":"${nCelu}"
+        }`
     })
-  }
+    .then(response => response.json())
+    .then(result => {
+        console.log('Success:',result);
+        if(result.data == 'enUso'){
+            alert('El nombre de usuarios ya está en uso, intente con uno nuevo')
+        }else{
+            alert('Se han guardado los cambios')
+            administrar(tipo)
+        }
+    })
+}
+
+function actualizarmedicamento(medicamento,descripcion,nMed,nPre,nDesc,nCant) {
+    fetch(`http://localhost:5000/actualizarmedicamento/${medicamento}/${descripcion}`,{
+        method:'PUT',
+        headers,
+        body:`{
+            "nombre":"${nMed}",
+            "precio":"${nPre}",
+            "descripcion":"${nDesc}",
+            "cantidad":"${nCant}"
+        }`
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Success:',result);
+        alert('Se han guardado los cambios')
+        administrar('medicamento')
+    })
+}
+
+function modificarperfil(usuario,tipo,nName,nLast,nDate,nGens,nUser,nPass,nSpec,nCelu) {
+    fetch(`http://localhost:5000/actualizarusuario/${usuario}`,{
+        method:'PUT',
+        headers,
+        body:`{
+            "tipo":"${tipo}",
+            "usuario":"${nUser}",
+            "password":"${nPass}",
+            "nombre":"${nName}",
+            "apellido":"${nLast}",
+            "fecha":"${nDate}",
+            "genero":"${nGens}",
+            "especialidad":"${nSpec}",
+            "telefono":"${nCelu}"
+        }`
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Success:',result);
+        if(result.data == 'enUso'){
+            alert('El nombre de usuarios ya está en uso, intente con uno nuevo')
+        }else{
+            if(tipo == 'doctor'){
+                localStorage.removeItem("user2")
+                localStorage.setItem("user2",`${nUser}`)
+            }
+            if(tipo == 'enfermera'){
+                localStorage.removeItem("user3")
+                localStorage.setItem("user3",`${nUser}`)
+            }
+            if(tipo == 'paciente'){
+                localStorage.removeItem("user4")
+                localStorage.setItem("user4",`${nUser}`)
+            }
+            actualizarInfo(nUser)
+        }
+    })
+}
+
+function administrar(tabla) {
+    localStorage.setItem('tabla',`${tabla}`)
+    localStorage.removeItem('accion')
+    localStorage.removeItem('userC')
+    localStorage.removeItem('medicC')
+    localStorage.removeItem('descC')
+    window.location.replace("../../admin.html")
+}
+
+function agregarPedido(usuario,medicamento,descripcion) {
+    fetch('http://localhost:5000/agregarPedido',{
+        method:'POST',
+        headers,
+        body:`{
+            "usuario":"${usuario}",
+            "medicamento":"${medicamento}",
+            "descripcion":"${descripcion}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        actualizarMedicamentos();
+        actualizarPedido();
+    })
+}
+
+function agregarUnidad(codigo,usuario) {
+    fetch('http://localhost:5000/agregarunidad',{
+        method:'PUT',
+        headers,
+        body:`{
+            "codigo":"${codigo}",
+            "usuario":"${usuario}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        actualizarMedicamentos();
+        actualizarPedido();
+    })
+}
+
+function quitarUnidad(disp,codigo,usuario) {
+    if(disp > 0) {
+        fetch('http://localhost:5000/quitarunidad',{
+            method:'PUT',
+            headers,
+            body:`{
+                "codigo":"${codigo}",
+                "usuario":"${usuario}"
+            }`
+        })
+        .then(response => response.json())
+        .then(data => {
+            actualizarMedicamentos();
+            actualizarPedido();
+        })
+    }
+}
+
+function quitarPedido(codigo,usuario) {
+    fetch('http://localhost:5000/quitarPedido',{
+        method:'DELETE',
+        headers,
+        body:`{
+            "codigo":"${codigo}",
+            "usuario":"${usuario}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        //document.getElementById('totalG')
+        actualizarMedicamentos();
+        actualizarPedido();
+    })
+}
+
+function comprar(total) {
+    console.log(total)
+}

@@ -185,7 +185,7 @@ iframe {
 
 
 .container-form {
-  width: 100px;
+  width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -212,11 +212,13 @@ iframe {
 
 .container-back {
   width: 100%;
+  min-height: 40vh;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.9);
 }
+
 
 /*------------------------------------------------------------------
 [ Form ]*/

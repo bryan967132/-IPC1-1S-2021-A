@@ -18,6 +18,10 @@
 	<!-- Favicon  -->
     <link rel="icon" href="images/usac.png">
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
+
     <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="../Tablas/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
@@ -32,9 +36,22 @@
         <link rel="stylesheet" type="text/css" href="../login/css/main.css">
     <!--===============================================================================================-->
         <script>
-            if(localStorage.getItem('especialidad') != 'admin'){
+            if(localStorage.getItem('tipo1') != 'admin'){
                 window.location.href="../login/login.html"
             }
+            if(localStorage.getItem('tabla') == 'doctor'){
+                location.hash="#doctor"
+            }
+            if(localStorage.getItem('tabla') == 'enfermera'){
+                location.hash="#enfermera"
+            }
+            if(localStorage.getItem('tabla') == 'paciente'){
+                location.hash="#paciente"
+            }
+            if(localStorage.getItem('tabla') == 'medicamento'){
+                location.hash="#medicamento"
+            }
+            localStorage.removeItem('tabla')
         </script>
     </head>
     <body data-spy="scroll" data-target=".fixed-top">
@@ -56,7 +73,7 @@
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Evolo</a> -->
 
         <!-- Image Logo -->
-        <a class="navbar-brand logo-image" href="index.html" style="font-size: 40px; text-decoration: none; font-style:initial;"><span class="turquoise Utitulo">U</span><span class="titulo">Hospital</span></a>
+        <a class="navbar-brand logo-image" href="admin.html" style="font-size: 40px; text-decoration: none; font-style:initial;"><span class="turquoise Utitulo">U</span><span class="titulo">Hospital</span></a>
         
         <!-- Mobile Menu Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +117,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a onclick="cerrarSesion()" class="btn-login page-scroll" href="#cerrar">Cerrar Sesión</a>
+                    <a onclick="cerrarSesionAdmin()" class="btn-login page-scroll" href="#cerrar">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -145,7 +162,7 @@
                             <div id="cargaMDoc" class="header-content basic-1" style="margin-top: -150px;">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-lg-6" style="margin-top: -160px;">
+                                        <div class="col-lg-6" style="margin-top: -90px;">
                                             <div class="text-container">
                                                 <h2>Carga Masiva</h2>
                                             </div> <!-- end of text-container -->
@@ -156,6 +173,17 @@
                                             <br>
                                             <div class="form-group">
                                                 <a class="btn-solid-reg page-scroll" onclick="cargarDoc()" href="#doctor">Cargar</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6" style="margin-top: -90px;">
+                                            <div class="text-container">
+                                                <h2>Listado a PDF</h2>
+                                            </div> <!-- end of text-container -->
+                                            <br>
+                                                <p>Almacena los datos de los doctores registrados en un documento PDF</p>
+                                            <br>
+                                            <div class="form-group">
+                                                <a class="btn-solid-reg page-scroll" onclick="crearPdfDocEnfPac('doctor')" href="#exp">Exportar Listado PDF</a>
                                             </div>
                                         </div>
                                     </div>
@@ -208,7 +236,7 @@
                             <div id="cargaMEnf" class="header-content basic-1" style="margin-top: -150px;">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-lg-6" style="margin-top: -160px;">
+                                        <div class="col-lg-6" style="margin-top: -90px;">
                                             <div class="text-container">
                                                 <h2>Carga Masiva</h2>
                                             </div>
@@ -219,6 +247,17 @@
                                             <br>
                                             <div class="form-group">
                                                 <a class="btn-solid-reg page-scroll" onclick="cargarEnf()" href="#enfermera">Cargar</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6" style="margin-top: -90px;">
+                                            <div class="text-container">
+                                                <h2>Listado a PDF</h2>
+                                            </div> <!-- end of text-container -->
+                                            <br>
+                                                <p>Almacena los datos de las enfermeras registradas en un documento PDF</p>
+                                            <br>
+                                            <div class="form-group">
+                                                <a class="btn-solid-reg page-scroll" onclick="crearPdfDocEnfPac('enfermera')" href="#exp">Exportar Listado PDF</a>
                                             </div>
                                         </div>
                                     </div>
@@ -271,7 +310,7 @@
                             <div id="cargaMPac" class="header-content basic-1" style="margin-top: -150px;">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-lg-6" style="margin-top: -160px;">
+                                        <div class="col-lg-6" style="margin-top: -90px;">
                                             <div class="text-container">
                                                 <h2>Carga Masiva</h2>
                                             </div> <!-- end of text-container -->
@@ -282,6 +321,17 @@
                                             <br>
                                             <div class="form-group">
                                                 <a class="btn-solid-reg page-scroll" onclick="cargarPac()" href="#paciente">Cargar</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6" style="margin-top: -90px;">
+                                            <div class="text-container">
+                                                <h2>Listado a PDF</h2>
+                                            </div> <!-- end of text-container -->
+                                            <br>
+                                                <p>Almacena los datos de los pacientes registrados en un documento PDF</p>
+                                            <br>
+                                            <div class="form-group">
+                                                <a class="btn-solid-reg page-scroll" onclick="crearPdfDocEnfPac('paciente')" href="#exp">Exportar Listado PDF</a>
                                             </div>
                                         </div>
                                     </div>
@@ -334,7 +384,7 @@
                             <div id="cargaMMed" class="header-content basic-1" style="margin-top: -150px;">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-lg-6" style="margin-top: -160px;">
+                                        <div class="col-lg-6" style="margin-top: -90px;">
                                             <div class="text-container">
                                                 <h2>Carga Masiva</h2>
                                             </div> <!-- end of text-container -->
@@ -345,6 +395,17 @@
                                             <br>
                                             <div class="form-group">
                                                 <a class="btn-solid-reg page-scroll" onclick="cargarMed()" href="#medicamento">Cargar</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6" style="margin-top: -90px;">
+                                            <div class="text-container">
+                                                <h2>Listado a PDF</h2>
+                                            </div> <!-- end of text-container -->
+                                            <br>
+                                                <p>Almacena los medicamentos registrados en un documento PDF</p>
+                                            <br>
+                                            <div class="form-group">
+                                                <a class="btn-solid-reg page-scroll" onclick="crearPdfMed()" href="#exp">Exportar Listado PDF</a>
                                             </div>
                                         </div>
                                     </div>
@@ -358,6 +419,8 @@
     </header> <!-- end of header -->
 
     <!-- Scripts -->
+    <script src="js/lsDocEnfPac.js"></script> <!-- Reportes DocEnfPac -->
+    <script src="js/lsMed.js"></script> <!-- Reporte Medicamento -->
     <script src="js/infoT.js"></script> <!-- Importando datos -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->

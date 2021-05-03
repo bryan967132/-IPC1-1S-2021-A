@@ -16,14 +16,15 @@ var telefono = document.getElementById("telefono");
 
 //funcion registrar usuarios
 function CrearUsuario(){
-
     if(nombre.value == ''){showValidate(nombre)}
     if(apellido.value == ''){showValidate(apellido)}
     if(fecha.value == ''){showValidate(fecha)}
     if(genero.value == ''){showValidate(genero)}
     if(usuario.value == ''){showValidate(usuario)}
     if(pass.value == ''){showValidate(pass)}
-    if(nombre.value != '' && apellido.value != '' && fecha.value != '' && genero.value != '' && usuario.value != '' && pass.value != '' && telefono.value != ''){
+    if(nombre.value != '' && apellido.value != '' && fecha.value != '' && genero.value != '' && usuario.value != '' && pass.value != ''){
+        let phone = '';
+        if(telefono.value == ''){phone = 'Sin registrar'}else{phone = telefono.value}
         fetch('http://localhost:5000/registro',{
             method:'POST',
             headers,
@@ -36,7 +37,7 @@ function CrearUsuario(){
                 "genero":"${genero.value}",
                 "usuario":"${usuario.value}",
                 "password":"${pass.value}",
-                "telefono":"${telefono.value}"
+                "telefono":"${phone}"
             }`
         })
         .then(response => response.json())
@@ -96,33 +97,33 @@ function IniciarSesion(){
                         saludo = 'Bienvenido'
                     }
                     if(data1.tipo == "admin"){
-                        alert(`${saludo} ${data1.nombre}`)
-                        localStorage.setItem('especialidad','admin')
-                        localStorage.setItem('userPc',`${data1.usuario}`)
+                        alert(saludo+" "+data1.nombre)
+                        localStorage.setItem('tipo1','admin')
+                        localStorage.setItem('user1',`${data1.usuario}`)
                         window.location.href="../pagina/admin.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "doctor"){
-                        alert(`${saludo} ${data1.nombre}`)
-                        localStorage.setItem('especialidad','doctor')
-                        localStorage.setItem('userPc',`${data1.usuario}`)
+                        alert(saludo+" "+data1.nombre)
+                        localStorage.setItem('tipo2','doctor')
+                        localStorage.setItem('user2',`${data1.usuario}`)
                         window.location.href="../pagina/doctor.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "enfermera"){
-                        alert(`${saludo} ${data1.nombre}`)
-                        localStorage.setItem('especialidad','enfermera')
-                        localStorage.setItem('userPc',`${data1.usuario}`)
+                        alert(saludo+" "+data1.nombre)
+                        localStorage.setItem('tipo3','enfermera')
+                        localStorage.setItem('user3',`${data1.usuario}`)
                         window.location.href="../pagina/enfermera.html"
                         usuario.value = '';
                         pass.value = '';
                     }
                     if(data1.tipo == "paciente"){
-                        alert(`${saludo} ${data1.nombre}`)
-                        localStorage.setItem('especialidad','paciente')
-                        localStorage.setItem('userPc',`${data1.usuario}`)
+                        alert(saludo+" "+data1.nombre)
+                        localStorage.setItem('tipo4','paciente')
+                        localStorage.setItem('user4',`${data1.usuario}`)
                         window.location.href="../pagina/paciente.html"
                         usuario.value = '';
                         pass.value = '';
@@ -140,7 +141,7 @@ function IniciarSesion(){
                 usuario.value = '';
                 pass.value = '';
                 telefono.value = '';
-                alert('Hubo un error registrando al paciente')
+                alert('Hubo un error al iniciar sesión')
             }
         )
     }

@@ -32,7 +32,7 @@
         <link rel="stylesheet" type="text/css" href="../login/css/main.css">
     <!--===============================================================================================-->
         <script>
-            if(localStorage.getItem('especialidad') != 'doctor'){
+            if(localStorage.getItem('tipo2') != 'doctor'){
                 window.location.href="../login/login.html"
             }
         </script>
@@ -56,7 +56,7 @@
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Evolo</a> -->
 
         <!-- Image Logo -->
-        <a class="navbar-brand logo-image" href="index.html" style="font-size: 40px; text-decoration: none; font-style:initial;"><span class="turquoise Utitulo">U</span><span class="titulo">Hospital</span></a>
+        <a class="navbar-brand logo-image" href="doctor.html" style="font-size: 40px; text-decoration: none; font-style:initial;"><span class="turquoise Utitulo">U</span><span class="titulo">Hospital</span></a>
         
         <!-- Mobile Menu Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,7 +77,7 @@
                     <a class="nav-link page-scroll" href="#cita">Citas</a>
                 </li>
                 <li class="nav-item">
-                    <a onclick="cerrarSesion()" class="btn-login page-scroll" href="#cerrar">Cerrar Sesión</a>
+                    <a onclick="cerrarSesionDoc()" class="btn-login page-scroll" href="#cerrar">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -108,9 +108,12 @@
                                     <h4 style="margin-top: 5px;">Usuario:</h4><input style="margin-top: -29px; margin-left: 95px; padding-bottom: 0.0625rem; color: #626262; font-size: 20.7px; background: transparent; height: 30px;" id="userP" readonly>
                                     <h4 style="margin-top: 5px;">Fecha de Nacimiento:</h4><input type="date" style="margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: #626262; font-size: 20.7px; background: transparent; height: 30px;" id="dateP" readonly>
                                     <input type="password" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="passP" readonly>
+                                    <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="celuP" readonly>
+                                    <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="gensP" readonly>
+                                    <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="specP" readonly>                                  
                                     <br>
                                     <script>
-                                        fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("userPc")}`)
+                                        fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("user2")}`)
                                         .then(response => response.json())
                                         .then(data => {
                                             document.getElementById("nameP").value = `${data.nombre}`
@@ -118,9 +121,14 @@
                                             document.getElementById("userP").value = `${data.usuario}`
                                             document.getElementById("dateP").value = `${data.fecha}`
                                             document.getElementById("passP").value = `${data.password}`
+                                            let phone = ''
+                                            if(data.telefono != 'Sin registrar'){phone = data.telefono}
+                                            document.getElementById("celuP").value = `${phone}`
+                                            document.getElementById("gensP").value = `${data.genero}`
+                                            document.getElementById("specP").value = `${data.especialidad}`
                                         })
                                     </script>
-                                    <a onclick="formedit(`${document.getElementById('nameP').value}`,`${document.getElementById('lastP').value}`,`${document.getElementById('userP').value}`,`${document.getElementById('passP').value}`,`${document.getElementById('dateP').value}`)" type="button" class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">Modificar Perfil</a>
+                                    <a onclick="formedit(`${document.getElementById('nameP').value}`,`${document.getElementById('lastP').value}`,`${document.getElementById('userP').value}`,`${document.getElementById('passP').value}`,`${document.getElementById('dateP').value}`,`${document.getElementById('celuP').value}`,`${document.getElementById('gensP').value}`,`${document.getElementById('specP').value}`)" type="button" class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">Modificar Perfil</a>
                                 </div>
                             </div>
                             <!-- end of card -->
@@ -167,16 +175,89 @@
                             <input type="password" class="form-control-input" id="EditpassP">
                             <label class="label-placeholder" for="special">Contraseña</label>
                         </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="EditceluP">
+                            <label class="label-placeholder" for="special">Teléfono</label>
+                        </div>
                     </form>
+                    <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="EditgensP" readonly>
+                    <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="EditspecP" readonly>                                  
                     <!-- end of contact form -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4" style="margin-left: -630px; margin-top: 290px;">
-                    <a class="btn-solid-reg page-scroll mfp-close x-button" href="#inicio">Modificar</a>
+                    <a class="btn-solid-reg page-scroll mfp-close x-button" onclick="modificarperfil(`${localStorage.getItem('user2')}`,'doctor',`${document.getElementById('EditnameP').value}`,`${document.getElementById('EditlastP').value}`,`${document.getElementById('EditdateP').value}`,`${document.getElementById('EditgensP').value}`,`${document.getElementById('EdituserP').value}`,`${document.getElementById('EditpassP').value}`,`${document.getElementById('EditspecP').value}`,`${document.getElementById('EditceluP').value}`)" href="#inicio">Modificar</a>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of lightbox-basic -->
     <!-- end of details lightbox 1 -->
+
+    <header id="receta" class="header container-back">
+        <div class="header-content basic-1">
+            <div class="container">
+                <div class="">
+                    <div class="col-lg-6" style="margin-top: -160px;">
+                        <div class="text-container">
+                            <h1><span class="turquoise">R</span>eceta <span class="turquoise">M</span>édica</h1>
+                        </div> <!-- end of text-container -->
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+            <div class="cards-Info" style="margin-top: -60px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Card -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title"><span class="turquoise">Receta</span></h3>
+                                    <!-- Contact Form -->
+                                    <form id="contactForm">
+                                        <div class="form-group">
+                                            <input type="date" class="form-fac-input" id="dateR">
+                                            <label class="label-placeholder" for="dateR">Fecha</label>
+                                        </div>
+                                        <script>
+                                            let fecha = new Date();
+                                            let mes = '';
+                                            let dia = '';
+                                            if(fecha.getMonth()+1 < 10) {mes = '0'+(fecha.getMonth()+1)}else{mes = (fecha.getMonth()+1)}
+                                            if(fecha.getDate() < 10) {dia = '0'+fecha.getDate()}else{dia = fecha.getDate()}
+                                            document.getElementById('dateR').value = fecha.getFullYear()+"-"+mes+"-"+dia
+                                        </script>
+                                        <div class="form-group">
+                                            <input type="text" class="form-fac-input" id="pacR" required>
+                                            <label class="label-placeholder" for="pacR">Paciente</label>
+                                        </div>
+                                        <div class="form-group" style="margin-top: -68px; margin-left: 295px;">
+                                            <input type="text" class="form-fac-input" id="docR" disabled>
+                                            <label class="label-placeholder" for="docR">Doctor</label>
+                                        </div>
+                                        <script>
+                                            fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("user2")}`)
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                document.getElementById("docR").value = `${data.nombre} `+`${data.apellido}`
+                                            })
+                                        </script>
+                                        <div class="form-group">
+                                            <textarea class="form-fac-textarea" id="motivoR" required></textarea>
+                                            <label class="label-placeholder" for="motivoR">Motivo</label>
+                                        </div>
+                                        <div class="button-wrapper">
+                                            <a class="btn-solid-lg page-scroll" href="#generar">Generar Receta PDF</a>
+                                        </div>
+                                    </form>
+                                    <!-- end of contact form -->
+                                </div>
+                            </div>
+                            <!-- end of card -->
+                        </div> <!-- end of col -->
+                    </div> <!-- end of row -->
+                </div> <!-- end of container -->
+            </div> <!-- end of cards-1 -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
 
     <header id="cita" class="header container-back">
         <div class="header-content">

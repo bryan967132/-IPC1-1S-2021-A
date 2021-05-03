@@ -32,7 +32,7 @@
         <link rel="stylesheet" type="text/css" href="../login/css/main.css">
     <!--===============================================================================================-->
         <script>
-            if(localStorage.getItem('especialidad') != 'enfermera'){
+            if(localStorage.getItem('tipo3') != 'enfermera'){
                 window.location.href="../login/login.html"
             }
         </script>
@@ -56,7 +56,7 @@
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Evolo</a> -->
 
         <!-- Image Logo -->
-        <a class="navbar-brand logo-image" href="index.html" style="font-size: 40px; text-decoration: none; font-style:initial;"><span class="turquoise Utitulo">U</span><span class="titulo">Hospital</span></a>
+        <a class="navbar-brand logo-image" href="enfermera.html" style="font-size: 40px; text-decoration: none; font-style:initial;"><span class="turquoise Utitulo">U</span><span class="titulo">Hospital</span></a>
         
         <!-- Mobile Menu Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +82,7 @@
                     <a class="nav-link page-scroll" href="#facturacion">Facturación</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn-login page-scroll" href="../login/login.html">Cerrar Sesión</a>
+                    <a onclick="cerrarSesionEnf()" class="btn-login page-scroll" href="../login/login.html">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -113,9 +113,11 @@
                                     <h4 style="margin-top: 5px;">Usuario:</h4><input style="margin-top: -29px; margin-left: 95px; padding-bottom: 0.0625rem; color: #626262; font-size: 20.7px; background: transparent; height: 30px;" id="userP" readonly>
                                     <h4 style="margin-top: 5px;">Fecha de Nacimiento:</h4><input type="date" style="margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: #626262; font-size: 20.7px; background: transparent; height: 30px;" id="dateP" readonly>
                                     <input type="password" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="passP" readonly>
+                                    <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="celuP" readonly>
+                                    <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="gensP" readonly>
                                     <br>
                                     <script>
-                                        fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("userPc")}`)
+                                        fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("user3")}`)
                                         .then(response => response.json())
                                         .then(data => {
                                             document.getElementById("nameP").value = `${data.nombre}`
@@ -123,9 +125,11 @@
                                             document.getElementById("userP").value = `${data.usuario}`
                                             document.getElementById("dateP").value = `${data.fecha}`
                                             document.getElementById("passP").value = `${data.password}`
+                                            document.getElementById("celuP").value = `${data.telefono}`
+                                            document.getElementById("gensP").value = `${data.genero}`
                                         })
                                     </script>
-                                    <a onclick="formedit(`${document.getElementById('nameP').value}`,`${document.getElementById('lastP').value}`,`${document.getElementById('userP').value}`,`${document.getElementById('passP').value}`,`${document.getElementById('dateP').value}`)" type="button" class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">Modificar Perfil</a>
+                                    <a onclick="formedit(`${document.getElementById('nameP').value}`,`${document.getElementById('lastP').value}`,`${document.getElementById('userP').value}`,`${document.getElementById('passP').value}`,`${document.getElementById('dateP').value}`,`${document.getElementById('celuP').value}`,`${document.getElementById('gensP').value}`,'')" type="button" class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">Modificar Perfil</a>
                                 </div>
                             </div>
                             <!-- end of card -->
@@ -172,11 +176,16 @@
                             <input type="password" class="form-control-input" id="EditpassP">
                             <label class="label-placeholder" for="special">Contraseña</label>
                         </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="EditceluP">
+                            <label class="label-placeholder" for="special">Teléfono</label>
+                        </div>
                     </form>
+                    <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="EditgensP" readonly>
                     <!-- end of contact form -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4" style="margin-left: -630px; margin-top: 290px;">
-                    <a class="btn-solid-reg page-scroll mfp-close x-button" href="#inicio">Modificar</a>
+                    <a class="btn-solid-reg page-scroll mfp-close x-button" onclick="modificarperfil(`${localStorage.getItem('user3')}`,'enfermera',`${document.getElementById('EditnameP').value}`,`${document.getElementById('EditlastP').value}`,`${document.getElementById('EditdateP').value}`,`${document.getElementById('EditgensP').value}`,`${document.getElementById('EdituserP').value}`,`${document.getElementById('EditpassP').value}`,'',`${document.getElementById('EditceluP').value}`)" href="#inicio">Modificar</a>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->

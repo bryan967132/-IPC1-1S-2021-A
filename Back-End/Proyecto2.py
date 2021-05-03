@@ -24,24 +24,29 @@ def obtenermedicamentos():
 def obtenerusuarios():
     return gestor.obtener_usuarios()
 
-@app.route('/libros',methods=['POST'])
-def crearlibro():
+@app.route('/actualizarusuario/<usuario>',methods=['PUT'])
+def actualizarusuario(usuario):
     dato = request.json
-    gestor.crearLibro(dato['titulo'],dato['autor'],dato['imagen'],dato['descripcion'])
-    return '{"Estado":"Libro Creado"}'
+    return gestor.actualizar_usuario(usuario,dato)
 
-@app.route('/libros/<titulo>/<autor>',methods=['DELETE'])
-def eliminarlibro(titulo,autor):
-    if(gestor.eliminar_libro(titulo,autor)):
-        return '{"data":"Eliminado"}'
-    return '{"data":"Error"}'
-
-@app.route('/libros/<titulo>',methods=['PUT'])
-def actualizarlibro(titulo):
+@app.route('/actualizarmedicamento/<nombre>/<descripcion>',methods=['PUT'])
+def actualizarmedicamento(nombre,descripcion):
     dato = request.json
-    if(gestor.actualizar_libro(titulo,dato['titulo'],dato['autor'],dato['imagen'],dato['descripcion'])):
-        return '{"data":"Actualizado"}'
-    return '{"data":"Error"}'
+    return gestor.actualizar_medicamento(nombre,descripcion,dato)
+
+@app.route('/agregarunidad',methods=['PUT'])
+def agregarunidad():
+    dato = request.json
+    return gestor.agregar_unidad(dato['codigo'],dato['usuario'])
+
+@app.route('/quitarunidad',methods=['PUT'])
+def quitarunidad():
+    dato = request.json
+    return gestor.quitar_unidad(dato['codigo'],dato['usuario'])
+
+@app.route('/obtenerpedido')
+def obtenerpedido():
+    return gestor.obtener_pedido()
 
 @app.route('/eliminarusuario',methods=['DELETE'])
 def eliminarusuario():
@@ -56,6 +61,10 @@ def eliminarmedicamento():
 @app.route('/buscartipousuario/<usuario>',methods=['GET'])
 def buscartipousuario(usuario):
     return gestor.buscar_tipo_usuario(usuario)
+
+@app.route('/buscarmedicamento/<nombre>/<descripcion>')
+def buscarmedicamento(nombre,descripcion):
+    return gestor.buscar_medicamento(nombre,descripcion)
 
 @app.route('/clasificartipousuario/<tipo>')
 def clasificartipousuario(tipo):
@@ -93,6 +102,16 @@ def cargaMed():
 def registrar():
     dato = request.json
     return gestor.registrar_usuario(dato['tipo'],dato['nombre'],dato['apellido'],dato['fecha'],dato['genero'],dato['usuario'],dato['password'],dato['telefono'])
+
+@app.route('/agregarPedido',methods=['POST'])
+def agregarPedido():
+    dato = request.json
+    return gestor.agregar_pedido(dato['usuario'],dato['medicamento'],dato['descripcion'])
+
+@app.route('/quitarPedido',methods=['DELETE'])
+def quitarPedido():
+    dato = request.json
+    return gestor.quitar_pedido(dato['usuario'],dato['codigo'])
 
 #Iniciar el Servidor
 if __name__ == "__main__":
