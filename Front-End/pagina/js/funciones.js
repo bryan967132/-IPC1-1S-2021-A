@@ -68,6 +68,7 @@ function cargarDoc(){
         }
         readers.onerror = function(evt){
         }
+        document.getElementById("cargaDoc").value = '';
     }
 }
 function cargarEnf(){
@@ -95,6 +96,7 @@ function cargarEnf(){
         }
         readers.onerror = function(evt){
         }
+        document.getElementById("cargaEnf").value = '';
     }
 }
 function cargarPac(){
@@ -122,6 +124,7 @@ function cargarPac(){
         }
         readers.onerror = function(evt){
         }
+        document.getElementById("cargaPac").value = '';
     }
 }
 function cargarMed(){
@@ -149,6 +152,7 @@ function cargarMed(){
         }
         readers.onerror = function(evt){
         }
+        document.getElementById("cargaMed").value = '';
     }
 }
 function delete_doc(usuario) {
@@ -640,6 +644,7 @@ function aceptarEnf(doctor) {
     })
     .then(response => response.json())
     .then(data => {
+        localStorage.setItem('tabla1','Cita')
         localStorage.removeItem('pacienteCita')
         window.location.replace("enfermera.html")
     })

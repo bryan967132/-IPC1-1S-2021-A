@@ -48,7 +48,7 @@ function crearPdfCompra(cliente,total,clienteUser){
     var doc = new jsPDF({ putOnlyUsedFonts: true, orientation: "portrait" });
       doc.text(`Nombre: ${cliente}`, 10, 15)
       doc.table(10, 20, datos, headers, { autoSize: false });
-      doc.text(`Total Gastado: Q ${total}`, 160, 15)
+      doc.text(`Total Gastado: Q ${total}`, 120, 15)
       doc.save('PedidoMedicamentos.pdf')
     })
   }

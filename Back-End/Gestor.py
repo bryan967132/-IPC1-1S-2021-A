@@ -22,8 +22,8 @@ class Gestor:
         #-----------------------admin-----------------------------------
         self.usuarios.append(Usuario('admin','admin','1234'))
         self.admin.append(Admin('Herbert','Reyes','2000-12-04','M','admin','1234','12345678'))
-        """#-----------------------doctor-----------------------------------
-        self.usuarios.append(Usuario('doctor','gh123','1234'))
+        #-----------------------doctor-----------------------------------
+        """self.usuarios.append(Usuario('doctor','gh123','1234'))
         self.usuarios.append(Usuario('doctor','st123','1234'))
         self.usuarios.append(Usuario('doctor','ja123','1234'))
         self.doctores.append(Doctor('Gregory','House','2000-02-15','M','gh123','1234','Infectologia','Sin registrar'))
@@ -67,9 +67,6 @@ class Gestor:
     
     def obtener_citas(self):
         return json.dumps([ob.__dict__ for ob in self.citas])
-    
-    def obtener_topMed(self):
-        return json.dumps([ob.__dict__ for ob in self.medMasV])
 
     #Update
     def actualizar_usuario(self,usuario,data):
@@ -319,33 +316,39 @@ class Gestor:
 
     #Agregar Unidades
     def agregar_unidad(self,codigo,usuario):
-        for i in self.pedidos:
-            if i.usuario == usuario and i.codigo == codigo:
-                for j in self.medicamentos:
-                    if int(j.cantidad) > 0:
-                        if j.nombre == i.medicamento and j.descripcion == i.descripcion:
-                            cant1 = int(i.unidades)
-                            cant1 += 1
-                            cant2 = int(j.cantidad)
-                            cant2 -= 1
-                            self.medicamentos[self.medicamentos.index(j)] = Medicamento(j.nombre,j.precio,j.descripcion,cant2)
-                            self.pedidos[self.pedidos.index(i)] = Pedido(i.codigo,i.usuario,i.medicamento,i.precio,cant1,i.descripcion)
-                            return '{"estado":"agregado"}'
-        return '{"estado":"agotado"}'
+        try:
+            for i in self.pedidos:
+                if i.usuario == usuario and i.codigo == codigo:
+                    for j in self.medicamentos:
+                        if int(j.cantidad) > 0:
+                            if j.nombre == i.medicamento and j.descripcion == i.descripcion:
+                                cant1 = int(i.unidades)
+                                cant1 += 1
+                                cant2 = int(j.cantidad)
+                                cant2 -= 1
+                                self.medicamentos[self.medicamentos.index(j)] = Medicamento(j.nombre,j.precio,j.descripcion,cant2)
+                                self.pedidos[self.pedidos.index(i)] = Pedido(i.codigo,i.usuario,i.medicamento,i.precio,cant1,i.descripcion)
+                                return '{"estado":"agregado"}'
+            return '{"estado":"agotado"}'
+        except:
+            pass
 
     #Quitar Unidades
     def quitar_unidad(self,codigo,usuario):
-        for i in self.pedidos:
-            if i.usuario == usuario and i.codigo == codigo:
-                for j in self.medicamentos:
-                    if j.nombre == i.medicamento and j.descripcion == i.descripcion:
-                        cant1 = int(i.unidades)
-                        cant1 -= 1
-                        cant2 = int(j.cantidad)
-                        cant2 += 1
-                        self.medicamentos[self.medicamentos.index(j)] = Medicamento(j.nombre,j.precio,j.descripcion,cant2)
-                        self.pedidos[self.pedidos.index(i)] = Pedido(i.codigo,i.usuario,i.medicamento,i.precio,cant1,i.descripcion)
-                        return '{"estado":"agregado"}'
+        try:
+            for i in self.pedidos:
+                if i.usuario == usuario and i.codigo == codigo:
+                    for j in self.medicamentos:
+                        if j.nombre == i.medicamento and j.descripcion == i.descripcion:
+                            cant1 = int(i.unidades)
+                            cant1 -= 1
+                            cant2 = int(j.cantidad)
+                            cant2 += 1
+                            self.medicamentos[self.medicamentos.index(j)] = Medicamento(j.nombre,j.precio,j.descripcion,cant2)
+                            self.pedidos[self.pedidos.index(i)] = Pedido(i.codigo,i.usuario,i.medicamento,i.precio,cant1,i.descripcion)
+                            return '{"estado":"agregado"}'
+        except:
+            pass
 
     #Realizar Cobro
     def cobrar(self,codigo,usuario):
