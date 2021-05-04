@@ -1,6 +1,6 @@
 //Tabla Doctores
 let text = "";
-fetch('http://localhost:5000/clasificartipousuario/doctor')
+fetch('http://35.222.105.198:5000/clasificartipousuario/doctor')
 .then(response => response.json())
 .then(data => {
     var i;
@@ -28,7 +28,7 @@ fetch('http://localhost:5000/clasificartipousuario/doctor')
 
 //Tabla Enfermeras
 let text1 = "";
-fetch('http://localhost:5000/clasificartipousuario/enfermera')
+fetch('http://35.222.105.198:5000/clasificartipousuario/enfermera')
 .then(response1 => response1.json())
 .then(data1 => {
     var i;
@@ -56,7 +56,7 @@ fetch('http://localhost:5000/clasificartipousuario/enfermera')
 
 //Tabla Pacientes
 let text2 = "";
-fetch('http://localhost:5000/clasificartipousuario/paciente')
+fetch('http://35.222.105.198:5000/clasificartipousuario/paciente')
 .then(response2 => response2.json())
 .then(data2 => {
     var i;
@@ -85,7 +85,7 @@ fetch('http://localhost:5000/clasificartipousuario/paciente')
 
 //Tabla Medicamentos
 let text3 = "";
-fetch('http://localhost:5000/obtenermedicamentos')
+fetch('http://35.222.105.198:5000/obtenermedicamentos')
 .then(response3 => response3.json())
 .then(data3 => {
     var i;
@@ -114,7 +114,7 @@ fetch('http://localhost:5000/obtenermedicamentos')
 
 function actualizarTabDoc() {
     let text = "";
-    fetch('http://localhost:5000/clasificartipousuario/doctor')
+    fetch('http://35.222.105.198:5000/clasificartipousuario/doctor')
     .then(response => response.json())
     .then(data => {
         var i;
@@ -143,7 +143,7 @@ function actualizarTabDoc() {
 
 function actualizarTabEnf() {
     let text1 = "";
-    fetch('http://localhost:5000/clasificartipousuario/enfermera')
+    fetch('http://35.222.105.198:5000/clasificartipousuario/enfermera')
     .then(response1 => response1.json())
     .then(data1 => {
         var i;
@@ -172,7 +172,7 @@ function actualizarTabEnf() {
 
 function actualizarTabPac() {
     let text2 = "";
-    fetch('http://localhost:5000/clasificartipousuario/paciente')
+    fetch('http://35.222.105.198:5000/clasificartipousuario/paciente')
     .then(response2 => response2.json())
     .then(data2 => {
         var i;
@@ -202,7 +202,7 @@ function actualizarTabPac() {
 
 function actualizarTabMed() {
     let text3 = "";
-    fetch('http://localhost:5000/obtenermedicamentos')
+    fetch('http://35.222.105.198:5000/obtenermedicamentos')
     .then(response3 => response3.json())
     .then(data3 => {
         var i;

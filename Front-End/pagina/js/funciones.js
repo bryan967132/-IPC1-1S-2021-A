@@ -52,7 +52,7 @@ function cargarDoc(){
             let cuerpo = {
                 data:evt.target.result
             }
-            fetch('http://localhost:5000/cargaDoc',{
+            fetch('http://35.222.105.198:5000/cargaDoc',{
                 method:'POST',
                 headers,
                 body:JSON.stringify(cuerpo),
@@ -80,7 +80,7 @@ function cargarEnf(){
             let cuerpo = {
                 data:evt.target.result
             }
-            fetch('http://localhost:5000/cargaEnf',{
+            fetch('http://35.222.105.198:5000/cargaEnf',{
                 method:'POST',
                 headers,
                 body:JSON.stringify(cuerpo),
@@ -108,7 +108,7 @@ function cargarPac(){
             let cuerpo = {
                 data:evt.target.result
             }
-            fetch('http://localhost:5000/cargaPac',{
+            fetch('http://35.222.105.198:5000/cargaPac',{
                 method:'POST',
                 headers,
                 body:JSON.stringify(cuerpo),
@@ -136,7 +136,7 @@ function cargarMed(){
             let cuerpo = {
                 data:evt.target.result
             }
-            fetch('http://localhost:5000/cargaMed',{
+            fetch('http://35.222.105.198:5000/cargaMed',{
                 method:'POST',
                 headers,
                 body:JSON.stringify(cuerpo),
@@ -156,7 +156,7 @@ function cargarMed(){
     }
 }
 function delete_doc(usuario) {
-    fetch('http://localhost:5000/eliminarusuario',{
+    fetch('http://35.222.105.198:5000/eliminarusuario',{
         method:'DELETE',
         headers,
         body:`{
@@ -171,7 +171,7 @@ function delete_doc(usuario) {
     })
 }
 function delete_enf(usuario) {
-    fetch('http://localhost:5000/eliminarusuario',{
+    fetch('http://35.222.105.198:5000/eliminarusuario',{
         method:'DELETE',
         headers,
         body:`{
@@ -186,7 +186,7 @@ function delete_enf(usuario) {
     })
 }
 function delete_pac(usuario) {
-    fetch('http://localhost:5000/eliminarusuario',{
+    fetch('http://35.222.105.198:5000/eliminarusuario',{
         method:'DELETE',
         headers,
         body:`{
@@ -201,7 +201,7 @@ function delete_pac(usuario) {
     })
 }
 function delete_pac(usuario) {
-    fetch('http://localhost:5000/eliminarusuario',{
+    fetch('http://35.222.105.198:5000/eliminarusuario',{
         method:'DELETE',
         headers,
         body:`{
@@ -217,7 +217,7 @@ function delete_pac(usuario) {
 }
 
 function delete_med(nombre,descripcion) {
-    fetch('http://localhost:5000/eliminarmedicamento',{
+    fetch('http://35.222.105.198:5000/eliminarmedicamento',{
         method:'DELETE',
         headers,
         body:`{
@@ -233,7 +233,7 @@ function delete_med(nombre,descripcion) {
 }
 
 function actualizarusuario(usuario,tipo,nName,nLast,nDate,nGens,nUser,nPass,nSpec,nCelu) {
-    fetch(`http://localhost:5000/actualizarusuario/${usuario}`,{
+    fetch(`http://35.222.105.198:5000/actualizarusuario/${usuario}`,{
         method:'PUT',
         headers,
         body:`{
@@ -261,7 +261,7 @@ function actualizarusuario(usuario,tipo,nName,nLast,nDate,nGens,nUser,nPass,nSpe
 }
 
 function actualizarmedicamento(medicamento,descripcion,nMed,nPre,nDesc,nCant) {
-    fetch(`http://localhost:5000/actualizarmedicamento/${medicamento}/${descripcion}`,{
+    fetch(`http://35.222.105.198:5000/actualizarmedicamento/${medicamento}/${descripcion}`,{
         method:'PUT',
         headers,
         body:`{
@@ -280,7 +280,7 @@ function actualizarmedicamento(medicamento,descripcion,nMed,nPre,nDesc,nCant) {
 }
 
 function modificarperfil(usuario,tipo,nName,nLast,nDate,nGens,nUser,nPass,nSpec,nCelu) {
-    fetch(`http://localhost:5000/actualizarusuario/${usuario}`,{
+    fetch(`http://35.222.105.198:5000/actualizarusuario/${usuario}`,{
         method:'PUT',
         headers,
         body:`{
@@ -328,7 +328,7 @@ function administrar(tabla) {
 }
 
 function agregarPedido(usuario,medicamento,descripcion) {
-    fetch('http://localhost:5000/agregarPedido',{
+    fetch('http://35.222.105.198:5000/agregarPedido',{
         method:'POST',
         headers,
         body:`{
@@ -345,7 +345,7 @@ function agregarPedido(usuario,medicamento,descripcion) {
 }
 
 function agregarUnidad(codigo,usuario) {
-    fetch('http://localhost:5000/agregarunidad',{
+    fetch('http://35.222.105.198:5000/agregarunidad',{
         method:'PUT',
         headers,
         body:`{
@@ -362,7 +362,7 @@ function agregarUnidad(codigo,usuario) {
 
 function quitarUnidad(disp,codigo,usuario) {
     if(disp > 0) {
-        fetch('http://localhost:5000/quitarunidad',{
+        fetch('http://35.222.105.198:5000/quitarunidad',{
             method:'PUT',
             headers,
             body:`{
@@ -379,7 +379,7 @@ function quitarUnidad(disp,codigo,usuario) {
 }
 
 function quitarPedido(codigo,usuario) {
-    fetch('http://localhost:5000/quitarPedido',{
+    fetch('http://35.222.105.198:5000/quitarPedido',{
         method:'DELETE',
         headers,
         body:`{
@@ -396,13 +396,13 @@ function quitarPedido(codigo,usuario) {
 }
 
 function comprar(usuario,total,cliente) {
-    fetch('http://localhost:5000/obtenerpedido')
+    fetch('http://35.222.105.198:5000/obtenerpedido')
     .then(response => response.json())
     .then(data=>{
         crearPdfCompra(cliente,total,usuario);
         let i;
         for(i = 0; i < data.length; i++) {
-            fetch('http://localhost:5000/cobrar',{
+            fetch('http://35.222.105.198:5000/cobrar',{
                 method:'DELETE',
                 headers,
                 body:`{
@@ -422,7 +422,7 @@ function enviarSolicitud(fecha,hora,motivo) {
     if(motivo == ''){
         alert('Ingrese el motivo de su cita')
     }else{
-        fetch('http://localhost:5000/solicitudCita',{
+        fetch('http://35.222.105.198:5000/solicitudCita',{
             method:'POST',
             headers,
             body:`{
@@ -470,7 +470,7 @@ function enviarSolicitud(fecha,hora,motivo) {
 }
 
 function nuevaSolicitud() {
-    fetch('http://localhost:5000/eliminarsolicitudCita',{
+    fetch('http://35.222.105.198:5000/eliminarsolicitudCita',{
         method:'DELETE',
         headers,
         body:`{
@@ -491,10 +491,10 @@ function nuevaSolicitud() {
 }
 
 function actualizarEstadoCita() {
-    fetch(`http://localhost:5000/buscarcita/${localStorage.getItem("user4")}`)
+    fetch(`http://35.222.105.198:5000/buscarcita/${localStorage.getItem("user4")}`)
     .then(responseC => responseC.json())
     .then(dataC => {
-        fetch(`http://localhost:5000/buscarcita/${localStorage.getItem("user4")}`)
+        fetch(`http://35.222.105.198:5000/buscarcita/${localStorage.getItem("user4")}`)
         .then(responseC => responseC.json())
         .then(dataC => {
             if(dataC.cita != "false") {
@@ -517,7 +517,7 @@ function actualizarEstadoCita() {
 }
 
 function aceptarCitaDoctor(usuario) {
-    fetch('http://localhost:5000/aceptarCiDoc',{
+    fetch('http://35.222.105.198:5000/aceptarCiDoc',{
         method:'PUT',
         headers,
         body:`{
@@ -533,7 +533,7 @@ function aceptarCitaDoctor(usuario) {
 }
 
 function rechazarCitaDoctor(usuario) {
-    fetch('http://localhost:5000/rechazarCiDoc',{
+    fetch('http://35.222.105.198:5000/rechazarCiDoc',{
         method:'PUT',
         headers,
         body:`{
@@ -548,7 +548,7 @@ function rechazarCitaDoctor(usuario) {
 }
 
 function completarCita(usuario,doctor,motivo) {
-    fetch(`http://localhost:5000/buscartipousuario/${usuario}`)
+    fetch(`http://35.222.105.198:5000/buscartipousuario/${usuario}`)
     .then(response => response.json())
     .then(data => {
         let fecha = new Date();
@@ -561,7 +561,7 @@ function completarCita(usuario,doctor,motivo) {
         document.getElementById('pacR').value = data.nombre+" "+data.apellido
         document.getElementById('docR').value = doctor
     })
-    fetch('http://localhost:5000/eliminarsolicitudCita',{
+    fetch('http://35.222.105.198:5000/eliminarsolicitudCita',{
         method:'DELETE',
         headers,
         body:`{
@@ -633,7 +633,7 @@ function seleccionarDoctor(usuario){
 }
 
 function aceptarEnf(doctor) {
-    fetch('http://localhost:5000/aceptarCiEnf',{
+    fetch('http://35.222.105.198:5000/aceptarCiEnf',{
         method:'PUT',
         headers,
         body:`{

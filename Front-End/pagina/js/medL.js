@@ -1,6 +1,6 @@
 //Catálogo Medicinas
 let listadoMed = "";
-fetch('http://localhost:5000/obtenermedicamentos')
+fetch('http://35.222.105.198:5000/obtenermedicamentos')
 .then(responseMed => responseMed.json())
 .then(medicamento => {
     var i;
@@ -33,7 +33,7 @@ fetch('http://localhost:5000/obtenermedicamentos')
 
 //Tabla Pedidos
 let pedidoMed = "";
-fetch('http://localhost:5000/obtenerpedido')
+fetch('http://35.222.105.198:5000/obtenerpedido')
 .then(responseP => responseP.json())
 .then(pedido => {
     var i;
@@ -67,7 +67,7 @@ fetch('http://localhost:5000/obtenerpedido')
 
 function actualizarMedicamentos(){
     let listadoMed = "";
-    fetch('http://localhost:5000/obtenermedicamentos')
+    fetch('http://35.222.105.198:5000/obtenermedicamentos')
     .then(responseMed => responseMed.json())
     .then(medicamento => {
         var i;
@@ -101,7 +101,7 @@ function actualizarMedicamentos(){
 
 function actualizarPedido() {
     let pedidoMed = "";
-    fetch('http://localhost:5000/obtenerpedido')
+    fetch('http://35.222.105.198:5000/obtenerpedido')
     .then(responseP => responseP.json())
     .then(pedido => {
         var i;
