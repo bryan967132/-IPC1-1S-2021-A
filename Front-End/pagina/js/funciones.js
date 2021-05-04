@@ -391,6 +391,262 @@ function quitarPedido(codigo,usuario) {
     })
 }
 
-function comprar(total) {
-    console.log(total)
+function comprar(usuario,total,cliente) {
+    fetch('http://localhost:5000/obtenerpedido')
+    .then(response => response.json())
+    .then(data=>{
+        crearPdfCompra(cliente,total,usuario);
+        let i;
+        for(i = 0; i < data.length; i++) {
+            fetch('http://localhost:5000/cobrar',{
+                method:'DELETE',
+                headers,
+                body:`{
+                    "codigo":"${data[i].codigo}",
+                    "usuario":"${usuario}"
+                }`
+            })
+            .then(resp => resp.json())
+            .then(data1 => {
+                actualizarPedido();
+            })
+        }
+    })
+}
+
+function enviarSolicitud(fecha,hora,motivo) {
+    if(motivo == ''){
+        alert('Ingrese el motivo de su cita')
+    }else{
+        fetch('http://localhost:5000/solicitudCita',{
+            method:'POST',
+            headers,
+            body:`{
+                "usuario":"${localStorage.getItem("user4")}",
+                "fecha":"${fecha}",
+                "hora":"${hora}",
+                "motivo":"${motivo}"
+            }`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.solicitud == 'enviado') {
+                let fecha = new Date();
+                let mes = '';
+                let dia = '';
+                if(fecha.getMonth()+1 < 10) {mes = '0'+(fecha.getMonth()+1)}else{mes = (fecha.getMonth()+1)}
+                if(fecha.getDate() < 10) {dia = '0'+fecha.getDate()}else{dia = fecha.getDate()}
+                document.getElementById('dateC').value = fecha.getFullYear()+"-"+mes+"-"+dia
+                let tiempo = new Date();
+                let hora = '';
+                let minuto = '';
+                if(tiempo.getHours() < 10) {hora = '0'+tiempo.getHours()}else{hora = tiempo.getHours()}
+                if(tiempo.getMinutes() < 10) {minuto = '0'+tiempo.getMinutes()}else{minuto = tiempo.getMinutes()}
+                document.getElementById('timeC').value = hora+":"+minuto
+                document.getElementById('motivoC').value = '';
+                actualizarEstadoCita();
+            }else{
+                alert('Tiene una cita en proceso')
+                let fecha = new Date();
+                let mes = '';
+                let dia = '';
+                if(fecha.getMonth()+1 < 10) {mes = '0'+(fecha.getMonth()+1)}else{mes = (fecha.getMonth()+1)}
+                if(fecha.getDate() < 10) {dia = '0'+fecha.getDate()}else{dia = fecha.getDate()}
+                document.getElementById('dateC').value = fecha.getFullYear()+"-"+mes+"-"+dia
+                let tiempo = new Date();
+                let hora = '';
+                let minuto = '';
+                if(tiempo.getHours() < 10) {hora = '0'+tiempo.getHours()}else{hora = tiempo.getHours()}
+                if(tiempo.getMinutes() < 10) {minuto = '0'+tiempo.getMinutes()}else{minuto = tiempo.getMinutes()}
+                document.getElementById('timeC').value = hora+":"+minuto
+                document.getElementById('motivoC').value = '';
+            }
+        })
+    }
+}
+
+function nuevaSolicitud() {
+    fetch('http://localhost:5000/eliminarsolicitudCita',{
+        method:'DELETE',
+        headers,
+        body:`{
+            "usuario":"${localStorage.getItem("user4")}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('motivoC').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('time').value = '';
+        document.getElementById('motivo').value = '';
+        document.getElementById('rech').value = '';
+        document.getElementById('acc').value = '';
+        document.getElementById('pend').value = '';
+        document.getElementById('nueva').innerHTML = '';
+    })
+}
+
+function actualizarEstadoCita() {
+    fetch(`http://localhost:5000/buscarcita/${localStorage.getItem("user4")}`)
+    .then(responseC => responseC.json())
+    .then(dataC => {
+        fetch(`http://localhost:5000/buscarcita/${localStorage.getItem("user4")}`)
+        .then(responseC => responseC.json())
+        .then(dataC => {
+            if(dataC.cita != "false") {
+                document.getElementById('date').value = `${dataC.fecha}`
+                document.getElementById('time').value = `${dataC.hora}`
+                document.getElementById('motivo').value = `${dataC.motivo}`
+                if(dataC.estado == 'Rechazado'){
+                    document.getElementById('rech').value = `${dataC.estado}`
+                    document.getElementById('nueva').innerHTML = `<a class="btn-solid-lg page-scroll" onclick="nuevaSolicitud()" href="#send">Nueva Solicitud</a>`
+                }
+                if(dataC.estado == 'Aceptado'){
+                    document.getElementById('acc').value = `${dataC.estado}`
+                }
+                if(dataC.estado == 'Pendiente'){
+                    document.getElementById('pend').value = `${dataC.estado}`
+                }
+            }
+        })
+    })
+}
+
+function aceptarCitaDoctor(usuario) {
+    fetch('http://localhost:5000/aceptarCiDoc',{
+        method:'PUT',
+        headers,
+        body:`{
+            "usuario":"${usuario}",
+            "doctor":"${localStorage.getItem("user2")}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        actualizarTabCitaPend();
+        actualizarTabAcc();
+    })
+}
+
+function rechazarCitaDoctor(usuario) {
+    fetch('http://localhost:5000/rechazarCiDoc',{
+        method:'PUT',
+        headers,
+        body:`{
+            "usuario":"${usuario}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        actualizarTabCitaPend();
+        actualizarTabAcc();
+    })
+}
+
+function completarCita(usuario,doctor,motivo) {
+    fetch(`http://localhost:5000/buscartipousuario/${usuario}`)
+    .then(response => response.json())
+    .then(data => {
+        let fecha = new Date();
+        let mes = '';
+        let dia = '';
+        if(fecha.getMonth()+1 < 10) {mes = '0'+(fecha.getMonth()+1)}else{mes = (fecha.getMonth()+1)}
+        if(fecha.getDate() < 10) {dia = '0'+fecha.getDate()}else{dia = fecha.getDate()}
+        document.getElementById('dateR').value = fecha.getFullYear()+"-"+mes+"-"+dia
+        document.getElementById('motivoR').value = motivo
+        document.getElementById('pacR').value = data.nombre+" "+data.apellido
+        document.getElementById('docR').value = doctor
+    })
+    fetch('http://localhost:5000/eliminarsolicitudCita',{
+        method:'DELETE',
+        headers,
+        body:`{
+            "usuario":"${usuario}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        actualizarTabAcc();
+    })
+}
+
+function cancelarReceta() {
+    document.getElementById('dateR').value = "";
+    document.getElementById('motivoR').value = "";
+    document.getElementById('pacR').value = "";
+    document.getElementById('docR').value = "";
+    document.getElementById('trataR').value = "";
+}
+
+function sumarCant() {
+    let total = 0;
+    let numA = document.getElementById('cons');
+    let numB = document.getElementById('op');
+    let numC = document.getElementById('inter');
+    let num1 = parseFloat(document.getElementById('cons').value);
+    let num2 = parseFloat(document.getElementById('op').value);
+    let num3 = parseFloat(document.getElementById('inter').value);
+    if(numA.value == '' && numB.value == '' && numC.value == ''){
+        total = 0;
+    }
+    if(numA.value == '' && numB.value == '' && numC.value != ''){
+        total = num3;
+    }
+    if(numA.value == '' && numB.value != '' && numC.value == ''){
+        total = num2;
+    }
+    if(numA.value == '' && numB.value != '' && numC.value != ''){
+        total = num2+num3;
+    }
+    if(numA.value != '' && numB.value == '' && numC.value == ''){
+        total = num1;
+    }
+    if(numA.value != '' && numB.value == '' && numC.value != ''){
+        total = num1+num3;
+    }
+    if(numA.value != '' && numB.value != '' && numC.value == ''){
+        total = num1+num2;
+    }
+    if(numA.value != '' && numB.value != '' && numC.value != ''){
+        total = num1+num2+num3;
+    }
+    document.getElementById('totalF').value = `Q ${total}`
+}
+
+function cancelarFactura() {
+    document.getElementById('date').value = "";
+    document.getElementById('paciente').value = "";
+    document.getElementById('dr').value = "";
+    document.getElementById('cons').value = "";
+    document.getElementById('op').value = "";
+    document.getElementById('inter').value = "";
+    sumarCant();
+}
+
+function seleccionarDoctor(usuario){
+    localStorage.setItem('pacienteCita',`${usuario}`)
+    window.location.replace("opcionDoc.html")
+}
+
+function aceptarEnf(doctor) {
+    fetch('http://localhost:5000/aceptarCiEnf',{
+        method:'PUT',
+        headers,
+        body:`{
+            "usuario":"${localStorage.getItem('pacienteCita')}",
+            "doctor":"${doctor}",
+            "enfermera":"${localStorage.getItem("user3")}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        localStorage.removeItem('pacienteCita')
+        window.location.replace("enfermera.html")
+    })
+}
+
+function administrarEnfCita() {
+    localStorage.setItem('tabla1','Cita')
+    window.location.replace("enfermera.html")
+    localStorage.removeItem('pacienteCita')
 }

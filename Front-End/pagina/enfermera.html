@@ -31,10 +31,17 @@
         <link rel="stylesheet" type="text/css" href="../Tablas/css/main.css">
         <link rel="stylesheet" type="text/css" href="../login/css/main.css">
     <!--===============================================================================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
+
         <script>
             if(localStorage.getItem('tipo3') != 'enfermera'){
                 window.location.href="../login/login.html"
             }
+            if(localStorage.getItem('tabla1') == 'Cita'){
+                location.hash="#cita"
+            }
+            localStorage.removeItem('tabla1')
         </script>
     </head>
     <body data-spy="scroll" data-target=".fixed-top">
@@ -73,7 +80,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link page-scroll dropdown-toggle" href="#cita">Citas</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#pendiente"><span class="item-text">Pendientes</span></a>
+                        <a class="dropdown-item" href="#cita"><span class="item-text">Pendientes</span></a>
                         <div class="dropdown-items-divide-hr"></div>
                         <a class="dropdown-item" href="#aceptado"><span class="item-text">Aceptadas</span></a>
                     </div>
@@ -193,14 +200,15 @@
     <!-- end of details lightbox 1 -->
 
     <header id="cita" class="header container-back">
-        <div id="pendiente" class="header-content">
+        <div class="header-content">
             <div class="container">
                 <div class="row">
-                    <div id="tabEnf" class="col-lg-6" style="margin-top: -150px;">
+                    <div id="tabMed" class="col-lg-6" style="margin-top: -150px;">
                         <div class="text-container">
                             <h1><span class="turquoise">C</span>itas <span class="turquoise">P</span>endientes</h1>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
+
                     <div class="container-table100">
                         <div class="wrap-table100">
                             <div class="table100 ver1 m-b-110">
@@ -208,58 +216,41 @@
                                     <table>
                                         <thead>
                                             <tr class="row100 head">
-                                                <th class="cell100 columnF">Fecha</th>
-                                                <th class="cell100 column3">Hora</th>
-                                                <th class="cell100 column3">Motivo</th>
-                                                <th class="cell100 column3">Opciones</th>
+                                                <th class="cell100 columnN">Fecha</th>
+                                                <th class="cell100 columnP">Hora</th>
+                                                <th class="cell100 columnD">Motivo</th>
+                                                <th class="cell100 column5"></th>
                                             </tr>
                                         </thead>
                                     </table>
                                 </div>
-            
-                                <div id="tableenfsc">
-                                    <script>
-                                        document.getElementById("tableenfsc").innerHTML = '';
-                                        let inicio1 = "<div class=\"table100-body js-pscroll\"><table><tbody>";
-                                        let text1 = "";
-                                        let final1 = "</tbody></table>";
-                                        fetch('http://localhost:5000/clasificartipousuario/enfermera')
-                                        .then(response1 => response1.json())
-                                        .then(data1 => {
-                                            var i;
-                                            for(i = 0; i < data1.length; i++){
-                                                text1 += `<tr class="row100 body">
-                                                    <td class="cell100 columnF"></td>
-                                                    <td class="cell100 column3"></td>
-                                                    <td class="cell100 column3"></td>
-                                                    <td class="cell100 column3">
-                                                        <div class="form-group">
-                                                            <a class="btn-solid-edit page-scroll" type="button" href="#inicio">Aceptar</a>
-                                                        </div>
-                                                        <div class="form-group" style="margin-top: -43.5px; margin-left: 90px;">
-                                                            <a class="btn-solid-delete page-scroll" type="button" href="#inicio">Rechazar</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>`}
-                                            document.getElementById("tableenfsc").innerHTML = inicio1+text1+final1;
-                                        })
-                                    </script>
+                                <div>
+                                    <div class="table100-body js-pscroll">
+                                        <table>
+                                            <tbody id="tablemeCitasE">
+                                                <!--script infoT.js-->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
 
-        <div id="aceptado" class="header-content">
+    <header id="aceptado" class="header container-back">
+        <div class="header-content">
             <div class="container">
                 <div class="row">
-                    <div id="tabEnf" class="col-lg-6" style="margin-top: -150px;">
+                    <div id="tabMed" class="col-lg-6" style="margin-top: -150px;">
                         <div class="text-container">
                             <h1><span class="turquoise">C</span>itas <span class="turquoise">A</span>ceptadas</h1>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
+
                     <div class="container-table100">
                         <div class="wrap-table100">
                             <div class="table100 ver1 m-b-110">
@@ -267,35 +258,24 @@
                                     <table>
                                         <thead>
                                             <tr class="row100 head">
-                                                <th class="cell100 columnF">Fecha</th>
-                                                <th class="cell100 column2">Hora</th>
-                                                <th class="cell100 column3">Motivo</th>
+                                                <th class="cell100 columnN">Fecha</th>
+                                                <th class="cell100 columnP">Hora</th>
+                                                <th class="cell100 columnD">Motivo</th>
                                             </tr>
                                         </thead>
                                     </table>
                                 </div>
             
-                                <div id="tableenfsc1">
-                                    <script>
-                                        document.getElementById("tableenfsc1").innerHTML = '';
-                                        let inicio2 = "<div class=\"table100-body js-pscroll\"><table><tbody>";
-                                        let text2 = "";
-                                        let final2 = "</tbody></table>";
-                                        fetch('http://localhost:5000/clasificartipousuario/enfermera')
-                                        .then(response2 => response2.json())
-                                        .then(data2 => {
-                                            var i;
-                                            for(i = 0; i < data2.length; i++){
-                                                text2 += `<tr class="row100 body">
-                                                    <td class="cell100 columnF"></td>
-                                                    <td class="cell100 column3"></td>
-                                                    <td class="cell100 column3"></td>
-                                                </tr>`}
-                                            document.getElementById("tableenfsc1").innerHTML = inicio2+text2+final2;
-                                        })
-                                    </script>
+                                <div>
+                                    <div class="table100-body js-pscroll">
+                                        <table>
+                                            <tbody id="tablemeCitasAE">
+                                                <!--script infoT.js-->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div> <!-- end of row -->
@@ -323,7 +303,7 @@
                                 <div class="card-body">
                                     <h3 class="card-title"><span class="turquoise">Factura</span></h3>
                                     <!-- Contact Form -->
-                                    <form id="contactForm">
+                                    <form id="contactForm"  style="width: 76%;">
                                         <div class="form-group">
                                             <input type="date" class="form-fac-input" id="date" required>
                                             <label class="label-placeholder" for="date">Fecha</label>
@@ -337,23 +317,26 @@
                                             <label class="label-placeholder" for="dr">Doctor</label>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-fac-input" id="cons" required>
+                                            <input type="text" class="form-fac-input" id="cons" onkeyup="sumarCant()" required>
                                             <label class="label-placeholder" for="cons">Precio Consulta</label>
                                         </div>
                                         <div class="form-group" style="margin-top: -68px; margin-left: 295px;">
-                                            <input type="text" class="form-fac-input" id="dr" required>
-                                            <label class="label-placeholder" for="dr">Costo Operación</label>
+                                            <input type="text" class="form-fac-input" id="op" onkeyup="sumarCant()" required>
+                                            <label class="label-placeholder" for="op">Costo Operación</label>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-fac-input" id="dr" required>
-                                            <label class="label-placeholder" for="dr">Costo Internado</label>
+                                            <input type="text" class="form-fac-input" id="inter" onkeyup="sumarCant()" required>
+                                            <label class="label-placeholder" for="inter">Costo Internado</label>
                                         </div>
                                         <div class="form-group" style="margin-top: -68px; margin-left: 295px;">
-                                            <input type="text" class="form-fac-input" id="dr" required>
-                                            <label class="label-placeholder" for="dr">Total</label>
+                                            <input type="text" class="form-fac-input" id="totalF" value="Q 0" disabled>
+                                            <label class="label-placeholder" for="totalF">Total</label>
                                         </div>
                                         <div class="button-wrapper">
-                                            <a class="btn-solid-lg page-scroll" href="#comprar">Solicitar</a>
+                                            <a class="btn-solid-lg page-scroll" onclick="crearPdfFactura(`${document.getElementById('date').value}`,`${document.getElementById('paciente').value}`,`${document.getElementById('dr').value}`,`${document.getElementById('cons').value}`,`${document.getElementById('op').value}`,`${document.getElementById('inter').value}`,`${document.getElementById('totalF').value}`)" href="#comprar">Generar</a>
+                                        </div><br>
+                                        <div class="button-wrapper">
+                                            <a class="btn-solid-quitar page-scroll" onclick="cancelarFactura()" href="#can">Cancelar</a>
                                         </div>
                                     </form>
                                     <!-- end of contact form -->
@@ -378,5 +361,7 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="js/funciones.js"></script><!-- Funciones -->
     <script src="js/informacion.js"></script><!-- Informacion -->
+    <script src="js/enfL.js"></script>
+    <script src="js/enfFactura.js"></script>
 </body>
 </html>

@@ -24,6 +24,10 @@ def obtenermedicamentos():
 def obtenerusuarios():
     return gestor.obtener_usuarios()
 
+@app.route('/obtenercitas')
+def obtenercitas():
+    return gestor.obtener_citas()
+
 @app.route('/actualizarusuario/<usuario>',methods=['PUT'])
 def actualizarusuario(usuario):
     dato = request.json
@@ -58,9 +62,18 @@ def eliminarmedicamento():
     dato = request.json
     return gestor.eliminar_medicamento(dato['nombre'],dato['descripcion'])
 
+@app.route('/eliminarsolicitudCita',methods=['DELETE'])
+def eliminarsolicitudCita():
+    dato = request.json
+    return gestor.eliminar_cita(dato['usuario'])
+
 @app.route('/buscartipousuario/<usuario>',methods=['GET'])
 def buscartipousuario(usuario):
     return gestor.buscar_tipo_usuario(usuario)
+
+@app.route('/buscarcita/<usuario>',methods=['GET'])
+def buscarcita(usuario):
+    return gestor.buscar_cita(usuario)
 
 @app.route('/buscarmedicamento/<nombre>/<descripcion>')
 def buscarmedicamento(nombre,descripcion):
@@ -112,6 +125,31 @@ def agregarPedido():
 def quitarPedido():
     dato = request.json
     return gestor.quitar_pedido(dato['usuario'],dato['codigo'])
+
+@app.route('/cobrar',methods=['DELETE'])
+def cobrar():
+    dato = request.json
+    return gestor.cobrar(dato['codigo'],dato['usuario'])
+
+@app.route('/solicitudCita',methods=['POST'])
+def solicitudCita():
+    dato = request.json
+    return gestor.agregar_cita(dato['usuario'],dato['fecha'],dato['hora'],dato['motivo'])
+
+@app.route('/aceptarCiDoc',methods=['PUT'])
+def aceptarCiDoc():
+    date = request.json
+    return gestor.aceptar_ciDoc(date['usuario'],date['doctor'])
+
+@app.route('/aceptarCiEnf',methods=['PUT'])
+def aceptarCiEnf():
+    date = request.json
+    return gestor.aceptar_ciEnf(date['usuario'],date['doctor'],date['enfermera'])
+
+@app.route('/rechazarCiDoc',methods=['PUT'])
+def rechazarCiDoc():
+    date = request.json
+    return gestor.rechazar_ciDoc(date['usuario'])
 
 #Iniciar el Servidor
 if __name__ == "__main__":

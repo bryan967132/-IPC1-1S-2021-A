@@ -13,41 +13,42 @@ function createHeaders(keys) {
     return result;
   }
   
-  function convertirdata(enfermera){
-    var data ={
-        "Nombre":enfermera.nombre,
-        "Apellido":enfermera.apellido,
-        "Medicamento":enfermera.fecha,
-        "Unidades":enfermera.genero,
-        "Precio":enfermera.password
-    }
+  function convertirdata2(user){
+      var data ={
+          "Medicamento":user.medicamento,
+          "Unidades":user.unidades,
+          "Precio":user.precio,
+      }
     return data
   }
   
-function crearPdfDocEnfPac(usuario,total){
-    fetch(`http://localhost:5000/cobrar/${usuario}`)
+function crearPdfCompra(cliente,total,clienteUser){
+    fetch('http://localhost:5000/obtenerpedido')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
       let headers = createHeaders([
-        "Nombre",
-        "Apellido",
         "Medicamento",
         "Unidades",
-        "Precio",
+        "Precio"
       ]);
       // Insertamos la data
-      let datos=[]
+      let datos = [];
+      let nombre = '';
       for(let i =0;i<data.length;i++){
-        datos.push(Object.assign({},convertirdata(data[i])))
+        if(data[i].usuario == clienteUser){
+          datos.push(Object.assign({},convertirdata2(data[i])))
+        }
       }
       console.log(datos)
       var contentJsPdf = {
         headers,
         datos
     };
-      var doc = new jsPDF({ putOnlyUsedFonts: true, orientation: "landscape" });
-      doc.table(2, 2, datos, headers, { autoSize: false });
-      doc.save(`${tipo}.pdf`)
+    var doc = new jsPDF({ putOnlyUsedFonts: true, orientation: "portrait" });
+      doc.text(`Nombre: ${cliente}`, 10, 15)
+      doc.table(10, 20, datos, headers, { autoSize: false });
+      doc.text(`Total Gastado: Q ${total}`, 160, 15)
+      doc.save('PedidoMedicamentos.pdf')
     })
   }

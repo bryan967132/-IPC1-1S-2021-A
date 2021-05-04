@@ -61,8 +61,7 @@ fetch('http://localhost:5000/obtenerpedido')
             </tr>`
         }
     }
-    localStorage.setItem('total',total)
-    document.getElementById('totalG').value = `Total Gastado: Q ${localStorage.getItem('total')}`;
+    document.getElementById('totalG').value = `${total}`;
     document.getElementById("tablepedido").innerHTML = pedidoMed;
 })
 
@@ -130,8 +129,7 @@ function actualizarPedido() {
                 </tr>`
             }
         }
-        localStorage.setItem('total',total)
-        document.getElementById('totalG').value = `Total Gastado: Q ${localStorage.getItem('total')}`;
+        document.getElementById('totalG').value = `${total}`;
         document.getElementById("tablepedido").innerHTML = pedidoMed;
     })
 }
