@@ -38,7 +38,7 @@ class Gestor:
         #-----------------------medicamentos----------------------------
         self.medicamentos.append(Medicamento('Paracetamol','25.75','Calma el dolor','13'))
         self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
-        self.medicamentos.append(Medicamento('Paracetamol','25.75','Calma el dolor','13'))
+        self.medicamentos.append(Medicamento('Acetaminofen','15','Calma el dolor','20'))
         #---------------------------------------------------------------
     #Read
     def obtener_usuarios(self):
