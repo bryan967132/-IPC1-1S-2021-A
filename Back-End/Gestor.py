@@ -73,6 +73,9 @@ class Gestor:
     def obtener_citas(self):
         return json.dumps([ob.__dict__ for ob in self.citas])
 
+    def obtener_topMed(self):
+        return json.dumps([ob.__dict__ for ob in self.medMasV])
+
     #Update
     def actualizar_usuario(self,usuario,data):
         for i in self.usuarios:
