@@ -1,8 +1,0 @@
-Página en la nube:
-http://storage.googleapis.com/ipc1p2front/Front-End/pagina/index.html
-
-Api python en la nube:
-http://35.222.105.198:5000/
-
-Repositorio página y api en python:
-https://github.com/bryan967132/IPC1_1S_2021_A.git
