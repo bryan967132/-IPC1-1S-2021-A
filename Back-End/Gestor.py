@@ -39,6 +39,14 @@ class Gestor:
         self.medicamentos.append(Medicamento('Paracetamol','25.75','Calma el dolor','13'))
         self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
         self.medicamentos.append(Medicamento('Acetaminofen','15','Calma el dolor','20'))
+
+        self.medicamentos.append(Medicamento('Adenosina','250','Calma el dolor','15'))
+        self.medicamentos.append(Medicamento('Mefobarbital','100','Calma el dolor','5'))
+        self.medicamentos.append(Medicamento('Oxymetholone','115.50','Calma el dolor','7'))
+
+        self.medicamentos.append(Medicamento('Penicilamina','250.75','Calma el dolor','14'))
+        self.medicamentos.append(Medicamento('Fenitoína','100.50','Calma el dolor','17'))
+        self.medicamentos.append(Medicamento('Posaconazol','150','Calma el dolor','8'))
         #---------------------------------------------------------------
     #Read
     def obtener_usuarios(self):
