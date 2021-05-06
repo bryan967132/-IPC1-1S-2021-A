@@ -111,7 +111,7 @@
                     </form>
                 </div>
                 <script>
-                    fetch(`http://35.222.105.198:5000/buscartipousuario/${localStorage.getItem("userC")}`)
+                    fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("userC")}`)
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById("nameU").value = `${data.nombre}`;
@@ -141,6 +141,5 @@
     <script src="../../js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="../../js/scripts.js"></script> <!-- Custom scripts -->
     <script src="../../js/funciones.js"></script>
-    <script src="../../js/actualizaciones.js"></script>
 </body>
 </html>

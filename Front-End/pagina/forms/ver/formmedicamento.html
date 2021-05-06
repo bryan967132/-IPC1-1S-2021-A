@@ -98,7 +98,7 @@
                     </form>
                 </div>
                 <script>
-                    fetch(`http://35.222.105.198:5000/buscarmedicamento/${localStorage.getItem("medicC")}/${localStorage.getItem("descC")}`)
+                    fetch(`http://localhost:5000/buscarmedicamento/${localStorage.getItem("medicC")}/${localStorage.getItem("descC")}`)
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById("nameM").value = `${data.nombre}`

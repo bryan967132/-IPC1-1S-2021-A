@@ -1,6 +1,6 @@
 //Tabla Doctores
 let text = "";
-fetch('http://35.222.105.198:5000/clasificartipousuario/doctor')
+fetch('http://localhost:5000/clasificartipousuario/doctor')
 .then(response => response.json())
 .then(data => {
     var i;
@@ -9,9 +9,9 @@ fetch('http://35.222.105.198:5000/clasificartipousuario/doctor')
             <td class="cell100 column1">${i+1}</td>
             <td class="cell100 column2">${data[i].nombre}</td>
             <td class="cell100 column3">${data[i].apellido}</td>
-            <td class="cell100 column4">${data[i].telefono}</td>
+            <td class="cell100 column4">${data[i].especialidad}</td>
             <td class="cell100 column5">
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 5%;">
                     <a class="btn-solid-look page-scroll" type="button" onclick="look_data('doctor','${data[i].usuario}','ver')" href="#doctor">Ver</a>
                 </div>
                 <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
@@ -28,7 +28,7 @@ fetch('http://35.222.105.198:5000/clasificartipousuario/doctor')
 
 //Tabla Enfermeras
 let text1 = "";
-fetch('http://35.222.105.198:5000/clasificartipousuario/enfermera')
+fetch('http://localhost:5000/clasificartipousuario/enfermera')
 .then(response1 => response1.json())
 .then(data1 => {
     var i;
@@ -39,7 +39,7 @@ fetch('http://35.222.105.198:5000/clasificartipousuario/enfermera')
             <td class="cell100 column3">${data1[i].apellido}</td>
             <td class="cell100 column4">${data1[i].telefono}</td>
             <td class="cell100 column5">
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 5%;">
                     <a class="btn-solid-look page-scroll" type="button" onclick="look_data('enfermera','${data1[i].usuario}','ver')" href="#enfermera">Ver</a>
                 </div>
                 <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
@@ -56,7 +56,7 @@ fetch('http://35.222.105.198:5000/clasificartipousuario/enfermera')
 
 //Tabla Pacientes
 let text2 = "";
-fetch('http://35.222.105.198:5000/clasificartipousuario/paciente')
+fetch('http://localhost:5000/clasificartipousuario/paciente')
 .then(response2 => response2.json())
 .then(data2 => {
     var i;
@@ -68,7 +68,7 @@ fetch('http://35.222.105.198:5000/clasificartipousuario/paciente')
             <td class="cell100 column3">${data2[i].apellido}</td>
             <td class="cell100 column4">${data2[i].telefono}</td>
             <td class="cell100 column5">
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 5%;">
                     <a class="btn-solid-look page-scroll" type="button" onclick="look_data('paciente','${data2[i].usuario}','ver')" href="#paciente">Ver</a>
                 </div>
                 <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
@@ -85,7 +85,7 @@ fetch('http://35.222.105.198:5000/clasificartipousuario/paciente')
 
 //Tabla Medicamentos
 let text3 = "";
-fetch('http://35.222.105.198:5000/obtenermedicamentos')
+fetch('http://localhost:5000/obtenermedicamentos')
 .then(response3 => response3.json())
 .then(data3 => {
     var i;
@@ -97,7 +97,7 @@ fetch('http://35.222.105.198:5000/obtenermedicamentos')
             <td class="cell100 columnD">${data3[i].descripcion}</td>
             <td class="cell100 columnC">${data3[i].cantidad}</td>
             <td class="cell100 column5">
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 5%;">
                     <a class="btn-solid-look page-scroll" type="button" onclick="look_data('medicamento','','ver','${data3[i].nombre}','${data3[i].descripcion}')" href="#medicamento">Ver</a>
                 </div>
                 <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
@@ -114,7 +114,7 @@ fetch('http://35.222.105.198:5000/obtenermedicamentos')
 
 function actualizarTabDoc() {
     let text = "";
-    fetch('http://35.222.105.198:5000/clasificartipousuario/doctor')
+    fetch('http://localhost:5000/clasificartipousuario/doctor')
     .then(response => response.json())
     .then(data => {
         var i;
@@ -125,7 +125,7 @@ function actualizarTabDoc() {
                 <td class="cell100 column3">${data[i].apellido}</td>
                 <td class="cell100 column4">${data[i].telefono}</td>
                 <td class="cell100 column5">
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: 5%;">
                         <a class="btn-solid-look page-scroll" type="button" onclick="look_data('doctor','${data[i].usuario}','ver')" href="#doctor">Ver</a>
                     </div>
                     <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
@@ -143,7 +143,7 @@ function actualizarTabDoc() {
 
 function actualizarTabEnf() {
     let text1 = "";
-    fetch('http://35.222.105.198:5000/clasificartipousuario/enfermera')
+    fetch('http://localhost:5000/clasificartipousuario/enfermera')
     .then(response1 => response1.json())
     .then(data1 => {
         var i;
@@ -154,7 +154,7 @@ function actualizarTabEnf() {
                 <td class="cell100 column3">${data1[i].apellido}</td>
                 <td class="cell100 column4">${data1[i].telefono}</td>
                 <td class="cell100 column5">
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: 5%;">
                         <a class="btn-solid-look page-scroll" type="button" onclick="look_data('enfermera','${data1[i].usuario}','ver')" href="#enfermera">Ver</a>
                     </div>
                     <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
@@ -172,7 +172,7 @@ function actualizarTabEnf() {
 
 function actualizarTabPac() {
     let text2 = "";
-    fetch('http://35.222.105.198:5000/clasificartipousuario/paciente')
+    fetch('http://localhost:5000/clasificartipousuario/paciente')
     .then(response2 => response2.json())
     .then(data2 => {
         var i;
@@ -184,7 +184,7 @@ function actualizarTabPac() {
                 <td class="cell100 column3">${data2[i].apellido}</td>
                 <td class="cell100 column4">${data2[i].telefono}</td>
                 <td class="cell100 column5">
-                    <div class="form-group">
+                <div class="form-group" style="margin-top: 5%;">
                         <a class="btn-solid-look page-scroll" type="button" onclick="look_data('paciente','${data2[i].usuario}','ver')" href="#paciente">Ver</a>
                     </div>
                     <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">
@@ -202,7 +202,7 @@ function actualizarTabPac() {
 
 function actualizarTabMed() {
     let text3 = "";
-    fetch('http://35.222.105.198:5000/obtenermedicamentos')
+    fetch('http://localhost:5000/obtenermedicamentos')
     .then(response3 => response3.json())
     .then(data3 => {
         var i;
@@ -214,7 +214,7 @@ function actualizarTabMed() {
                 <td class="cell100 columnD">${data3[i].descripcion}</td>
                 <td class="cell100 columnC">${data3[i].cantidad}</td>
                 <td class="cell100 column5">
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: 5%;">
                         <a class="btn-solid-look page-scroll" type="button" onclick="look_data('medicamento','','ver','${data3[i].nombre}','${data3[i].descripcion}')" href="#medicamento">Ver</a>
                     </div>
                     <div class="form-group" style="margin-top: -43.5px; margin-left: 70px;">

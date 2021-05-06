@@ -119,7 +119,7 @@
                                     <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="gensP" readonly>
                                     <br>
                                     <script>
-                                        fetch(`http://35.222.105.198:5000/buscartipousuario/${localStorage.getItem("user4")}`)
+                                        fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("user4")}`)
                                         .then(response => response.json())
                                         .then(data => {
                                             document.getElementById("nameP").value = `${data.nombre}`
@@ -282,7 +282,7 @@
                                     </form>
                                     <!-- end of contact form -->
                                     <script>
-                                        fetch(`http://35.222.105.198:5000/buscarcita/${localStorage.getItem("user4")}`)
+                                        fetch(`http://localhost:5000/buscarcita/${localStorage.getItem("user4")}`)
                                         .then(responseC => responseC.json())
                                         .then(dataC => {
                                             if(dataC.cita != "false") {

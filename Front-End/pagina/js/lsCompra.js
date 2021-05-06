@@ -23,7 +23,7 @@ function createHeaders(keys) {
   }
   
 function crearPdfCompra(cliente,total,clienteUser){
-    fetch('http://35.222.105.198:5000/obtenerpedido')
+    fetch('http://localhost:5000/obtenerpedido')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
