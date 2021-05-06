@@ -23,6 +23,23 @@ class Gestor:
         self.usuarios.append(Usuario('admin','admin','1234'))
         self.admin.append(Admin('Herbert','Reyes','2000-12-04','M','admin','1234','12345678'))
         #---------------------------------------------------------------
+        #-----------------------doctor----------------------------------
+        self.usuarios.append(Usuario('doctor','doctor','1234'))
+        self.doctores.append(Doctor('NombreDoc','ApellidoDoc','2000-12-04','M','docUser','1234','Neurocirugia','12345678'))
+        #---------------------------------------------------------------
+        #-----------------------enfermera-------------------------------
+        self.usuarios.append(Usuario('enfermera','enfermera','1234'))
+        self.enfermeras.append(Enfermera('NombreEnf','ApellidoEnf','2000-12-04','F','enfUser','1234','12345678'))
+        #---------------------------------------------------------------
+        #-----------------------paciente--------------------------------
+        self.usuarios.append(Usuario('paciente','paciente','1234'))
+        self.pacientes.append(Paciente('NombrePac','ApellidoPac','2000-12-04','M','pacUser','1234','12345678'))
+        #---------------------------------------------------------------
+        #-----------------------medicamentos----------------------------
+        self.medicamentos.append(Medicamento('Paracetamol','25.75','Calma el dolor','13'))
+        self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
+        self.medicamentos.append(Medicamento('Paracetamol','25.75','Calma el dolor','13'))
+        #---------------------------------------------------------------
     #Read
     def obtener_usuarios(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios])
