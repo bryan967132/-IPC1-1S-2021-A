@@ -57,7 +57,7 @@ class Gestor:
         self.medMasV.append(MasVendidosMed('Oxymetholone','Calma el dolor','7'))
 
         self.medMasV.append(MasVendidosMed('Penicilamina','Calma el dolor','14'))
-        self.medMasV.append(MasVendidosMed('Fenitoína','Calma el dolor','11'))
+        self.medMasV.append(MasVendidosMed('Fenitoina','Calma el dolor','11'))
         self.medMasV.append(MasVendidosMed('Posaconazol','Calma el dolor','5'))
         #---------------------------------------------------------------
     #Read
@@ -74,6 +74,7 @@ class Gestor:
         return json.dumps([ob.__dict__ for ob in self.citas])
 
     def obtener_topMed(self):
+        self.ordenamientoVentas(self.medMasV)
         return json.dumps([ob.__dict__ for ob in self.medMasV])
 
     #Update
@@ -392,37 +393,10 @@ class Gestor:
         return True
 
     #Ordenamiento
-    def ordenamiento_por_mezcla(self,lista):
-        if len(lista) > 1:
-            medio = len(lista) // 2
-            izquierda = lista[:medio]
-            derecha = lista[medio:]
-            print(izquierda, '-' * 5,derecha)
-            #llamada recursiva en cada mitad
-            ordenamiento_por_mezcla(izquierda)
-            ordenamiento_por_mezcla(derecha)
-            #iteradores para recorrer las dos sublistas
-            i = 0
-            j = 0
-            #iterador para la lista principal
-            k = 0
-            while i < len(izquierda) and j < len(derecha):
-                if izquierda[i] < derecha[j]:
-                    lista[k] = izquierda[i]
-                    i += 1
-                else:
-                    lista[k] = derecha[j]
-                    j += 1
-                k += 1
-            while i < len(izquierda):
-                lista[k] = izquierda[i]
-                i += 1
-                k += 1
-            while j < len(derecha):
-                lista[k] = derecha[j]
-                j += 1
-                k += 1
-            print(f'izquierda {izquierda}, derecha {derecha}')
-            print(lista)
-            print('-' * 50)
+    def ordenamientoVentas(self,lista):
+        n = len(lista)
+        for i in range(n):
+            for j in range(0,n-i-1):
+                if int(lista[j].unidadesV) < int(lista[j+1].unidadesV):
+                    lista[j],lista[j+1] = lista[j+1],lista[j]
         return lista

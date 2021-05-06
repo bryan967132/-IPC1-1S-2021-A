@@ -28,6 +28,10 @@ def obtenerusuarios():
 def obtenercitas():
     return gestor.obtener_citas()
 
+@app.route('/obtenerTopM')
+def obtenerTopM():
+    return gestor.obtener_topMed()
+
 @app.route('/actualizarusuario/<usuario>',methods=['PUT'])
 def actualizarusuario(usuario):
     dato = request.json
