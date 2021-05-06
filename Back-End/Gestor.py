@@ -47,6 +47,18 @@ class Gestor:
         self.medicamentos.append(Medicamento('Penicilamina','250.75','Calma el dolor','14'))
         self.medicamentos.append(Medicamento('Fenitoína','100.50','Calma el dolor','17'))
         self.medicamentos.append(Medicamento('Posaconazol','150','Calma el dolor','8'))
+
+        self.medMasV.append(MasVendidosMed('Paracetamol','Calma el dolor','5'))
+        self.medMasV.append(MasVendidosMed('Aspirina','Calma el dolor','7'))
+        self.medMasV.append(MasVendidosMed('Acetaminofen','Calma el dolor','25'))
+
+        self.medMasV.append(MasVendidosMed('Adenosina','Calma el dolor','13'))
+        self.medMasV.append(MasVendidosMed('Mefobarbital','Calma el dolor','9'))
+        self.medMasV.append(MasVendidosMed('Oxymetholone','Calma el dolor','7'))
+
+        self.medMasV.append(MasVendidosMed('Penicilamina','Calma el dolor','14'))
+        self.medMasV.append(MasVendidosMed('Fenitoína','Calma el dolor','11'))
+        self.medMasV.append(MasVendidosMed('Posaconazol','Calma el dolor','5'))
         #---------------------------------------------------------------
     #Read
     def obtener_usuarios(self):
