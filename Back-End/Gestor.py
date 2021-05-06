@@ -24,15 +24,15 @@ class Gestor:
         self.admin.append(Admin('Herbert','Reyes','2000-12-04','M','admin','1234','12345678'))
         #---------------------------------------------------------------
         #-----------------------doctor----------------------------------
-        self.usuarios.append(Usuario('doctor','doctor','1234'))
+        self.usuarios.append(Usuario('doctor','docUser','1234'))
         self.doctores.append(Doctor('NombreDoc','ApellidoDoc','2000-12-04','M','docUser','1234','Neurocirugia','12345678'))
         #---------------------------------------------------------------
         #-----------------------enfermera-------------------------------
-        self.usuarios.append(Usuario('enfermera','enfermera','1234'))
+        self.usuarios.append(Usuario('enfermera','enfUser','1234'))
         self.enfermeras.append(Enfermera('NombreEnf','ApellidoEnf','2000-12-04','F','enfUser','1234','12345678'))
         #---------------------------------------------------------------
         #-----------------------paciente--------------------------------
-        self.usuarios.append(Usuario('paciente','paciente','1234'))
+        self.usuarios.append(Usuario('paciente','pacUser','1234'))
         self.pacientes.append(Paciente('NombrePac','ApellidoPac','2000-12-04','M','pacUser','1234','12345678'))
         #---------------------------------------------------------------
         #-----------------------medicamentos----------------------------
