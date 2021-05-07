@@ -154,6 +154,12 @@ class Gestor:
     def eliminar_medicamento(self,nombre,descripcion):
         for i in self.medicamentos:
             if i.nombre == nombre and i.descripcion == descripcion:
+                for j in self.medMasV:
+                    if j.nombre == i.nombre and j.descripcion == i.descripcion:
+                        for k in self.pedidos:
+                            if k.medicamento == j.nombre and k.descripcion == j.descripcion:
+                                self.pedidos.remove(k)
+                        self.medMasV.remove(j)
                 self.medicamentos.remove(i)
                 return json.dumps(i.__dict__)
 
