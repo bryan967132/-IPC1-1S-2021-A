@@ -117,6 +117,9 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#reporte">Reportes</a>
+                </li>
+                <li class="nav-item">
                     <a onclick="cerrarSesionAdmin()" class="btn-login page-scroll" href="#cerrar">Cerrar Sesión</a>
                 </li>
             </ul>
@@ -406,6 +409,65 @@
                                             <br>
                                             <div class="form-group">
                                                 <a class="btn-solid-reg page-scroll" onclick="crearPdfMed()" href="#exp">Exportar Listado PDF</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+
+    <header id="reporte" class="header container-back">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div id="tabMed" class="col-lg-6" style="margin-top: -150px;">
+                        <div class="text-container">
+                            <h1><span class="turquoise">R</span>eportes</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="tabMed" class="col-lg-6" style="margin-top: -150px;">
+                        <div class="text-container">
+                            <h2><span class="turquoise">M</span>edicamentos</h2>
+                        </div>
+                    </div>
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1 m-b-110" style="width: 100%;">
+                                <div class="table100-head">
+                                    <table>
+                                        <thead>
+                                            <tr class="row100 head">
+                                                <th class="cell100 columnN" style="width: 35%;">Nombre</th>
+                                                <th class="cell100 columnD" style="width: 35%;">Descripcion</th>
+                                                <th class="cell100 columnC" style="width: 100%;">Unidades Vendidas</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+            
+                                <div>
+                                    <div class="table100-body js-pscroll">
+                                        <table>
+                                            <tbody id="tabletopmedsc">
+                                                <!--script infoT.js-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="cargaMMed" class="header-content basic-1" style="margin-top: -150px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6" style="margin-top: -90px;">
+                                            <div class="form-group">
+                                                <a class="btn-solid-reg page-scroll" onclick="" href="#exp">Exportar Listado PDF</a>
                                             </div>
                                         </div>
                                     </div>

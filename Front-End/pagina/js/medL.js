@@ -6,8 +6,13 @@ fetch('http://localhost:5000/obtenermedicamentos')
     var i;
     for(i = 0; i < medicamento.length; i++){
         if(parseInt(medicamento[i].cantidad) > 0){
-            listadoMed += `<div class="card">
-                <div class="card-body">
+            listadoMed += `<div class="card">`
+            if(parseFloat(medicamento[i].precio) < 100){
+                listadoMed += `<div class="label">
+                    <p class="best-value">Oferta</p>
+                </div>`
+            }
+            listadoMed += `<div class="card-body">
                     <div class="card-title">${medicamento[i].nombre}</div>
                     <hr class="cell-divide-hr">
                     <div class="price">
@@ -73,8 +78,13 @@ function actualizarMedicamentos(){
         var i;
         for(i = 0; i < medicamento.length; i++){
             if(parseInt(medicamento[i].cantidad) > 0){
-                listadoMed += `<div class="card">
-                    <div class="card-body">
+                listadoMed += `<div class="card">`
+                if(parseFloat(medicamento[i].precio) < 100){
+                    listadoMed += `<div class="label">
+                        <p class="best-value">Oferta</p>
+                    </div>`
+                }
+                listadoMed += `<div class="card-body">
                         <div class="card-title">${medicamento[i].nombre}</div>
                         <hr class="cell-divide-hr">
                         <div class="price">

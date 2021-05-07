@@ -361,21 +361,19 @@ function agregarUnidad(codigo,usuario) {
 }
 
 function quitarUnidad(disp,codigo,usuario) {
-    if(disp > 0) {
-        fetch('http://localhost:5000/quitarunidad',{
-            method:'PUT',
-            headers,
-            body:`{
-                "codigo":"${codigo}",
-                "usuario":"${usuario}"
-            }`
-        })
-        .then(response => response.json())
-        .then(data => {
-            actualizarMedicamentos();
-            actualizarPedido();
-        })
-    }
+    fetch('http://localhost:5000/quitarunidad',{
+        method:'PUT',
+        headers,
+        body:`{
+            "codigo":"${codigo}",
+            "usuario":"${usuario}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        actualizarMedicamentos();
+        actualizarPedido();
+    })
 }
 
 function quitarPedido(codigo,usuario) {

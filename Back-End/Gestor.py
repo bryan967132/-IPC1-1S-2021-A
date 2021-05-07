@@ -36,24 +36,24 @@ class Gestor:
         self.pacientes.append(Paciente('NombrePac','ApellidoPac','2000-12-04','M','pacUser','1234','12345678'))
         #---------------------------------------------------------------
         #-----------------------medicamentos----------------------------
-        self.medicamentos.append(Medicamento('Paracetamol','25.75','Calma el dolor','13'))
         self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
         self.medicamentos.append(Medicamento('Acetaminofen','15','Calma el dolor','20'))
-
         self.medicamentos.append(Medicamento('Adenosina','250','Calma el dolor','15'))
+
         self.medicamentos.append(Medicamento('Mefobarbital','100','Calma el dolor','5'))
+        self.medicamentos.append(Medicamento('Paracetamol','25.75','Calma el dolor','13'))
         self.medicamentos.append(Medicamento('Oxymetholone','115.50','Calma el dolor','7'))
 
         self.medicamentos.append(Medicamento('Penicilamina','250.75','Calma el dolor','14'))
         self.medicamentos.append(Medicamento('Fenitoína','100.50','Calma el dolor','17'))
         self.medicamentos.append(Medicamento('Posaconazol','150','Calma el dolor','8'))
 
-        self.medMasV.append(MasVendidosMed('Paracetamol','Calma el dolor','5'))
         self.medMasV.append(MasVendidosMed('Aspirina','Calma el dolor','7'))
         self.medMasV.append(MasVendidosMed('Acetaminofen','Calma el dolor','25'))
-
         self.medMasV.append(MasVendidosMed('Adenosina','Calma el dolor','13'))
+
         self.medMasV.append(MasVendidosMed('Mefobarbital','Calma el dolor','9'))
+        self.medMasV.append(MasVendidosMed('Paracetamol','Calma el dolor','5'))
         self.medMasV.append(MasVendidosMed('Oxymetholone','Calma el dolor','7'))
 
         self.medMasV.append(MasVendidosMed('Penicilamina','Calma el dolor','14'))
@@ -348,14 +348,15 @@ class Gestor:
             for i in self.pedidos:
                 if i.usuario == usuario and i.codigo == codigo:
                     for j in self.medicamentos:
-                        if j.nombre == i.medicamento and j.descripcion == i.descripcion:
-                            cant1 = int(i.unidades)
-                            cant1 -= 1
-                            cant2 = int(j.cantidad)
-                            cant2 += 1
-                            self.medicamentos[self.medicamentos.index(j)] = Medicamento(j.nombre,j.precio,j.descripcion,cant2)
-                            self.pedidos[self.pedidos.index(i)] = Pedido(i.codigo,i.usuario,i.medicamento,i.precio,cant1,i.descripcion)
-                            return '{"estado":"agregado"}'
+                        if int(i.unidades) > 0:
+                            if j.nombre == i.medicamento and j.descripcion == i.descripcion:
+                                cant1 = int(i.unidades)
+                                cant1 -= 1
+                                cant2 = int(j.cantidad)
+                                cant2 += 1
+                                self.medicamentos[self.medicamentos.index(j)] = Medicamento(j.nombre,j.precio,j.descripcion,cant2)
+                                self.pedidos[self.pedidos.index(i)] = Pedido(i.codigo,i.usuario,i.medicamento,i.precio,cant1,i.descripcion)
+                                return '{"estado":"agregado"}'
         except:
             pass
 
