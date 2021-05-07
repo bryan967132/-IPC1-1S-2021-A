@@ -112,6 +112,24 @@ fetch('http://localhost:5000/obtenermedicamentos')
     document.getElementById("tablemedsc").innerHTML = text3;
 })
 
+//Tabla Top Medicamentos
+let topM = "";
+fetch('http://localhost:5000/obtenerTopM')
+.then(respTop => respTop.json())
+.then(dataTop => {
+    var i;
+    for(i = 0; i < 5; i++){
+        if(parseInt(dataTop[i].unidadesV) > 0){
+            topM += `<tr class="row100 body">
+                <td class="cell100 columnN">${dataTop[i].nombre}</td>
+                <td class="cell100 columnD">${dataTop[i].descripcion}</td>
+                <td class="cell100 columnC">${dataTop[i].unidadesV}</td>
+            </tr>`
+        }
+    }
+    document.getElementById("tabletopmedsc").innerHTML = topM;
+})
+
 function actualizarTabDoc() {
     let text = "";
     fetch('http://localhost:5000/clasificartipousuario/doctor')
@@ -227,5 +245,24 @@ function actualizarTabMed() {
             </tr>`
         }
         document.getElementById("tablemedsc").innerHTML = text3;
+    })
+}
+
+function actualizarTabTopM() {
+    let topM = "";
+    fetch('http://localhost:5000/obtenerTopM')
+    .then(respTop => respTop.json())
+    .then(dataTop => {
+        var i;
+        for(i = 0; i < 5; i++){
+            if(parseInt(dataTop[i].unidadesV) > 0){
+                topM += `<tr class="row100 body">
+                    <td class="cell100 columnN">${dataTop[i].nombre}</td>
+                    <td class="cell100 columnD">${dataTop[i].descripcion}</td>
+                    <td class="cell100 columnC">${dataTop[i].unidadesV}</td>
+                </tr>`
+            }
+        }
+        document.getElementById("tabletopmedsc").innerHTML = topM;
     })
 }

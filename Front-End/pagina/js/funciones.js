@@ -145,6 +145,7 @@ function cargarMed(){
             .then(result => {
                 console.log('Success:',result);
                 actualizarTabMed();
+                actualizarTabTopM();
             })
             .catch(error => {
                 console.error('Error:',error);
@@ -229,6 +230,7 @@ function delete_med(nombre,descripcion) {
     .then(data => {
         alert("Se ha eliminado a "+data.nombre)
         actualizarTabMed();
+        actualizarTabTopM();
     })
 }
 

@@ -431,10 +431,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-top: 50px;">
                     <div id="tabMed" class="col-lg-6" style="margin-top: -150px;">
                         <div class="text-container">
-                            <h2><span class="turquoise">M</span>edicamentos</h2>
+                            <h2><span class="turquoise">T</span>op <span class="turquoise">M</span>edicamentos</h2>
                         </div>
                     </div>
                     <div class="container-table100">
@@ -444,8 +444,9 @@
                                     <table>
                                         <thead>
                                             <tr class="row100 head">
-                                                <th class="cell100 columnN" style="width: 35%;">Nombre</th>
-                                                <th class="cell100 columnD" style="width: 35%;">Descripcion</th>
+                                                <th class="cell100 column1" style="width: 15%;">Top</th>
+                                                <th class="cell100 columnN" style="width: 30%;">Nombre</th>
+                                                <th class="cell100 columnD" style="width: 30%;">Descripcion</th>
                                                 <th class="cell100 columnC" style="width: 100%;">Unidades Vendidas</th>
                                             </tr>
                                         </thead>
@@ -467,7 +468,7 @@
                                     <div class="row">
                                         <div class="col-lg-6" style="margin-top: -90px;">
                                             <div class="form-group">
-                                                <a class="btn-solid-reg page-scroll" onclick="" href="#exp">Exportar Listado PDF</a>
+                                                <a class="btn-solid-reg page-scroll" onclick="topMpdf()" href="#exp">Exportar Listado PDF</a>
                                             </div>
                                         </div>
                                     </div>
@@ -494,5 +495,6 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="js/funciones.js"></script><!-- Funciones -->
     <script src="js/informacion.js"></script><!-- Informacion -->
+    <script src="js/reportesPDF.js"></script>
 </body>
 </html>

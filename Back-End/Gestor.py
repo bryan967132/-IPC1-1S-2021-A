@@ -40,7 +40,7 @@ class Gestor:
         self.pacientes.append(Paciente('NombrePac2','ApellidoPac2','2000-12-04','M','user2','1234','12345678'))
         #---------------------------------------------------------------
         #-----------------------medicamentos----------------------------
-        self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
+        """self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
         self.medicamentos.append(Medicamento('Acetaminofen','15','Calma el dolor','20'))
         self.medicamentos.append(Medicamento('Adenosina','250','Calma el dolor','15'))
 
@@ -61,8 +61,8 @@ class Gestor:
         self.medMasV.append(MasVendidosMed('Oxymetholone','Calma el dolor','7'))
 
         self.medMasV.append(MasVendidosMed('Penicilamina','Calma el dolor','14'))
-        self.medMasV.append(MasVendidosMed('Fenitoina','Calma el dolor','11'))
-        self.medMasV.append(MasVendidosMed('Posaconazol','Calma el dolor','5'))
+        self.medMasV.append(MasVendidosMed('Fenitoína','Calma el dolor','11'))
+        self.medMasV.append(MasVendidosMed('Posaconazol','Calma el dolor','5'))"""
         #---------------------------------------------------------------
     #Read
     def obtener_usuarios(self):
@@ -112,8 +112,11 @@ class Gestor:
     def actualizar_medicamento(self,nombre,descripcion,data):
         for i in self.medicamentos:
             if i.nombre == nombre and i.descripcion == descripcion:
-                self.medicamentos[self.medicamentos.index(i)] = Medicamento(data['nombre'],data['precio'],data['descripcion'],data['cantidad'])
-                return '{"data":"actualizado"}'
+                for j in self.medMasV:
+                    if j.nombre == i.nombre and j.descripcion == i.descripcion:
+                        self.medicamentos[self.medicamentos.index(i)] = Medicamento(data['nombre'],data['precio'],data['descripcion'],data['cantidad'])
+                        self.medMasV[self.medMasV.index(j)] = MasVendidosMed(data['nombre'],data['descripcion'],j.unidadesV)
+                        return '{"data":"actualizado"}'
 
     def aceptar_ciDoc(self,usuario,docUser):
         for i in self.citas:
@@ -159,13 +162,15 @@ class Gestor:
                         return json.dumps(j.__dict__)
 
     def eliminar_medicamento(self,nombre,descripcion):
+        for i in self.medMasV:
+            if i.nombre == nombre and i.descripcion == descripcion:
+                self.medMasV.remove(i)
         for i in self.pedidos:
             if i.medicamento == nombre and i.descripcion == descripcion:
                 self.pedidos.remove(i)
         for i in self.medicamentos:
             if i.nombre == nombre and i.descripcion == descripcion:
                 self.medicamentos.remove(i)
-                self.medMasV.remove(i)
                 return json.dumps(i.__dict__)
                 
 
@@ -376,6 +381,14 @@ class Gestor:
     def cobrar(self,codigo,usuario):
         for i in self.pedidos:
             if i.codigo == codigo and i.usuario == usuario:
+                for j in self.medMasV:
+                    if j.nombre == i.medicamento and j.descripcion == i.descripcion:
+                        print('entra a la condicion')
+                        cant1 = int(j.unidadesV)
+                        cant2 = int(i.unidades)
+                        cant1 += cant2
+                        self.medMasV[self.medMasV.index(j)] = MasVendidosMed(i.medicamento,i.descripcion,cant1)
+                print('sale del ciclo')
                 self.pedidos.remove(i)
                 return '{"estado":"cancelado"}'
 
