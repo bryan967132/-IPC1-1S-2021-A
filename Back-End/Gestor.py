@@ -34,6 +34,10 @@ class Gestor:
         #-----------------------paciente--------------------------------
         self.usuarios.append(Usuario('paciente','pacUser','1234'))
         self.pacientes.append(Paciente('NombrePac','ApellidoPac','2000-12-04','M','pacUser','1234','12345678'))
+        self.usuarios.append(Usuario('paciente','user1','1234'))
+        self.pacientes.append(Paciente('NombrePac1','ApellidoPac1','2000-12-04','M','user1','1234','12345678'))
+        self.usuarios.append(Usuario('paciente','user2','1234'))
+        self.pacientes.append(Paciente('NombrePac2','ApellidoPac2','2000-12-04','M','user2','1234','12345678'))
         #---------------------------------------------------------------
         #-----------------------medicamentos----------------------------
         self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
@@ -147,21 +151,23 @@ class Gestor:
             if tipo == 'paciente' and i.usuario == usuario:
                 for j in self.pacientes:
                     if j.usuario == i.usuario:
+                        for k in self.pedidos:
+                            if k.usuario == j.usuario:
+                                self.quitar_pedido(k.usuario,k.codigo)
                         self.usuarios.remove(i)
                         self.pacientes.remove(j)
                         return json.dumps(j.__dict__)
 
     def eliminar_medicamento(self,nombre,descripcion):
+        for i in self.pedidos:
+            if i.medicamento == nombre and i.descripcion == descripcion:
+                self.pedidos.remove(i)
         for i in self.medicamentos:
             if i.nombre == nombre and i.descripcion == descripcion:
-                for j in self.medMasV:
-                    if j.nombre == i.nombre and j.descripcion == i.descripcion:
-                        for k in self.pedidos:
-                            if k.medicamento == j.nombre and k.descripcion == j.descripcion:
-                                self.pedidos.remove(k)
-                        self.medMasV.remove(j)
                 self.medicamentos.remove(i)
+                self.medMasV.remove(i)
                 return json.dumps(i.__dict__)
+                
 
     def eliminar_cita(self,usuario):
         for i in self.citas:
