@@ -20,12 +20,13 @@ class Gestor:
         self.pedidos = []
         self.citas = []
 
-        """
         #datos quemados------------------------------------
         #-----------------------admin-----------------------------------
         self.usuarios.append(Usuario('admin','admin','1234'))
         self.admin.append(Admin('Herbert','Reyes','2000-12-04','M','admin','1234','12345678'))
         #---------------------------------------------------------------
+
+        """
         #-----------------------doctor----------------------------------
         self.usuarios.append(Usuario('doctor','docUser1','1234'))
         self.docMasA.append(TopDr('docUser1','NombreDoc1','ApellidoDoc1','4'))
