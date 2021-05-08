@@ -207,6 +207,14 @@ class Gestor:
             if i.usuario == usuario:
                 self.citas.remove(i)
                 return '{"solicitud":"eliminada"}'
+    
+    def completar_citaCont(self,usuario):
+        for i in self.docMasA:
+            if i.usuario == usuario:
+                citas = int(i.citasAt)
+                citas += 1
+                self.docMasA[self.docMasA.index(i)] = TopDr(i.usuario,i.nombre,i.apellido,citas)
+                return '{"citas":"incrementado"}'
 
     #Buscar
     def buscar_tipo_usuario(self,usuario):

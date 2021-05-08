@@ -159,6 +159,11 @@ def rechazarCiDoc():
     date = request.json
     return gestor.rechazar_ciDoc(date['usuario'])
 
+@app.route('/completarCitaCont',methods=['PUT'])
+def completarCitaCont():
+    data = request.json
+    return gestor.completar_citaCont(data['usuario'])
+
 #Iniciar el Servidor
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)

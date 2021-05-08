@@ -38,7 +38,7 @@ fetch('http://localhost:5000/obtenercitas')
                 <td class="cell100 columnD">${dataA[i].motivo}</td>
                 <td class="cell100 column5">
                     <div class="form-group">
-                    <input id="completo" type="checkbox" onclick="completarCita('${dataA[i].usuario}','${document.getElementById("nameP").value+" "+document.getElementById("lastP").value}','${dataA[i].motivo}')" href="#receta"></input>
+                    <input id="completo" type="checkbox" onclick="completarCita('${dataA[i].usuario}','${document.getElementById("nameP").value+" "+document.getElementById("lastP").value}','${dataA[i].motivo}')" href="#com"></input>
                     </div>
                 </td>
             </tr>`
@@ -88,7 +88,7 @@ function actualizarTabAcc() {
                     <td class="cell100 columnD">${dataA[i].motivo}</td>
                     <td class="cell100 column5">
                         <div class="form-group">
-                            <input id="completo" type="checkbox" onclick="completarCita('${dataA[i].usuario}','${document.getElementById("nameP").value+" "+document.getElementById("lastP").value}','${dataA[i].motivo}')" href="#receta"></input>
+                            <input id="completo" type="checkbox" onclick="completarCita('${dataA[i].usuario}','${document.getElementById("nameP").value+" "+document.getElementById("lastP").value}','${dataA[i].motivo}')" href="#com"></input>
                         </div>
                     </td>
                 </tr>`

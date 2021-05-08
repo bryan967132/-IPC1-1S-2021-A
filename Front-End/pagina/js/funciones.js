@@ -561,6 +561,7 @@ function completarCita(usuario,doctor,motivo) {
         document.getElementById('motivoR').value = motivo
         document.getElementById('pacR').value = data.nombre+" "+data.apellido
         document.getElementById('docR').value = doctor
+        location.hash="#receta"
     })
     fetch('http://localhost:5000/eliminarsolicitudCita',{
         method:'DELETE',
@@ -572,6 +573,17 @@ function completarCita(usuario,doctor,motivo) {
     .then(response => response.json())
     .then(data => {
         actualizarTabAcc();
+    })
+    fetch('http://localhost:5000/completarCitaCont',{
+        method:'PUT',
+        headers,
+        body:`{
+            "usuario":"${localStorage.getItem("user2")}"
+        }`
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
     })
 }
 
