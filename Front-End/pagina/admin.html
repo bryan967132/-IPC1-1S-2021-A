@@ -116,8 +116,13 @@
                         <a class="dropdown-item" href="#cargaMMed"><span class="item-text">Carga Masiva</span></a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#reporte">Reportes</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link page-scroll dropdown-toggle" href="#reporte">Reportes</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#reporte"><span class="item-text">Top 5 Medicamentos</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="#topDoc"><span class="item-text">Top 3 Doctores</span></a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a onclick="cerrarSesionAdmin()" class="btn-login page-scroll" href="#cerrar">Cerrar Sesión</a>
@@ -432,7 +437,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 50px;">
-                    <div id="tabMed" class="col-lg-6" style="margin-top: -150px;">
+                    <div class="col-lg-6" style="margin-top: -150px;">
                         <div class="text-container">
                             <h2><span class="turquoise">T</span>op <span class="turquoise">M</span>edicamentos</h2>
                         </div>
@@ -469,6 +474,52 @@
                                         <div class="col-lg-6" style="margin-top: -90px;">
                                             <div class="form-group">
                                                 <a class="btn-solid-reg page-scroll" onclick="topMpdf()" href="#exp">Exportar Listado PDF</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end of row -->
+                <div class="row" style="margin-top: 50px;">
+                    <div id="topDoc" class="col-lg-6" style="margin-top: -150px;">
+                        <div class="text-container">
+                            <h2><span class="turquoise">T</span>op <span class="turquoise">D</span>octores</h2>
+                        </div>
+                    </div>
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1 m-b-110" style="width: 100%;">
+                                <div class="table100-head">
+                                    <table>
+                                        <thead>
+                                            <tr class="row100 head">
+                                                <th class="cell100 column1" style="width: 15%;">Top</th>
+                                                <th class="cell100 columnN" style="width: 30%;">Nombre</th>
+                                                <th class="cell100 columnD" style="width: 30%;">Apellido</th>
+                                                <th class="cell100 columnC" style="width: 100%;">Citas Atendidas</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+            
+                                <div>
+                                    <div class="table100-body js-pscroll">
+                                        <table>
+                                            <tbody id="tabletopdocsc">
+                                                <!--script infoT.js-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="cargaMMed" class="header-content basic-1" style="margin-top: -150px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6" style="margin-top: -90px;">
+                                            <div class="form-group">
+                                                <a class="btn-solid-reg page-scroll" onclick="topDocpdf()" href="#exp">Exportar Listado PDF</a>
                                             </div>
                                         </div>
                                     </div>

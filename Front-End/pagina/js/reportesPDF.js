@@ -51,3 +51,44 @@ function topMpdf(){
         doc.save('MedicamentosMasvendidos.pdf');
     })
 }
+
+function convertirdataTopDoc(n,doc){
+    var data ={
+        "Top":n,
+        "Nombre":doc.nombre,
+        "Apellido":doc.apellido,
+        "Citas Atendidas":doc.citasAt
+    }
+    return data
+}
+
+function topDocpdf(){
+    fetch('http://localhost:5000/obtenerTopDoc')
+    .then(response => response.json())
+    .then(data=>{
+        let headers = createHeaders([
+            "Top",
+            "Nombre",
+            "Apellido",
+            "Citas Atendidas"
+        ]);
+        let datos=[];
+        for(let i = 0; i < 3; i++){
+            if(parseInt(data[i].citasAt) > 0){
+                datos.push(Object.assign({},convertirdataTopDoc(i+1,data[i])))
+            }
+        }
+        console.log(datos);
+        var contentJsPdf = {
+            headers,
+            datos
+        };
+        var doc = new jsPDF({
+            putOnlyUsedFonts: true,
+            orientation: "portrait"
+        });
+        doc.text('Doctores Con Más Citas Atendidas',7,10)
+        doc.table(7, 15, datos, headers, {autoSize: false });
+        doc.save('DoctoresConMasCitas.pdf');
+    })
+}

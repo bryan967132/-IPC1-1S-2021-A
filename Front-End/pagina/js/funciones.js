@@ -169,6 +169,7 @@ function delete_doc(usuario) {
     .then(data => {
         alert("Se ha eliminado a "+data.nombre+" "+data.apellido)
         actualizarTabDoc();
+        actualizarTabTopDoc();
     })
 }
 function delete_enf(usuario) {

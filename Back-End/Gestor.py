@@ -1,4 +1,4 @@
-from Usuarios import Usuario,Admin,Doctor,Paciente,Enfermera
+from Usuarios import Usuario,Admin,Doctor,Paciente,Enfermera,TopDr
 from Medicamentos import Medicamento,MasVendidosMed
 from Pedidos import Pedido
 from Citas import Cita
@@ -15,6 +15,7 @@ class Gestor:
         self.enfermeras = []
         self.medicamentos = []
         self.medMasV = []
+        self.docMasA = []
         self.pedidos = []
         self.citas = []
 
@@ -24,8 +25,25 @@ class Gestor:
         self.admin.append(Admin('Herbert','Reyes','2000-12-04','M','admin','1234','12345678'))
         #---------------------------------------------------------------
         #-----------------------doctor----------------------------------
-        self.usuarios.append(Usuario('doctor','docUser','1234'))
-        self.doctores.append(Doctor('NombreDoc','ApellidoDoc','2000-12-04','M','docUser','1234','Neurocirugia','12345678'))
+        self.usuarios.append(Usuario('doctor','docUser1','1234'))
+        self.docMasA.append(TopDr('docUser1','NombreDoc1','ApellidoDoc1','4'))
+        self.doctores.append(Doctor('NombreDoc1','ApellidoDoc1','2000-12-04','M','docUser1','1234','Neurocirugia','12345678'))
+
+        self.usuarios.append(Usuario('doctor','docUser2','1234'))
+        self.docMasA.append(TopDr('docUser2','NombreDoc2','ApellidoDoc2','11'))
+        self.doctores.append(Doctor('NombreDoc2','ApellidoDoc2','2000-12-04','M','docUser2','1234','Neurocirugia','12345678'))
+
+        self.usuarios.append(Usuario('doctor','docUser3','1234'))
+        self.docMasA.append(TopDr('docUser3','NombreDoc3','ApellidoDoc3','15'))
+        self.doctores.append(Doctor('NombreDoc3','ApellidoDoc3','2000-12-04','M','docUser3','1234','Neurocirugia','12345678'))
+
+        self.usuarios.append(Usuario('doctor','docUser4','1234'))
+        self.docMasA.append(TopDr('docUser4','NombreDoc4','ApellidoDoc4','7'))
+        self.doctores.append(Doctor('NombreDoc4','ApellidoDoc4','2000-12-04','M','docUser4','1234','Neurocirugia','12345678'))
+
+        self.usuarios.append(Usuario('doctor','docUser5','1234'))
+        self.docMasA.append(TopDr('docUser5','NombreDoc5','ApellidoDoc5','13'))
+        self.doctores.append(Doctor('NombreDoc5','ApellidoDoc5','2000-12-04','M','docUser5','1234','Neurocirugia','12345678'))
         #---------------------------------------------------------------
         #-----------------------enfermera-------------------------------
         self.usuarios.append(Usuario('enfermera','enfUser','1234'))
@@ -40,7 +58,7 @@ class Gestor:
         self.pacientes.append(Paciente('NombrePac2','ApellidoPac2','2000-12-04','M','user2','1234','12345678'))
         #---------------------------------------------------------------
         #-----------------------medicamentos----------------------------
-        """self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
+        self.medicamentos.append(Medicamento('Aspirina','10.50','Calma el dolor','10'))
         self.medicamentos.append(Medicamento('Acetaminofen','15','Calma el dolor','20'))
         self.medicamentos.append(Medicamento('Adenosina','250','Calma el dolor','15'))
 
@@ -62,7 +80,7 @@ class Gestor:
 
         self.medMasV.append(MasVendidosMed('Penicilamina','Calma el dolor','14'))
         self.medMasV.append(MasVendidosMed('Fenitoína','Calma el dolor','11'))
-        self.medMasV.append(MasVendidosMed('Posaconazol','Calma el dolor','5'))"""
+        self.medMasV.append(MasVendidosMed('Posaconazol','Calma el dolor','5'))
         #---------------------------------------------------------------
     #Read
     def obtener_usuarios(self):
@@ -80,6 +98,10 @@ class Gestor:
     def obtener_topMed(self):
         self.ordenamientoVentas(self.medMasV)
         return json.dumps([ob.__dict__ for ob in self.medMasV])
+    
+    def obtener_topDocCit(self):
+        self.ordenamientoDoctoresCitas(self.docMasA)
+        return json.dumps([ob.__dict__ for ob in self.docMasA])
 
     #Update
     def actualizar_usuario(self,usuario,data):
@@ -92,6 +114,9 @@ class Gestor:
                     if data['tipo'] == 'doctor':
                         for j in self.doctores:
                             if j.usuario == i.usuario:
+                                for k in self.docMasA:
+                                    if k.usuario == j.usuario:
+                                        self.docMasA[self.docMasA.index(k)] = TopDr(data['usuario'],data['nombre'],data['apellido'],k.citasAt)
                                 self.usuarios[self.usuarios.index(i)] = Usuario(data['tipo'],data['usuario'],data['password'])
                                 self.doctores[self.doctores.index(j)] = Doctor(data['nombre'],data['apellido'],data['fecha'],data['genero'],data['usuario'],data['password'],data['especialidad'],telefono)
                                 return '{"data":"actualizado"}'
@@ -142,6 +167,9 @@ class Gestor:
             if tipo == 'doctor' and i.usuario == usuario:
                 for j in self.doctores:
                     if j.usuario == i.usuario:
+                        for k in self.docMasA:
+                            if k.usuario == j.usuario:
+                                self.docMasA.remove(k)
                         self.usuarios.remove(i)
                         self.doctores.remove(j)
                         return json.dumps(j.__dict__)
@@ -383,12 +411,10 @@ class Gestor:
             if i.codigo == codigo and i.usuario == usuario:
                 for j in self.medMasV:
                     if j.nombre == i.medicamento and j.descripcion == i.descripcion:
-                        print('entra a la condicion')
                         cant1 = int(j.unidadesV)
                         cant2 = int(i.unidades)
                         cant1 += cant2
                         self.medMasV[self.medMasV.index(j)] = MasVendidosMed(i.medicamento,i.descripcion,cant1)
-                print('sale del ciclo')
                 self.pedidos.remove(i)
                 return '{"estado":"cancelado"}'
 
@@ -424,5 +450,13 @@ class Gestor:
         for i in range(n):
             for j in range(0,n-i-1):
                 if int(lista[j].unidadesV) < int(lista[j+1].unidadesV):
+                    lista[j],lista[j+1] = lista[j+1],lista[j]
+        return lista
+
+    def ordenamientoDoctoresCitas(self,lista):
+        n = len(lista)
+        for i in range(n):
+            for j in range(0,n-i-1):
+                if int(lista[j].citasAt) < int(lista[j+1].citasAt):
                     lista[j],lista[j+1] = lista[j+1],lista[j]
         return lista

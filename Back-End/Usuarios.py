@@ -40,3 +40,10 @@ class Enfermera(Usuario):
         self.fecha = fecha
         self.genero = genero
         self.telefono = telefono
+
+class TopDr:
+    def __init__(self,usuario,nombre,apellido,citasAt):
+        self.usuario = usuario
+        self.nombre = nombre
+        self.apellido = apellido
+        self.citasAt = citasAt

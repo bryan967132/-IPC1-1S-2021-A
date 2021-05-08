@@ -121,6 +121,7 @@ fetch('http://localhost:5000/obtenerTopM')
     for(i = 0; i < 5; i++){
         if(parseInt(dataTop[i].unidadesV) > 0){
             topM += `<tr class="row100 body">
+                <td class="cell100 column1">${i+1}</td>
                 <td class="cell100 columnN">${dataTop[i].nombre}</td>
                 <td class="cell100 columnD">${dataTop[i].descripcion}</td>
                 <td class="cell100 columnC">${dataTop[i].unidadesV}</td>
@@ -128,6 +129,24 @@ fetch('http://localhost:5000/obtenerTopM')
         }
     }
     document.getElementById("tabletopmedsc").innerHTML = topM;
+})
+
+//Tabla Top Doctores
+let topDoc = "";
+fetch('http://localhost:5000/obtenerTopDoc')
+.then(respTopD => respTopD.json())
+.then(dataTopD => {
+    for(i = 0; i < 3; i++){
+        if(parseInt(dataTopD[i].citasAt) > 0){
+            topDoc += `<tr class="row100 body">
+                <td class="cell100 column1">${i+1}</td>
+                <td class="cell100 columnN">${dataTopD[i].nombre}</td>
+                <td class="cell100 columnD">${dataTopD[i].apellido}</td>
+                <td class="cell100 columnC">${dataTopD[i].citasAt}</td>
+            </tr>`
+        }
+    }
+    document.getElementById("tabletopdocsc").innerHTML = topDoc;
 })
 
 function actualizarTabDoc() {
@@ -264,5 +283,24 @@ function actualizarTabTopM() {
             }
         }
         document.getElementById("tabletopmedsc").innerHTML = topM;
+    })
+}
+
+function actualizarTabTopDoc() {
+    let topDoc = "";
+    fetch('http://localhost:5000/obtenerTopDoc')
+    .then(respTopD => respTopD.json())
+    .then(dataTopD => {
+        for(i = 0; i < 3; i++){
+            if(parseInt(dataTopD[i].citasAt) > 0){
+                topDoc += `<tr class="row100 body">
+                    <td class="cell100 column1">${i+1}</td>
+                    <td class="cell100 columnN">${dataTopD[i].nombre}</td>
+                    <td class="cell100 columnD">${dataTopD[i].apellido}</td>
+                    <td class="cell100 columnC">${dataTopD[i].citasAt}</td>
+                </tr>`
+            }
+        }
+        document.getElementById("tabletopdocsc").innerHTML = topDoc;
     })
 }
