@@ -7,3 +7,8 @@ class Cita:
         self.doc_user = doc_user
         self.enf_user = enf_user
         self.estado = estado
+
+class EnfComun:
+    def __init__(self,enfermedad,casos):
+        self.enfermedad = enfermedad
+        self.casos = casos

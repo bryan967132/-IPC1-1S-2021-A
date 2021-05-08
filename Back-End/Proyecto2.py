@@ -36,6 +36,10 @@ def obtenerTopM():
 def obtenerTopDoc():
     return gestor.obtener_topDocCit()
 
+@app.route('/obtenerTopEnf')
+def obtenerTopEnf():
+    return gestor.obtener_topEnf()
+
 @app.route('/actualizarusuario/<usuario>',methods=['PUT'])
 def actualizarusuario(usuario):
     dato = request.json
@@ -163,6 +167,12 @@ def rechazarCiDoc():
 def completarCitaCont():
     data = request.json
     return gestor.completar_citaCont(data['usuario'])
+
+@app.route('/registrarEnfermedad',methods=['POST'])
+def registrarEnfermedad():
+    data = request.json
+    return gestor.registrar_enfermedad(data['enfermedad'])
+
 
 #Iniciar el Servidor
 if __name__ == "__main__":

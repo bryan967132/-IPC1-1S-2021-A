@@ -1,7 +1,7 @@
 from Usuarios import Usuario,Admin,Doctor,Paciente,Enfermera,TopDr
 from Medicamentos import Medicamento,MasVendidosMed
 from Pedidos import Pedido
-from Citas import Cita
+from Citas import Cita,EnfComun
 import random
 import json
 import re
@@ -16,9 +16,11 @@ class Gestor:
         self.medicamentos = []
         self.medMasV = []
         self.docMasA = []
+        self.topEnfermedad = []
         self.pedidos = []
         self.citas = []
 
+        """
         #datos quemados------------------------------------
         #-----------------------admin-----------------------------------
         self.usuarios.append(Usuario('admin','admin','1234'))
@@ -82,6 +84,13 @@ class Gestor:
         self.medMasV.append(MasVendidosMed('Fenitoína','Calma el dolor','11'))
         self.medMasV.append(MasVendidosMed('Posaconazol','Calma el dolor','5'))
         #---------------------------------------------------------------
+        #-------------------enfermedades comunes------------------------
+        self.topEnfermedad.append(EnfComun('Dolor de cabeza','6'))
+        self.topEnfermedad.append(EnfComun('Dolor de garganta','7'))
+        self.topEnfermedad.append(EnfComun('Dolor de estomago','3'))
+        self.topEnfermedad.append(EnfComun('Dolor de espalda','8'))
+        #---------------------------------------------------------------
+        """
     #Read
     def obtener_usuarios(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios])
@@ -102,6 +111,10 @@ class Gestor:
     def obtener_topDocCit(self):
         self.ordenamientoDoctoresCitas(self.docMasA)
         return json.dumps([ob.__dict__ for ob in self.docMasA])
+
+    def obtener_topEnf(self):
+        self.ordenamientoEnfermedades(self.topEnfermedad)
+        return json.dumps([ob.__dict__ for ob in self.topEnfermedad])
 
     #Update
     def actualizar_usuario(self,usuario,data):
@@ -468,3 +481,31 @@ class Gestor:
                 if int(lista[j].citasAt) < int(lista[j+1].citasAt):
                     lista[j],lista[j+1] = lista[j+1],lista[j]
         return lista
+
+    def ordenamientoEnfermedades(self,lista):
+        n = len(lista)
+        for i in range(n):
+            for j in range(0,n-i-1):
+                if int(lista[j].casos) < int(lista[j+1].casos):
+                    lista[j],lista[j+1] = lista[j+1],lista[j]
+        return lista
+
+    #Vitácora enfermedad
+    def registrar_enfermedad(self,enfermedad):
+        if self.verificar_enfermedad(enfermedad):
+            for i in self.topEnfermedad:
+                if i.enfermedad == enfermedad:
+                    casosH = int(i.casos)
+                    casosH += 1
+                    self.topEnfermedad[self.topEnfermedad.index(i)] = EnfComun(i.enfermedad,casosH)
+                    return '{"casos":"nuevo"}'
+        else:
+            self.topEnfermedad.append(EnfComun(enfermedad,1))
+            return '{"casos":"primero"}'
+        
+
+    def verificar_enfermedad(self,enfermedad):
+        for i in self.topEnfermedad:
+            if i.enfermedad == enfermedad:
+                return True
+        return False

@@ -149,6 +149,23 @@ fetch('http://localhost:5000/obtenerTopDoc')
     document.getElementById("tabletopdocsc").innerHTML = topDoc;
 })
 
+//Tabla Top Doctores
+let topEnfC = "";
+fetch('http://localhost:5000/obtenerTopEnf')
+.then(respTopE => respTopE.json())
+.then(dataTopE => {
+    for(i = 0; i < 3; i++){
+        if(parseInt(dataTopE[i].casos) > 0){
+            topEnfC += `<tr class="row100 body">
+                <td class="cell100 column1">${i+1}</td>
+                <td class="cell100 columnN">${dataTopE[i].enfermedad}</td>
+                <td class="cell100 columnD">${dataTopE[i].casos}</td>
+            </tr>`
+        }
+    }
+    document.getElementById("tabletopenfcomunsc").innerHTML = topEnfC;
+})
+
 function actualizarTabDoc() {
     let text = "";
     fetch('http://localhost:5000/clasificartipousuario/doctor')
@@ -302,5 +319,24 @@ function actualizarTabTopDoc() {
             }
         }
         document.getElementById("tabletopdocsc").innerHTML = topDoc;
+    })
+}
+
+function actualizarTabTopEnf() {
+    //Tabla Top Doctores
+    let topEnfC = "";
+    fetch('http://localhost:5000/obtenerTopEnf')
+    .then(respTopE => respTopE.json())
+    .then(dataTopE => {
+        for(i = 0; i < 3; i++){
+            if(parseInt(dataTopE[i].casos) > 0){
+                topEnfC += `<tr class="row100 body">
+                    <td class="cell100 column1">${i+1}</td>
+                    <td class="cell100 columnN">${dataTopE[i].enfermedad}</td>
+                    <td class="cell100 columnD">${dataTopE[i].casos}</td>
+                </tr>`
+            }
+        }
+        document.getElementById("tabletopenfcomunsc").innerHTML = topEnfC;
     })
 }

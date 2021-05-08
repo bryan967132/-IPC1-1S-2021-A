@@ -122,6 +122,8 @@
                         <a class="dropdown-item" href="#reporte"><span class="item-text">Top 5 Medicamentos</span></a>
                         <div class="dropdown-items-divide-hr"></div>
                         <a class="dropdown-item" href="#topDoc"><span class="item-text">Top 3 Doctores</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="#topEnfComun"><span class="item-text">Enfermedades Comunes</span></a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -520,6 +522,51 @@
                                         <div class="col-lg-6" style="margin-top: -90px;">
                                             <div class="form-group">
                                                 <a class="btn-solid-reg page-scroll" onclick="topDocpdf()" href="#exp">Exportar Listado PDF</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end of row -->
+                <div class="row" style="margin-top: 50px;">
+                    <div id="topEnfComun" class="col-lg-6" style="margin-top: -150px;">
+                        <div class="text-container">
+                            <h2><span class="turquoise">E</span>nfermedades <span class="turquoise">C</span>omunes</h2>
+                        </div>
+                    </div>
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver1 m-b-110" style="width: 100%;">
+                                <div class="table100-head">
+                                    <table>
+                                        <thead>
+                                            <tr class="row100 head">
+                                                <th class="cell100 column1" style="width: 15%;">Top</th>
+                                                <th class="cell100 columnN" style="width: 30%;">Enfermedad</th>
+                                                <th class="cell100 columnD" style="width: 30%;">Casos Registrados</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+            
+                                <div>
+                                    <div class="table100-body js-pscroll">
+                                        <table>
+                                            <tbody id="tabletopenfcomunsc">
+                                                <!--script infoT.js-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="cargaMMed" class="header-content basic-1" style="margin-top: -150px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6" style="margin-top: -90px;">
+                                            <div class="form-group">
+                                                <a class="btn-solid-reg page-scroll" onclick="topEnfpdf()" href="#exp">Exportar Listado PDF</a>
                                             </div>
                                         </div>
                                     </div>

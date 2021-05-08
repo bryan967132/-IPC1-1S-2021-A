@@ -92,3 +92,42 @@ function topDocpdf(){
         doc.save('DoctoresConMasCitas.pdf');
     })
 }
+
+function convertirdataTopEnf(n,enf){
+    var data ={
+        "Top":n,
+        "Enfermedad":enf.enfermedad,
+        "Casos Registrados":enf.casos
+    }
+    return data
+}
+
+function topEnfpdf(){
+    fetch('http://localhost:5000/obtenerTopEnf')
+    .then(response => response.json())
+    .then(data=>{
+        let headers = createHeaders([
+            "Top",
+            "Enfermedad",
+            "Casos Registrados"
+        ]);
+        let datos=[];
+        for(let i = 0; i < 3; i++){
+            if(parseInt(data[i].casos) > 0){
+                datos.push(Object.assign({},convertirdataTopEnf(i+1,data[i])))
+            }
+        }
+        console.log(datos);
+        var contentJsPdf = {
+            headers,
+            datos
+        };
+        var doc = new jsPDF({
+            putOnlyUsedFonts: true,
+            orientation: "portrait"
+        });
+        doc.text('Doctores Con Más Citas Atendidas',7,10)
+        doc.table(7, 15, datos, headers, {autoSize: false });
+        doc.save('DoctoresConMasCitas.pdf');
+    })
+}

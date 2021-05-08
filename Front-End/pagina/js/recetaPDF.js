@@ -26,6 +26,7 @@ function createHeaders(keys) {
   
 function crearPdfReceta(fecha,paciente,doctor,motivo,tratamiento){
     if(fecha != '' && paciente != '' && motivo != '' && tratamiento != ''){
+        registrarEnfermedad(motivo);
         document.getElementById('dateR').value = "";
         document.getElementById('motivoR').value = "";
         document.getElementById('pacR').value = "";
@@ -53,4 +54,18 @@ function crearPdfReceta(fecha,paciente,doctor,motivo,tratamiento){
     }else{
         alert('Los campos son obligatorios')
     }
+}
+
+function registrarEnfermedad(motivo){
+  fetch('http://localhost:5000/registrarEnfermedad',{
+    method:'POST',
+    headers,
+    body:`{
+      "enfermedad":"${motivo}"
+    }`
+  })
+  .then(resp => resp.json())
+  .then(data => {
+    console.log(data)
+  })
 }
