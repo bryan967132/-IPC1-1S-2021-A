@@ -57,7 +57,7 @@ function crearPdfReceta(fecha,paciente,doctor,motivo,tratamiento){
 }
 
 function registrarEnfermedad(motivo){
-  fetch('http://localhost:5000/registrarEnfermedad',{
+  fetch('http://104.197.86.64:5000/registrarEnfermedad',{
     method:'POST',
     headers,
     body:`{

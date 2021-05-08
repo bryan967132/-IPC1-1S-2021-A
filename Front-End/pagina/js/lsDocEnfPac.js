@@ -29,7 +29,7 @@ function convertirdata1(usuario){
 }
 
 function crearPdfDocEnfPac(tipo){
-  fetch(`http://localhost:5000/clasificartipousuario/${tipo}`)
+  fetch(`http://104.197.86.64:5000/clasificartipousuario/${tipo}`)
   .then(response => response.json())
   .then(data=>{
     //Declarando los headers

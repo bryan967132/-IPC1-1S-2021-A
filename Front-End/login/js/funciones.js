@@ -2,7 +2,7 @@
 let headers = new Headers()
 headers.append('Content-Type','application/json');
 headers.append('Accept','application/json');
-headers.append('Access-Control-Allow-Origin','http://localhost:5000');
+headers.append('Access-Control-Allow-Origin','http://104.197.86.64:5000');
 headers.append('Access-Control-Allow-Credentials','true');
 headers.append('GET','POST','OPTIONS','PUT','DELETE')
 
@@ -25,7 +25,7 @@ function CrearUsuario(){
     if(nombre.value != '' && apellido.value != '' && fecha.value != '' && genero.value != '' && usuario.value != '' && pass.value != ''){
         let phone = '';
         if(telefono.value == ''){phone = 'Sin registrar'}else{phone = telefono.value}
-        fetch('http://localhost:5000/registro',{
+        fetch('http://104.197.86.64:5000/registro',{
             method:'POST',
             headers,
             //Valores que se van a mandar
@@ -78,7 +78,7 @@ function IniciarSesion(){
     if(usuario.value == ''){showValidate(usuario)}
     if(pass.value == ''){showValidate(pass)}
     if(usuario.value != '' && pass.value != ''){
-        fetch(`http://localhost:5000/login/${usuario.value}/${pass.value}`)
+        fetch(`http://104.197.86.64:5000/login/${usuario.value}/${pass.value}`)
         //Convirtiendo de string a texto
         .then(response => response.json())
         .then(data => {
@@ -87,7 +87,7 @@ function IniciarSesion(){
                 usuario.value = '';
                 pass.value = '';
             }else{
-                fetch(`http://localhost:5000/buscartipousuario/${usuario.value}`)
+                fetch(`http://104.197.86.64:5000/buscartipousuario/${usuario.value}`)
                 .then(response1 => response1.json())
                 .then(data1 => {
                     saludo = '';

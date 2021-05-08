@@ -1,6 +1,6 @@
 //Tabla Doctores
 let text = "";
-fetch('http://localhost:5000/clasificartipousuario/doctor')
+fetch('http://104.197.86.64:5000/clasificartipousuario/doctor')
 .then(response => response.json())
 .then(data => {
     var i;
@@ -28,7 +28,7 @@ fetch('http://localhost:5000/clasificartipousuario/doctor')
 
 //Tabla Enfermeras
 let text1 = "";
-fetch('http://localhost:5000/clasificartipousuario/enfermera')
+fetch('http://104.197.86.64:5000/clasificartipousuario/enfermera')
 .then(response1 => response1.json())
 .then(data1 => {
     var i;
@@ -56,7 +56,7 @@ fetch('http://localhost:5000/clasificartipousuario/enfermera')
 
 //Tabla Pacientes
 let text2 = "";
-fetch('http://localhost:5000/clasificartipousuario/paciente')
+fetch('http://104.197.86.64:5000/clasificartipousuario/paciente')
 .then(response2 => response2.json())
 .then(data2 => {
     var i;
@@ -85,7 +85,7 @@ fetch('http://localhost:5000/clasificartipousuario/paciente')
 
 //Tabla Medicamentos
 let text3 = "";
-fetch('http://localhost:5000/obtenermedicamentos')
+fetch('http://104.197.86.64:5000/obtenermedicamentos')
 .then(response3 => response3.json())
 .then(data3 => {
     var i;
@@ -114,7 +114,7 @@ fetch('http://localhost:5000/obtenermedicamentos')
 
 //Tabla Top Medicamentos
 let topM = "";
-fetch('http://localhost:5000/obtenerTopM')
+fetch('http://104.197.86.64:5000/obtenerTopM')
 .then(respTop => respTop.json())
 .then(dataTop => {
     var i;
@@ -133,7 +133,7 @@ fetch('http://localhost:5000/obtenerTopM')
 
 //Tabla Top Doctores
 let topDoc = "";
-fetch('http://localhost:5000/obtenerTopDoc')
+fetch('http://104.197.86.64:5000/obtenerTopDoc')
 .then(respTopD => respTopD.json())
 .then(dataTopD => {
     for(i = 0; i < 3; i++){
@@ -151,7 +151,7 @@ fetch('http://localhost:5000/obtenerTopDoc')
 
 //Tabla Top Doctores
 let topEnfC = "";
-fetch('http://localhost:5000/obtenerTopEnf')
+fetch('http://104.197.86.64:5000/obtenerTopEnf')
 .then(respTopE => respTopE.json())
 .then(dataTopE => {
     for(i = 0; i < 3; i++){
@@ -168,7 +168,7 @@ fetch('http://localhost:5000/obtenerTopEnf')
 
 function actualizarTabDoc() {
     let text = "";
-    fetch('http://localhost:5000/clasificartipousuario/doctor')
+    fetch('http://104.197.86.64:5000/clasificartipousuario/doctor')
     .then(response => response.json())
     .then(data => {
         var i;
@@ -197,7 +197,7 @@ function actualizarTabDoc() {
 
 function actualizarTabEnf() {
     let text1 = "";
-    fetch('http://localhost:5000/clasificartipousuario/enfermera')
+    fetch('http://104.197.86.64:5000/clasificartipousuario/enfermera')
     .then(response1 => response1.json())
     .then(data1 => {
         var i;
@@ -226,7 +226,7 @@ function actualizarTabEnf() {
 
 function actualizarTabPac() {
     let text2 = "";
-    fetch('http://localhost:5000/clasificartipousuario/paciente')
+    fetch('http://104.197.86.64:5000/clasificartipousuario/paciente')
     .then(response2 => response2.json())
     .then(data2 => {
         var i;
@@ -256,7 +256,7 @@ function actualizarTabPac() {
 
 function actualizarTabMed() {
     let text3 = "";
-    fetch('http://localhost:5000/obtenermedicamentos')
+    fetch('http://104.197.86.64:5000/obtenermedicamentos')
     .then(response3 => response3.json())
     .then(data3 => {
         var i;
@@ -286,7 +286,7 @@ function actualizarTabMed() {
 
 function actualizarTabTopM() {
     let topM = "";
-    fetch('http://localhost:5000/obtenerTopM')
+    fetch('http://104.197.86.64:5000/obtenerTopM')
     .then(respTop => respTop.json())
     .then(dataTop => {
         var i;
@@ -305,7 +305,7 @@ function actualizarTabTopM() {
 
 function actualizarTabTopDoc() {
     let topDoc = "";
-    fetch('http://localhost:5000/obtenerTopDoc')
+    fetch('http://104.197.86.64:5000/obtenerTopDoc')
     .then(respTopD => respTopD.json())
     .then(dataTopD => {
         for(i = 0; i < 3; i++){
@@ -325,7 +325,7 @@ function actualizarTabTopDoc() {
 function actualizarTabTopEnf() {
     //Tabla Top Doctores
     let topEnfC = "";
-    fetch('http://localhost:5000/obtenerTopEnf')
+    fetch('http://104.197.86.64:5000/obtenerTopEnf')
     .then(respTopE => respTopE.json())
     .then(dataTopE => {
         for(i = 0; i < 3; i++){

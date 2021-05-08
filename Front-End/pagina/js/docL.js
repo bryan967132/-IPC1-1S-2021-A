@@ -1,6 +1,6 @@
 //Listado Citas
 let citas = "";
-fetch('http://localhost:5000/obtenercitas')
+fetch('http://104.197.86.64:5000/obtenercitas')
 .then(responseC => responseC.json())
 .then(data => {
     var i;
@@ -26,7 +26,7 @@ fetch('http://localhost:5000/obtenercitas')
 
 //Citas Aceptadas
 let acc = "";
-fetch('http://localhost:5000/obtenercitas')
+fetch('http://104.197.86.64:5000/obtenercitas')
 .then(responseA => responseA.json())
 .then(dataA => {
     var i;
@@ -49,7 +49,7 @@ fetch('http://localhost:5000/obtenercitas')
 
 function actualizarTabCitaPend() {
     let citas = "";
-    fetch('http://localhost:5000/obtenercitas')
+    fetch('http://104.197.86.64:5000/obtenercitas')
     .then(responseC => responseC.json())
     .then(data => {
         var i;
@@ -76,7 +76,7 @@ function actualizarTabCitaPend() {
 
 function actualizarTabAcc() {
     let acc = "";
-    fetch('http://localhost:5000/obtenercitas')
+    fetch('http://104.197.86.64:5000/obtenercitas')
     .then(responseA => responseA.json())
     .then(dataA => {
         var i;
