@@ -308,6 +308,7 @@ class Gestor:
                     pass
                 self.usuarios.append(Usuario('doctor',campo[4],campo[5]))
                 self.doctores.append(Doctor(campo[0],campo[1],fecha,campo[3],campo[4],campo[5],campo[6],telefono))
+                self.docMasA.append(TopDr(campo[4],data[0],data[1],'0'))
                 i += 1
         except:
             pass
