@@ -502,7 +502,7 @@ class Gestor:
                     self.topEnfermedad[self.topEnfermedad.index(i)] = EnfComun(i.enfermedad,casosH)
                     return '{"casos":"nuevo"}'
         else:
-            self.topEnfermedad.append(EnfComun(enfermedad,1))
+            self.topEnfermedad.append(EnfComun(enfermedad,'1'))
             return '{"casos":"primero"}'
         
 

@@ -163,6 +163,7 @@ fetch('http://104.197.86.64:5000/obtenerTopEnf')
             </tr>`
         }
     }
+    console.log(dataTopE)
     document.getElementById("tabletopenfcomunsc").innerHTML = topEnfC;
 })
 
