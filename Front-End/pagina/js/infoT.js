@@ -136,6 +136,7 @@ let topDoc = "";
 fetch('http://104.197.86.64:5000/obtenerTopDoc')
 .then(respTopD => respTopD.json())
 .then(dataTopD => {
+    var i;
     for(i = 0; i < 3; i++){
         if(parseInt(dataTopD[i].citasAt) > 0){
             topDoc += `<tr class="row100 body">
@@ -154,16 +155,21 @@ let topEnfC = "";
 fetch('http://104.197.86.64:5000/obtenerTopEnf')
 .then(respTopE => respTopE.json())
 .then(dataTopE => {
-    for(i = 0; i < 3; i++){
-        if(parseInt(dataTopE[i].casos) > 0){
+    let longitud = 0;
+    if(dataTopE.length < 4){
+        longitud = dataTopE.length;
+    }else{
+        longitud = 3
+    }
+    console.log(dataTopE)
+    for(i = 0; i < longitud; i++){
             topEnfC += `<tr class="row100 body">
                 <td class="cell100 column1">${i+1}</td>
                 <td class="cell100 columnN">${dataTopE[i].enfermedad}</td>
                 <td class="cell100 columnD">${dataTopE[i].casos}</td>
             </tr>`
-        }
+        
     }
-    console.log(dataTopE)
     document.getElementById("tabletopenfcomunsc").innerHTML = topEnfC;
 })
 
@@ -330,7 +336,7 @@ function actualizarTabTopEnf() {
     .then(respTopE => respTopE.json())
     .then(dataTopE => {
         for(i = 0; i < 3; i++){
-            if(parseInt(dataTopE[i].casos) > 0){
+            if(topEnfC[i] != 'undefined'){
                 topEnfC += `<tr class="row100 body">
                     <td class="cell100 column1">${i+1}</td>
                     <td class="cell100 columnN">${dataTopE[i].enfermedad}</td>

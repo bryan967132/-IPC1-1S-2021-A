@@ -112,10 +112,13 @@ function topEnfpdf(){
             "Casos Registrados"
         ]);
         let datos=[];
-        for(let i = 0; i < 3; i++){
-            if(parseInt(data[i].casos) > 0){
-                datos.push(Object.assign({},convertirdataTopEnf(i+1,data[i])))
-            }
+        if(data.length < 4){
+            longitud = data.length;
+        }else{
+            longitud = 3
+        }
+        for(var i = 0; i < longitud; i++){
+            datos.push(Object.assign({},convertirdataTopEnf(i+1,data[i])))
         }
         console.log(datos);
         var contentJsPdf = {
