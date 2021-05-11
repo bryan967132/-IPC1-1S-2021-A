@@ -27,7 +27,7 @@ function createHeaders(keys) {
   }
   
 function crearPdfMed(){
-    fetch('http://104.197.86.64:5000/obtenermedicamentos')
+    fetch('http://localhost:5000/obtenermedicamentos')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers

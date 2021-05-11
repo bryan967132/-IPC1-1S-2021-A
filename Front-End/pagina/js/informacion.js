@@ -13,7 +13,7 @@ function formedit(nombre,apellido,usuario,password,fecha,telefono,genero,especia
 }
 
 function actualizarInfo(usuario){
-    fetch(`http://104.197.86.64:5000/buscartipousuario/${usuario}`)
+    fetch(`http://localhost:5000/buscartipousuario/${usuario}`)
     .then(response => response.json())
     .then(data => {
         document.getElementById("nameP").value = `${data.nombre}`

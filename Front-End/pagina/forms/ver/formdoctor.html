@@ -107,7 +107,7 @@
                     </form>
                 </div>
                 <script>
-                    fetch(`http://104.197.86.64:5000/buscartipousuario/${localStorage.getItem("userC")}`)
+                    fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("userC")}`)
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById("nameU").value = `${data.nombre}`;

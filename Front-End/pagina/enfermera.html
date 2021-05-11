@@ -124,7 +124,7 @@
                                     <input type="text" style="visibility: hidden; margin-top: -29px; margin-left: 235px; padding-bottom: 0.0625rem; color: transparent; font-size: 20.7px; background: transparent; height: 30px;" id="gensP" readonly>
                                     <br>
                                     <script>
-                                        fetch(`http://104.197.86.64:5000/buscartipousuario/${localStorage.getItem("user3")}`)
+                                        fetch(`http://localhost:5000/buscartipousuario/${localStorage.getItem("user3")}`)
                                         .then(response => response.json())
                                         .then(data => {
                                             document.getElementById("nameP").value = `${data.nombre}`

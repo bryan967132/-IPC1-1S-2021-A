@@ -23,7 +23,7 @@ function convertirdataTopM(n,medicamento){
 }
 
 function topMpdf(){
-    fetch('http://104.197.86.64:5000/obtenerTopM')
+    fetch('http://localhost:5000/obtenerTopM')
     .then(response => response.json())
     .then(data=>{
         let headers = createHeaders([
@@ -63,7 +63,7 @@ function convertirdataTopDoc(n,doc){
 }
 
 function topDocpdf(){
-    fetch('http://104.197.86.64:5000/obtenerTopDoc')
+    fetch('http://localhost:5000/obtenerTopDoc')
     .then(response => response.json())
     .then(data=>{
         let headers = createHeaders([
@@ -103,7 +103,7 @@ function convertirdataTopEnf(n,enf){
 }
 
 function topEnfpdf(){
-    fetch('http://104.197.86.64:5000/obtenerTopEnf')
+    fetch('http://localhost:5000/obtenerTopEnf')
     .then(response => response.json())
     .then(data=>{
         let headers = createHeaders([
